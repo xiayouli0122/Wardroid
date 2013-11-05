@@ -1,0 +1,153 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">Urey</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_yurinate">Urey</string>
+    
+     <string name="hello">基本布局、组件！！！</string>
+    <string name="hello_world">Activity动画切换效果测试</string>
+    
+    <string name="frameLayout">FrameLayout</string>
+    <string name="relativeLayout">RelativeLayout</string>
+    <string name="relativeAndLinear">RelativeAndLinear</string>
+    <string name="tableLayout">TableLayout</string>
+    <string name="tabWidget">选项卡TabWidget</string>
+    <string name="checkbox">CheckBox多选框</string>
+    <string name="radioGroup">RadioGroup单选框</string>
+    <string name="spinner">Spinner下拉框</string>
+    <string name="autoCompleteTextView">AutoCompleteTextView</string>
+    <string name="datePicker">Date、TimePicker</string>
+    <string name="progressBar">ProgressBar进度条</string>
+    <string name="ratingBar">RatingBar投票</string>
+    <string name="imageShow">ImageSwitcher、Gallery</string>
+    <string name="gridView">GridView网络视图</string>
+    <string name="tab">Tab标签</string>
+    <string name="optionsMenu">OptionsMenu</string>
+	<string name="contextMenu">ContextMenu</string>
+    <string name="subMenu">SubMenu</string>
+    <string name="bundle">Activity值传递</string>
+    <string name="alertDialog">4种AlertDialog</string>
+    <string name="alertDialog1">有两个button的对话框1</string>
+    <string name="alertDialog2">有三个button的对话框2</string>
+    <string name="alertDialog3">能进行输入的对话框</string>
+    <string name="alertDialog4">进度框</string>
+    <string name="notification">Notification</string>
+    <string name="activityAnimation">Activity切换动画</string>
+        
+    <string name="menu_button1">第一个按钮</string>
+    <string name="menu_button2">第二个按钮</string>
+    
+    <string name="ok">确定</string>
+    <string name="startButton">开始</string>
+    <string name="stopButton">暂停</string>
+    
+    <string name="pre_profiles">预设模式</string>
+    
+    <drawable name="blue">#770000ff</drawable>
+    <drawable name="yellow">#77ffff00</drawable>
+    <drawable name="red">#00FF99</drawable>
+    
+    <!-- Accessibility description sent when user starts drawing a lock pattern. [CHAR LIMIT=NONE] -->
+    <string name="lockscreen_access_pattern_start">Pattern started</string>
+    <!-- Accessibility description sent when the pattern times out and is cleared. [CHAR LIMIT=NONE] -->
+    <string name="lockscreen_access_pattern_cleared">Pattern cleared</string>
+    <!-- Accessibility description sent when user adds a cell to the pattern. [CHAR LIMIT=NONE]  -->
+    <string name="lockscreen_access_pattern_cell_added">Cell added</string>
+    <!-- Accessibility description sent when user completes drawing a pattern. [CHAR LIMIT=NONE] -->
+    <string name="lockscreen_access_pattern_detected">Pattern completed</string>
+    
+    <string name="share">分享</string>
+    <string name="copy">复制</string>
+    <string name="cut">剪切</string>
+    <string name="delete">删除</string>
+    <string name="more">更多</string>
+    <string name="rename">重命名</string>
+    <string name="details">详情</string>
+    <string name="select_all">全选</string>
+    <string name="deselect_all">取消全选</string>
+    <string name="selected">选中</string>
+    <!-- label -->
+    <string name="sample_framelayout">Sample/FrameLayout</string>
+    <string name="sample_relative_Linear">Sample/RelativeAndLinear</string>
+    <string name="sample_relative">Sample/Relative</string>
+    <string name="sample_tablelayout">Sample/TableLayout</string>
+    <string name="sample_tabwidget">Sample/TabWidget</string>
+    <string name="sample_checkbox">Sample/CheckBox</string>
+    <string name="sample_radiongroup">Sample/RadioGroup</string>
+    <string name="sample_spinner">Sample/Spinner</string>
+    <string name="sample_autocomplete">Sample/AutoComplete</string>
+    <string name="sample_datepicker">Sample/DatePicker</string>
+    <string name="sample_progressbar">Sample/ProgressBarHandler</string>
+    <string name="sample_ratingbar">Sample/RatingBar</string>
+    <string name="sample_imageshow">Sample/ImageShow</string>
+    <string name="sample_gridview">Sample/GridView</string>
+    <string name="sample_tabdemo">Sample/TabDemo</string>
+    <string name="sample_optiosmenu">Sample/Menu/OptionsMenu</string>
+    <string name="sample_contextmenu">Sample/Menu/ContextMenu</string>
+    <string name="sample_submenu">Sample/Menu/SubMenu</string>
+    <string name="sample_bundle">Sample/Bundle</string>
+    <string name="sample_notification">Sample/Notification</string>
+    <string name="sample_system_default_icom">Sample/SystemDefaultIcon</string>
+    <string name="view_viewpager">View/ViewPager</string>
+    <string name="view_listview1">View/ListView/ListView_Grid</string>
+    <string name="view_listview_refresh">View/ListView/ListView_Refresh</string>
+    <string name="view_imagebrowser">View/ImageBrowser</string>
+    <string name="view_tabhost">View/TabHost</string>
+    <string name="view_edittextlength">View/EditTextLength</string>
+    <string name="view_activitygroup">View/ActivityGroup</string>
+     <string name="view_fragmentactivity">View/FragmentActivity</string>
+     <string name="view_selection_mode_listview">View/Selection_Mode_Listview</string>
+    <string name="animation_activity">Animation/ActivityAnimation</string>
+    
+    <string name="lockpattern_customview">lockpattern/CustomView</string>
+    <string name="lockpattern_googleview">lockpattern/GoogleView</string>
+    
+    <string name="preference_fragment">Preference/PreferenceFagment</string>
+    
+    <string name="dialog_bubble">Dialog/Bubble</string>
+    <string name="dialog_alertdialog">Dialog/AlertDialog</string>
+    <string name="dialog_numberpick">Dialog/NumberPicker</string>
+    <string name="dialog_fragment">Dialog/DialogFragment</string>
+    <string name="dialog_filebrowser">Dialog/FileBrowser</string>
+    <string name="dialog_custom">Dialog/CustomDialog</string>
+    
+    <string name="media_volume">Media/MediaVolume</string>
+    <string name="ringtone_demo">Media/GetRingToneDemo</string>
+    <string name="media_storage">Media/StorageDemo</string>
+    <string name="notification_demo">App/NotificationDemo</string>
+    <string name="popupwindow">Menu/PopupWindowDemo</string>
+    <string name="imageloader_gridview">Media/Image/ImageLoaderGridView</string>
+    <string name="imageloader_listview">Media/Image/ImageLoaderListView</string>
+    <string name="listview_scroll_style">View/ListView/ScrollStyle</string>
+    
+    <!-- contacts -->
+    <string name="calls_log">Contacts/CallsLog</string>
+    <string name="sms_backup">Contacts/SmsBackup</string>
+    <!-- Label -->
+    
+    <!-- Crash -->
+    <string name="crash_test">Crash/CrashTest</string>
+    <!-- Crash -->
+    
+    <!-- app -->
+	<string name="app_pkg">App/AppPackage</string>    
+	<string name="app_package">App/PackageManager</string>
+    <string name="app_fragment_alert_dialog">App/FragmentAlertDialog</string>
+    <!-- app -->
+
+    <!-- file -->
+    <string name="file_demo1">File/FileFitler</string>
+    <!-- file -->
+    
+    <string name="calls_log_year_sfd">"yyyy年M月d日 HH:mm"</string>
+    <string name="calls_log_month_sfd">"M月d日 HH:mm"</string>
+    <string name="calls_log_hours_sfd">"HH:mm"</string>
+    <string name="calls_log_yestoday">"昨天  <xliff:g id="time">%1$s</xliff:g>"</string>
+    
+    <string name="crash_toast_text">"程序出现异常，即将关闭"</string>
+    <string name="crash_dialog_text">"很抱歉，本程序出现了异常"</string>
+    <string name="crash_dialog_title">"程序异常"</string>
+    <string name="crash_dialog_comment_prompt">"收集程序出现异常时的信息，以帮忙改进本程序，提供更好的用户体验"</string>
+    <string name="crash_dialog_ok_toast">"错误信息已发送，谢谢您的协助！"</string>
+</resources>

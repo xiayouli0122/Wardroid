@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="counties">
+		<item>AAA</item>
+		<item>BBB</item>
+		<item>CCC</item>
+		<item>DDD</item>
+		<item>EEE</item>
+	</string-array>
+	
+	<string-array name="animation_type">
+	    <item>淡入淡出效果</item>
+        <item>放大淡出效果</item>
+        <item>转动淡出效果1</item>
+        <item>转动淡出效果2</item>
+        <item>左上角展开淡出效果</item>
+        <item>压缩变小淡出效果</item>
+        <item>右往左推出效果</item>
+        <item>下往上推出效果</item>
+        <item>左右交错效果</item>
+        <item>放大淡出效果</item>
+        <item>缩小效果</item>
+        <item>上下交错效果</item>
+        <item>左往右推出效果</item>
+	</string-array>
+	
+	 <declare-styleable name="LockPatternView">
+        <!-- Aspect to use when drawing LockPatternView. Choices are "square"(default), "lock_width"
+             or "lock_height" -->
+        <attr name="aspect" format="string" />
+    </declare-styleable>
+    
+	     <declare-styleable name="TogglePrefAttrs">
+        <attr name="android:preferenceLayoutChild" />
+    </declare-styleable>
+    
+    <!-- These are the attributes that we want to retrieve from the theme
+         in view/Gallery1.java -->
+    <declare-styleable name="Gallery1">
+        <attr name="android:galleryItemBackground" />
+    </declare-styleable>
+    
+     <declare-styleable name="LabelView">
+        <attr name="text" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+    </declare-styleable>
+    
+    <!-- Used in app/menu examples -->
+    <string-array name="entries_list_preference">
+        <item>Alpha Option 01</item>
+        <item>Beta Option 02</item>
+        <item>Charlie Option 03</item>  
+    </string-array>
+
+    <!-- Used in app/menu examples -->
+    <string-array name="entryvalues_list_preference">
+        <item>alpha</item>
+        <item>beta</item>
+        <item>charlie</item>  
+    </string-array>
+    <integer name="ledonms">1000</integer>
+    <integer name="ledoffms">180000</integer>
+</resources>

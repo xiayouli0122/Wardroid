@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linerLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#ffffff" >
+
+            <TextView
+                android:id="@+id/page01"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="Page01"
+                android:textColor="#000000"
+                android:background="@drawable/text_selector"
+                 />
+            
+            <ImageView
+                android:id="@+id/cursor1"
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_alignParentBottom="true"
+                android:scaleType="matrix"
+                android:src="#ff33b5e5" />
+            
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:scaleType="matrix"
+                android:src="#ff33b5e5" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+             android:background="#ffffff" >
+
+            <TextView
+                android:id="@+id/page02"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="Page02"
+                android:textColor="#000000" 
+                android:background="@drawable/text_selector"
+                />
+
+            <ImageView
+                android:id="@+id/cursor2"
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+               android:layout_alignParentBottom="true"
+                android:scaleType="matrix"
+                android:visibility="gone"
+                android:src="#ff33b5e5" />
+            
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:scaleType="matrix"
+                android:src="#ff33b5e5" />
+            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+             android:background="#ffffff" >
+
+            <TextView
+                android:id="@+id/page03"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="Page03"
+                android:textColor="#000000" 
+                android:background="@drawable/text_selector"
+                />
+
+            <ImageView
+                android:id="@+id/cursor3"
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+               android:layout_alignParentBottom="true"
+                android:scaleType="matrix"
+                android:visibility="gone"
+                android:src="#ff33b5e5" />
+        </RelativeLayout>
+
+        <!-- <TextView -->
+        <!-- android:id="@+id/page04" -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="fill_parent" -->
+        <!-- android:layout_weight="1" -->
+        <!-- android:text="Page04" -->
+        <!-- android:gravity="center" -->
+        <!-- android:background="#000000" -->
+        <!-- /> -->
+
+
+        <!-- <TextView -->
+        <!-- android:id="@+id/page05" -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="fill_parent" -->
+        <!-- android:layout_weight="1" -->
+        <!-- android:text="Page05" -->
+        <!-- android:gravity="center" -->
+        <!-- android:background="#000000" -->
+        <!-- /> -->
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="#000000"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
+
+</LinearLayout>

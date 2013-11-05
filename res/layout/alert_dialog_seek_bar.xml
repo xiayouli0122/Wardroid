@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	>
+	
+	<TextView
+		android:id="@+id/text01"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="20dip"
+		android:layout_marginRight="20dip"
+		android:text="The first seekbar"
+		android:textAppearance="?android:attr/textAppearanceMedium"/>
+	
+	<SeekBar 
+	    android:id="@+id/seekbar_1"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    />
+		
+	<TextView
+		android:id="@+id/text02"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="20dip"
+		android:layout_marginRight="20dip"
+		android:text="The first seekbar"
+		android:textAppearance="?android:attr/textAppearanceMedium"/>
+	
+	<SeekBar 
+	    android:id="@+id/seekbar_2"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    />
+	
+		<TextView
+		android:id="@+id/text03"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="20dip"
+		android:layout_marginRight="20dip"
+		android:text="The first seekbar"
+		android:textAppearance="?android:attr/textAppearanceMedium"/>
+	
+	<SeekBar 
+	    android:id="@+id/seekbar_3"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    />	
+	
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/container1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+    </LinearLayout>
+ 
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        style="@style/ButtonContainer"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:gravity="center" >
+        <Button
+            android:id="@+id/button1"
+            style="@style/Button"
+            android:text="Button1"
+            android:background="@drawable/btn_circle_normal"
+             />
+        <Button
+            android:id="@+id/button2"
+            style="@style/Button"
+            android:text="Button2"
+            android:background="@drawable/btn_circle_normal" />
+         <Button
+            android:id="@+id/button3"
+            style="@style/Button"
+            android:text="Button3"
+            android:background="@drawable/btn_circle_normal" />
+          <Button
+            android:id="@+id/button4"
+            style="@style/Button"
+            android:text="Button4"
+            android:background="@drawable/btn_circle_normal" />
+    </LinearLayout>
+</LinearLayout>

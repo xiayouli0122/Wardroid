@@ -1,0 +1,388 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ward"
+    android:versionCode="1"
+    android:versionName="2013.1.16" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:name="com.example.ward.UreyApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.ward.UreyActivity"
+            android:label="@string/title_activity_yurinate" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.example.ward.JustTestActivity"
+            	android:label="JustTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />"
+            </intent-filter>
+        </activity>
+        
+         <provider
+            android:authorities="com.example.ward.sqlite"
+            android:exported="false"
+            android:name="com.example.ward.sqlite.BaseProvider" >
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+		
+		<activity android:name=".sample.FrameLayoutActivity"
+		    	android:label="@string/sample_framelayout">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />"
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.RelativeAndLinearActivity"
+		    	android:label="@string/sample_relative_Linear">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />"
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.RelativeLayoutActivity"
+		    android:label="@string/sample_relative">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />"
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.TableLayoutActivity"
+		    android:label="@string/sample_tablelayout">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />"
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.TabWidgetActivity"
+		    android:label="@string/sample_tabwidget">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />"
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.CheckBoxActivity" 
+		    android:label="@string/sample_checkbox">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+            </activity>
+		<activity android:name=".sample.RadioGroupActivity" 
+		    android:label="@string/sample_radiongroup">
+		       <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.SpinnerActivity" 
+		    android:label="@string/sample_spinner">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.AutoCompleteTextViewActivity" android:label="@string/sample_autocomplete">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.DatePickerActivity" android:label="@string/sample_datepicker">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.ProgressBarHandlerActivity" android:label="@string/sample_progressbar">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.RatingBarActivity" android:label="@string/sample_ratingbar">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.ImageShowActivity" android:label="@string/sample_imageshow">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.GridViewActivity" android:label="@string/sample_gridview">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.TabDemoActivity" android:label="@string/sample_tabdemo">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".menu.OptionsMenuActivity" android:label="@string/sample_optiosmenu">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".menu.ContextMenuActivity" android:label="@string/sample_contextmenu">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.SubMenuActivity" android:label="@string/sample_submenu">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.Bundle1Activity" android:label="@string/sample_bundle">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.Bundle2Activity" android:label="Bundle2">
+		</activity>
+		<activity android:name=".sample.NotificationActivity" android:label="@string/sample_notification">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".sample.SystemDefaultIconActivity" android:label="@string/sample_system_default_icom">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<!-- view -->
+		<activity android:name=".view.TestViewPagerDemoActivity" android:label="@string/view_viewpager">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<activity android:name=".view.ListViewIncludeGridActivity" android:label="@string/view_listview1">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".view.ImageBrowser" android:label="@string/view_imagebrowser">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".view.Gallery1" />
+		<activity android:name=".view.TabHostActivity" android:label="@string/view_tabhost"
+		    >
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>		
+		<activity android:name=".view.Tab1Activity" />
+		<activity android:name=".view.Tab2Activity" />
+		<activity android:name=".view.Tab3Activity" />
+		
+		<activity android:name=".view.EditTextLengthTest" android:label="@string/view_edittextlength" >
+		      <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<activity
+		    android:name=".view.ActivityGroupDemo"
+		    android:label="@string/view_activitygroup">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<activity
+		    android:name=".view.FragmentActivityDemo"
+		    android:label="@string/view_fragmentactivity">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<!-- 设置 uiOptions ，可以让ActionBar的菜单分成两部分，一部分在顶部，一部分在底部-->
+		<activity 
+		    android:name=".view.ListView_Selection_Mode"
+		    android:label="@string/view_selection_mode_listview"
+		    android:uiOptions="splitActionBarWhenNarrow"
+		    >
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<!-- view -->
+		
+		<activity android:name="com.example.ward.animation.ActivityAnimationDemo" android:label="@string/animation_activity">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name="com.example.ward.animation.ActivityAnimationOther">
+		</activity>
+		
+		<!-- lockpattern -->
+		<activity android:name=".lockpattern.LockCustomViewActivity" android:label="@string/lockpattern_customview">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".lockpattern.LockGoogleViewActivity" android:label="@string/lockpattern_googleview">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<!-- lockpattern -->
+		
+		<!-- dialog -->
+		<activity android:name="com.example.ward.dialog.TestBubbleActivity" android:label="@string/dialog_bubble">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name="com.example.ward.dialog.AlertDialogActivity" android:label="@string/dialog_alertdialog">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<!-- dialog -->
+		
+		<!-- Media Start-->
+		<activity android:name=".media.MediaVolumeDemo" android:label="@string/media_volume">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<service android:name=".media.MediaVolumeService">
+		 	<intent-filter>
+		 	    <action android:name="com.example.ward.MUSIC"></action>
+		 	    <category  android:name="android.intent.category.DEFAUL" />T
+		 	</intent-filter>
+		 </service>
+		 <receiver android:name=".media.MediaButtonReceiver">
+		     <intent-filter>
+		         <action android:name="android.intent.action.MEDIA_BUTTON" />
+		     </intent-filter>
+		 </receiver>
+		 
+		 <activity android:name=".media.RingtonesDemo" android:label="@string/ringtone_demo">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		 </activity>
+		<!-- Media end-->
+		
+		<!-- Preference start -->
+		<activity android:name=".preference.PreferenceDemo" android:label="@string/preference_fragment"
+		    android:theme="@android:style/Theme.Holo">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<!-- Preference end -->
+		
+		<!-- contacts start -->
+		<activity android:name="com.example.ward.contact.CallsLogDemo" android:label="@string/calls_log"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name="com.example.ward.contact.SmsBackupActivity" android:label="@string/sms_backup"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<!-- contacts end -->
+		
+		<!-- crash start -->
+		<activity 
+		    android:name="com.example.ward.crash.CrashTest"
+		    android:label="@string/crash_test"
+		    >
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name="org.acra.CrashReportDialog" 
+		    android:theme="@android:style/Theme.Holo.Dialog"
+        	android:launchMode="singleInstance"
+        	android:excludeFromRecents="true"
+        	android:finishOnTaskLaunch="true"
+		    />
+		<!-- crash end -->
+		
+		<!-- file start -->
+		<activity android:name="com.example.ward.file.FileFilterActivity" android:label="@string/file_demo1"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<!-- file end -->
+		
+		<!-- app start -->
+		<activity android:name="com.example.ward.app.LoaderCustom" android:label="@string/app_pkg"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<!-- app end -->
+        
+    </application>
+    
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+</manifest>

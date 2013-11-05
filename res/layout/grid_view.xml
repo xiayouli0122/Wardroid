@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridView 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:id="@+id/grid_view"
+	android:numColumns="auto_fit"
+	android:verticalSpacing="10dp"
+	android:horizontalSpacing="0dp"
+	android:columnWidth="100dp" 
+	android:stretchMode="columnWidth"
+	android:gravity="center"
+	android:visibility="visible"
+	>
+</GridView>
+
+<!-- 
+<GridView 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:id="@+id/grid_view"
+	android:numColumns="auto_fit" //GridView的列數設置為自動，也可指定設置顯示多少列，比如：android:numColumns=”5”
+	android:verticalSpacing="10dp" //兩行之間的邊距	
+	android:horizontalSpacing="10dp" //兩列之間的邊距
+	android:columnWidth="70dp" //每列的寬度，也就是item的寬度
+	android:stretchMode="columnWidth" //縮放與列寬大小同步
+	android:gravity="center" >
+</GridView>
+ -->
