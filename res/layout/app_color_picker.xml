@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="1.通过颜色选择器，选择颜色"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_current_color"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="当前颜色为："
+        />
+    <TextView 
+        android:id="@+id/tv_app_color_picker"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_bright"
+        />
+    
+    <View 
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+    
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="2.输入十六进制代码值"
+        />
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+         <EditText 
+        android:id="@+id/et_color_code"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+         
+         <Button 
+             android:id="@+id/btn_ok"
+              android:layout_weight="1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="OK"
+             />
+        
+    </LinearLayout>
+    <TextView 
+        android:id="@+id/tv_color_show"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_bright"
+        />
+
+</LinearLayout>

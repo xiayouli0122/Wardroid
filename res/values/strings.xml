@@ -134,6 +134,7 @@
 	<string name="app_package">App/PackageManager</string>
     <string name="app_fragment_alert_dialog">App/FragmentAlertDialog</string>
     <string name="notification_demo">App/NotificationDemo</string>
+    <string name="app_color_picker">App/ColorPicker</string>
     <!-- app -->
 
     <!-- file -->
