@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ward"
     android:versionCode="1"
-    android:versionName="2013.1.16" >
+    android:versionName="2013.11.05" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -308,6 +308,26 @@
                 <category android:name= "com.example.category.urey" />
             </intent-filter>
 		 </activity>
+		 <activity android:name=".media.StorageDemo" android:label="@string/media_storage">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		 </activity>
+		 <activity android:name=".media.image.ImageLoaderGridViewActivity" android:label="@string/imageloader_gridview">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		 </activity>
+		 <activity android:name=".media.image.ImageLoaderListViewActivity" android:label="@string/imageloader_listview">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		 </activity>
+		 <activity android:name=".media.image.ImagePagerActivity" android:label="Image">
+		 </activity>
 		<!-- Media end-->
 		
 		<!-- Preference start -->
@@ -368,6 +388,20 @@
 		
 		<!-- app start -->
 		<activity android:name="com.example.ward.app.LoaderCustom" android:label="@string/app_pkg"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name="com.example.ward.app.FragmentAlertDialog" android:label="@string/app_fragment_alert_dialog"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name="com.example.ward.app.NotificationDemo" android:label="@string/notification_demo"
 		    android:theme="@android:style/Theme.Holo.Light">
 		     <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

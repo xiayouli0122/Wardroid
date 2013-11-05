@@ -4,7 +4,13 @@ import org.acra.ACRA;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+
 import android.app.Application;
+import android.content.Context;
 
 @ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
 mode = ReportingInteractionMode.DIALOG,
@@ -26,5 +32,18 @@ public class UreyApplication extends Application {
 		super.onCreate();
 		
 //		ACRA.init(this);
+		initImageLoader(getApplicationContext());
+	}
+	
+	public static void initImageLoader(Context context){
+		ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(context)
+			.threadPriority(Thread.NORM_PRIORITY -2)
+			.denyCacheImageMultipleSizesInMemory()
+			.discCacheFileNameGenerator(new Md5FileNameGenerator())
+			.tasksProcessingOrder(QueueProcessingType.LIFO)
+			.writeDebugLogs()
+			.build();
+		
+		ImageLoader.getInstance().init(configuration);
 	}
 }

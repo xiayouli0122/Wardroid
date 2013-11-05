@@ -115,7 +115,6 @@
     <string name="media_volume">Media/MediaVolume</string>
     <string name="ringtone_demo">Media/GetRingToneDemo</string>
     <string name="media_storage">Media/StorageDemo</string>
-    <string name="notification_demo">App/NotificationDemo</string>
     <string name="popupwindow">Menu/PopupWindowDemo</string>
     <string name="imageloader_gridview">Media/Image/ImageLoaderGridView</string>
     <string name="imageloader_listview">Media/Image/ImageLoaderListView</string>
@@ -134,6 +133,7 @@
 	<string name="app_pkg">App/AppPackage</string>    
 	<string name="app_package">App/PackageManager</string>
     <string name="app_fragment_alert_dialog">App/FragmentAlertDialog</string>
+    <string name="notification_demo">App/NotificationDemo</string>
     <!-- app -->
 
     <!-- file -->
