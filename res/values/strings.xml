@@ -131,10 +131,13 @@
     
     <!-- app -->
 	<string name="app_pkg">App/AppPackage</string>    
+	<string name="app_audio1">App/AsyncLoader</string>
+	<string name="app_audio2">App/AsyncQueryHnadler</string>
 	<string name="app_package">App/PackageManager</string>
     <string name="app_fragment_alert_dialog">App/FragmentAlertDialog</string>
     <string name="notification_demo">App/NotificationDemo</string>
     <string name="app_color_picker">App/ColorPicker</string>
+    <string name="app_installed">App/批量静默安装</string>
     <!-- app -->
 
     <!-- file -->

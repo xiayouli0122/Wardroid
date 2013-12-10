@@ -29,6 +29,17 @@ public class ActivityAnimationDemo  extends Activity{
 		openButton = (Button)findViewById(R.id.openButton);
 		mSpinner = (Spinner)findViewById(R.id.animation_sp);
 		
+		Button button = (Button) findViewById(R.id.button);
+		button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(ActivityAnimationDemo.this, ActivityAnimationOther2.class);
+				startActivity(intent);
+			}
+		});
+		
 		//通过资源文件获取填充内容
 		String[] array = getResources().getStringArray(R.array.animation_type);
 		

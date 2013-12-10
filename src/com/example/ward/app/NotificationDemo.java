@@ -13,6 +13,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RemoteViews;
 
 import com.example.ward.R;
 
@@ -38,6 +41,10 @@ public class NotificationDemo extends Activity implements OnClickListener {
 	private static final String red_path= "/sys/class/leds/red/brightness";
 	private static final String green_path= "/sys/class/leds/green/brightness";
 	private static final String blue_path= "/sys/class/leds/blue/brightness";
+	
+	private RemoteViews mNotificationView;
+	private Notification mNotification;
+	private int progressNumber;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -66,6 +73,9 @@ public class NotificationDemo extends Activity implements OnClickListener {
 		
 		currentColor = COLOR;
 		mImageView.setBackgroundColor(currentColor);
+		
+		Button downloadButton = (Button) findViewById(R.id.download_button);
+		downloadButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -162,11 +172,73 @@ public class NotificationDemo extends Activity implements OnClickListener {
 			.setNegativeButton("Cacnel", null)
 			.create().show();
 			break;
+		case R.id.download_button:
+			//创建Notification对象
+			mNotification = new Notification();
+			mNotification.icon = R.drawable.ic_launcher;
+			mNotification.tickerText = "这是一个简单的NOtification";
+			mNotification.when = System.currentTimeMillis() + 100;
+			//加载layout
+			mNotificationView = new RemoteViews(getPackageName(), R.layout.notification_download);
+
+			//new一个线程用于发送消息
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					for (int i = 0; i < 20; i++) {
+						progressNumber = (i + 1) * 5;
+						try {
+							if (i < 19) {
+								Message msg = mHandler.obtainMessage();
+								msg.what = MSG_RUN;
+								msg.sendToTarget();
+								Thread.sleep(1000);
+							}else {
+								Message msg = mHandler.obtainMessage();
+								msg.what = MSG_STOP;
+								msg.sendToTarget();
+								Thread.currentThread().interrupt();
+							}
+						} catch (Exception e) {
+							// TODO: handle exception
+							e.printStackTrace();
+						}
+					}
+				}
+			}).start();
+			break;
 
 		default:
 			break;
 		}
 	}
+	
+	private static final int MSG_RUN = 0;
+	private static final int MSG_STOP = 1;
+	private Handler mHandler = new Handler(){
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case MSG_RUN:
+				mNotificationView.setProgressBar(R.id.bar_progress, 100, progressNumber, false);
+				mNotificationView.setTextViewText(R.id.tv_name, "第" + progressNumber + "个");
+				mNotificationView.setTextViewText(R.id.tv_progress, "(" + progressNumber + "/" + "100)");
+				
+				mNotification.contentView = mNotificationView;
+				mNotification.contentIntent = null;
+				
+				mNotificationManager.notify(111, mNotification);
+				break;
+			case MSG_STOP:
+				mNotificationManager.cancel(111);
+				break;
+
+			default:
+				break;
+			}
+		};
+	};
 	
 	/**将备份的内容先写入文件*/
 	public static void fileWriteDemo(String path, String content){

@@ -1,4 +1,4 @@
-package com.example.ward.animation;
+package com.example.ward.crash;
 
 import com.example.ward.R;
 
@@ -11,6 +11,7 @@ public class ActivityAnimationOther  extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setTheme(R.style.Theme_Present);
 		setContentView(R.layout.activity_animation_other);
 		setTitle("AAAAAAAAAAAAAA");
 	}

@@ -5,7 +5,7 @@ import com.example.ward.R;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class ActivityAnimationOther  extends Activity{
+public class ActivityAnimationOther2  extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -60,7 +60,7 @@ import com.example.ward.R;
 /**
  * Demonstration of the implementation of a custom Loader.
  */
-public class LoaderCustom extends Activity {
+public class LoaderApp extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

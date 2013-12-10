@@ -252,7 +252,10 @@
 		</activity>
 		<activity android:name="com.example.ward.animation.ActivityAnimationOther">
 		</activity>
-		
+		<activity android:name="com.example.ward.animation.ActivityAnimationOther2"
+		    android:theme="@style/Theme.Present"
+		    >
+		</activity>
 		<!-- lockpattern -->
 		<activity android:name=".lockpattern.LockCustomViewActivity" android:label="@string/lockpattern_customview">
 		     <intent-filter>
@@ -281,6 +284,15 @@
                 <category android:name= "com.example.category.urey" />
             </intent-filter>
 		</activity>
+		<activity android:name="com.example.ward.dialog.CustomDialogActivity" android:label="@string/dialog_custom">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name="com.example.ward.dialog.CustomDialog2"
+		    android:theme="@android:style/Theme.Dialog"
+		    ></activity>
 		<!-- dialog -->
 		
 		<!-- Media Start-->
@@ -387,7 +399,7 @@
 		<!-- file end -->
 		
 		<!-- app start -->
-		<activity android:name="com.example.ward.app.LoaderCustom" android:label="@string/app_pkg"
+		<activity android:name="com.example.ward.app.LoaderApp" android:label="@string/app_pkg"
 		    android:theme="@android:style/Theme.Holo.Light">
 		     <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -415,6 +427,13 @@
                 <category android:name= "com.example.category.urey" />
             </intent-filter>
 		</activity>
+		<activity android:name="com.example.ward.app.InstallMultiApp" android:label="@string/app_installed"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
 		<!-- app end -->
         
     </application>
@@ -426,4 +445,5 @@
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
 </manifest>
