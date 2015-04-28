@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="
+        他进一步指出，“目前公认美国资本市场过热，是融资好时机。老刘说“13年盈利，但14年不上市”，那我再劝一句：14年Q1务必在美国上市，补充资本金不足和增加被美国会计准则审计的透明度。”
+几日前，刘强东在美国求学四个月归来，首次召开了媒体发布会，会上刘强东宣布，京东已经在2013年前3个季度实现微盈利。而针对京东是否IPO的话题，刘强东再次重申，目前京东没有IPO和融资的准备。
+刘强东的此次新闻发布会和言论，也是引发李国庆此次微博劝告的原因。
+有意思的是，在刘强东召开新闻发布会的当天，有记者提问“您的‘小伙伴’当当李国庆非常想念您。”刘强东回应，“那你替我转告下，我也很想念他。”
+针对李国庆有关京东2014年上市的劝告，截止目前，刘强东并没有正式回应。但却引发了网友的热议。
+有网友表示：老刘2014年不上市是对的，往后两年估值将更高。也有网友认可李国庆的观点：电商高调就是融资前兆，这已经成为铁律。
+网友经纬666888则表示：京东和阿里上市都很正常。缺不缺钱也无所谓，今天的京东和当当早就不在一个水平上了。你还耿耿于怀，但京东的眼里肯定没有当当。努力吧，活着就挺好。
+        "
+        />
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/test1"
+        android:layout_gravity="center_horizontal"
+        />
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="
+        芬兰官方的语言学机构日前在一次公开声明中表示，iPhone 的拼写实际上是错误的，正确的拼法应该是 Iphone 或者是 I-phone。芬兰语言学机构副主编 Raija Moilanen 还表示，很多公司在其产品的拼写上都出现了错误，比如 PowerPoints 的正确拼法应该是 Powerpoints、LEGO 应该拼为 Lego，SaiPa 应该拼为 Saipa等等。
+我们不难看出，芬兰语言学机构主要是以单词首字母大写，随后的字母一律小写的语法规则来判定产品名称是否拼写错误。之前苹果曾经透露过，他们之所以拼写为 iPhone，主要是为了名称的着眼形象考虑。iPhone 和 Iphone，单从字面效果上看，你觉得哪一个更美观？
+        "
+        />
+
+</LinearLayout>

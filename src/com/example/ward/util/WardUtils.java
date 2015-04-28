@@ -19,6 +19,11 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 
 public class WardUtils {
@@ -177,5 +182,45 @@ public class WardUtils {
 		} while (true);
 		fis.close();
 		fos.close();
+	}
+	
+	/**
+	 * force show virtual menu key </br>
+	 * must call after setContentView() 
+	 * @param window you can use getWindow()
+	 */
+	public static void forceShowMenuKey(Window window){
+		try {
+			window.addFlags(WindowManager.LayoutParams.class.getField("FLAG_NEEDS_MENU_KEY").getInt(null));
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * show the input method mannual
+	 * @param v the view that need show input method,like edittext
+	 * @param hasFocus
+	 */
+	public static void onFocusChange(final View v, boolean hasFocus) {
+		final boolean isFocus = hasFocus;
+		(new Handler()).postDelayed(new Runnable() {
+			public void run() {
+				InputMethodManager imm = (InputMethodManager) v.getContext()
+						.getSystemService(Context.INPUT_METHOD_SERVICE);
+				if (isFocus) {
+					imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+				} else {
+					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+				}
+			}
+		}, 500);
 	}
 }

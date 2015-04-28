@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_action_test_light"
+        android:showAsAction="always"
+        android:title="菜单"/>
+    <item
+        android:id="@+id/copy"
+        android:icon="@drawable/ic_action_test_light"
+        android:showAsAction="always"
+        android:title="菜单"/>
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_action_test_light"
+        android:showAsAction="always"
+        android:title="菜单"/>
+    <item
+        android:id="@+id/cut"
+        android:icon="@drawable/ic_action_test_light"
+        android:showAsAction="always"
+        android:title="菜单"/>
+    <item
+        android:id="@+id/paste"
+        android:icon="@drawable/ic_action_test_light"
+        android:showAsAction="always"
+        android:title="菜单"/>
+    <item
+        android:id="@+id/ic_action_test_light"
+        android:icon="@drawable/actionbar_fm_more"
+        android:showAsAction="always"
+        android:title="菜单"/>
+
+</menu>

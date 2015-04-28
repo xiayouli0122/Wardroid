@@ -18,7 +18,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:inputType="textLongMessage" />
+        android:inputType="textLongMessage"
+        android:textColor="@android:color/white"
+        android:maxLength="5"
+         />
      
      <ImageView 
          android:id="@+id/image_test"

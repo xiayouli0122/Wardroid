@@ -6,7 +6,23 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="15" />
-
+    
+	 <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>  
+   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />  
+   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>  
+   
+   <!-- 这个权限用于进行网络定位-->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	<!-- 这个权限用于访问GPS定位-->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+	<!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+	 
     <application
         android:name="com.example.ward.UreyApplication"
         android:icon="@drawable/ic_launcher"
@@ -87,7 +103,9 @@
             </intent-filter>
 		</activity>
 		<activity android:name=".sample.SpinnerActivity" 
-		    android:label="@string/sample_spinner">
+		    android:label="@string/sample_spinner"
+		    android:configChanges="orientation|screenSize"
+		    >
 		    <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name= "com.example.category.urey" />
@@ -141,7 +159,15 @@
                 <category android:name= "com.example.category.urey" />
             </intent-filter>
 		</activity>
-		<activity android:name=".menu.ContextMenuActivity" android:label="@string/sample_contextmenu">
+		<activity android:name=".menu.DrawerLayoutDemo" android:label="@string/menu_drawer">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".menu.ContextMenuActivity" 
+		    android:configChanges="orientation|screenSize|keyboardHidden"
+		    android:label="@string/sample_contextmenu">
 		    <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name= "com.example.category.urey" />
@@ -173,6 +199,18 @@
                 <category android:name= "com.example.category.urey" />
             </intent-filter>
 		</activity>
+		<activity android:name=".menu.CustomMenuDemo" android:label="@string/menu_custome">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>	
+		<activity android:name=".sample.VibratorDemo" android:label="@string/sample_vibrator">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>	
 		
 		<!-- view -->
 		<activity android:name=".view.TestViewPagerDemoActivity" android:label="@string/view_viewpager">
@@ -213,6 +251,20 @@
             </intent-filter>
 		</activity>
 		
+		<activity android:name="com.example.ward.view.EdittextValidDemo" android:label="@string/view_edittextvalid" >
+		      <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<activity android:name=".view.ExpandListViewDemo" android:label="@string/view_expandlistview_demo" >
+		      <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
 		<activity
 		    android:name=".view.ActivityGroupDemo"
 		    android:label="@string/view_activitygroup">
@@ -230,6 +282,43 @@
                 <category android:name= "com.example.category.urey" />
             </intent-filter>
 		</activity>
+		
+		<activity
+		    android:name="com.example.ward.view.SectionIndexerDemo"
+		    android:label="@string/sectionindexer_demo">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<activity
+		    android:name="com.example.ward.view.FullScreenTest"
+		    android:label="@string/fullscreen_demo">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<activity
+		    android:name="com.example.ward.view.SwipeRefreshLayoutDemo"
+		    android:label="@string/view_swipe_refresh_layout">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<activity
+		    android:name="com.example.ward.view.ProgressBar1"
+		    android:label="@string/view_progressbar1">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
 		
 		<!-- 设置 uiOptions ，可以让ActionBar的菜单分成两部分，一部分在顶部，一部分在底部-->
 		<activity 
@@ -256,6 +345,12 @@
 		    android:theme="@style/Theme.Present"
 		    >
 		</activity>
+		<activity android:name="com.example.ward.animation.DrawableAnimation" android:label="@string/animation_drawable">
+		    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+            </activity>
 		<!-- lockpattern -->
 		<activity android:name=".lockpattern.LockCustomViewActivity" android:label="@string/lockpattern_customview">
 		     <intent-filter>
@@ -326,6 +421,12 @@
                 <category android:name= "com.example.category.urey" />
             </intent-filter>
 		 </activity>
+		 <activity android:name=".media.StorageManagerDemo" android:label="@string/media_storage2">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		 </activity>
 		 <activity android:name=".media.image.ImageLoaderGridViewActivity" android:label="@string/imageloader_gridview">
 		     <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -339,6 +440,12 @@
             </intent-filter>
 		 </activity>
 		 <activity android:name=".media.image.ImagePagerActivity" android:label="Image">
+		 </activity>
+		 <activity android:name=".media.image.RoundActivity" android:label="@string/roundbitmap">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
 		 </activity>
 		<!-- Media end-->
 		
@@ -435,6 +542,50 @@
             </intent-filter>
 		</activity>
 		<!-- app end -->
+		
+		<!-- bitmap start -->
+		<activity android:name="com.example.ward.bitmap.BitmapRegionDecodeDemo" android:label="@string/bitmap_brd"
+		    android:hardwareAccelerated="false"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<!-- bitmap end -->
+		
+		<!-- gps location start -->
+		<activity android:name="com.example.ward.gps.GpsLocationDemo" android:label="Gps/Location1"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		
+		<activity android:name="com.example.ward.gps.Location2" android:label="Gps/Location2"
+		    android:theme="@android:style/Theme.Holo.Light">
+		     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name= "com.example.category.urey" />
+            </intent-filter>
+		</activity>
+		<!-- gps location end -->
+		
+		 <!-- baidu map-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="HyBNrKjft4irGFt5nyvGRnzu" />
+        
+         <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
         
     </application>
     
@@ -446,4 +597,5 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 </manifest>

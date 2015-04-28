@@ -17,6 +17,7 @@
 package com.example.ward.app;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,22 +25,29 @@ import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.app.LoaderManager;
+import android.app.ProgressDialog;
 import android.content.AsyncTaskLoader;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,14 +56,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
 
 import com.example.ward.R;
+import com.example.ward.util.WardUtils;
 
 /**
  * Demonstration of the implementation of a custom Loader.
@@ -398,7 +410,7 @@ public class LoaderApp extends Activity {
     }
 
     public static class AppListFragment extends ListFragment
-            implements OnQueryTextListener, LoaderManager.LoaderCallbacks<List<AppEntry>> {
+            implements OnQueryTextListener, LoaderManager.LoaderCallbacks<List<AppEntry>>, OnItemLongClickListener {
 
         // This is the Adapter being used to display the list's data.
         AppListAdapter mAdapter;
@@ -422,6 +434,7 @@ public class LoaderApp extends Activity {
 
             // Start out with a progress indicator.
             setListShown(false);
+            getListView().setOnItemLongClickListener(this);
 
             // Prepare the loader.  Either re-connect with an existing one,
             // or start a new one.
@@ -479,6 +492,91 @@ public class LoaderApp extends Activity {
             // Clear the data in the adapter.
             mAdapter.setData(null);
         }
+
+		@Override
+		public boolean onItemLongClick(AdapterView<?> parent, View view,
+				int position, long id) {
+			// TODO Auto-generated method stub
+			final AppEntry appEntry = mAdapter.getItem(position);
+			CharSequence[] items = {"Open","Backup"};
+			new AlertDialog.Builder(getActivity())
+				.setTitle("Menu")
+				.setItems(items, new OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						switch (which) {
+						case 0:
+							//open
+							Intent intent = getActivity().getPackageManager().getLaunchIntentForPackage(
+									appEntry.mInfo.packageName);
+							if (intent != null) {
+								startActivity(intent);
+							}else {
+								Toast.makeText(getActivity(), "Cannot open", Toast.LENGTH_SHORT).show();
+							}
+							break;
+						case 1:
+							final String srcpath = appEntry.mApkFile.getAbsolutePath();
+							//backup
+							String defaultBackupPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Urey";
+							File dirFile = new File(defaultBackupPath);
+							if (!dirFile.exists()) {
+								dirFile.mkdirs();
+							}
+							final String despath = defaultBackupPath + "/" + appEntry.getLabel() + "_" + 
+									getAppVersion(appEntry.mInfo.packageName, getActivity().getPackageManager())+ ".apk";
+							new AsyncTask<Void, Void, Void>(){
+								ProgressDialog dialog = null;
+								
+								protected void onPreExecute() {
+									dialog = new ProgressDialog(getActivity());
+									dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+									dialog.setMessage("Backuping...");
+									dialog.setCancelable(false);
+									dialog.show();
+								};
+								@Override
+								protected Void doInBackground(Void... params) {
+									// TODO Auto-generated method stub
+									try {
+										WardUtils.fileStreamCopy(srcpath, despath);
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									return null;
+								}
+								
+								protected void onPostExecute(Void result) {
+									if (null != dialog) {
+										dialog.cancel();
+									}
+								};
+								
+							}.execute();
+							break;
+
+						default:
+							System.out.println("default:" + which);
+							break;
+						}
+					}
+				})
+				.create().show();
+			return true;
+		}
+		
+		public String getAppVersion(String packageName, PackageManager pm){
+			String version = "";
+			try {
+				version = pm.getPackageInfo(packageName, 0).versionName;
+			} catch (NameNotFoundException e) {
+				e.printStackTrace();
+			}
+			return version;
+		}
     }
 
 }

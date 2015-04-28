@@ -11,7 +11,12 @@
     android:text="长按这里触发"
     android:textSize="50dip"
     />
-    
-  
+
+<Button 
+    android:id="@+id/button"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="show popupwindow"
+    />
     
 </LinearLayout>

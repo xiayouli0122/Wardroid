@@ -3,9 +3,6 @@ package com.example.ward.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.ward.R;
-
-import android.R.integer;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -21,23 +18,25 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ward.R;
+
 /**
- * TabÒ³ÃæÊÖÊÆ»¬¶¯ÇÐ»»ÒÔ¼°¶¯»­Ð§¹û
+ * TabÒ³ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
  * 
  * @author yuri
  */
 public class TestViewPagerDemoActivity extends Activity implements OnClickListener {
-	// ViewPagerÊÇgoogle SDkÖÐ×Ô´øµÄÒ»¸ö¸½¼Ó°üµÄÒ»¸öÀà£¬¿ÉÒÔÓÃÀ´ÊµÏÖÆÁÄ»¼äµÄÇÐ»»¡£
+	// ViewPagerï¿½ï¿½google SDkï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½Ò»ï¿½ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½
 	// android-support-v4.jar
 	private ViewPager viewPager;
-	private List<View> listViews;// TabÒ³ÃæÁÐ±í
-	private ImageView cursor1,cursor2,cursor3;// ¶¯»­Í¼Æ¬
+	private List<View> listViews;// TabÒ³ï¿½ï¿½ï¿½Ð±ï¿½
+	private ImageView cursor1,cursor2,cursor3;// ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
 
-	private TextView tap1, tap2, tap3,tap4,tap5;// Ò³¿¨ÄÚÈÝ
+	private TextView tap1, tap2, tap3,tap4,tap5;// Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	private int offset = 0;// ¶¯»­Í¼Æ¬Æ«ÒÆÁ¿
-	private int currIndex = 0;// µ±Ç°Ò³¿¨±àºÅ
-	private int bmpW; // ¶¯»­Í¼Æ¬¿í¶È
+	private int offset = 0;// ï¿½ï¿½ï¿½ï¿½Í¼Æ¬Æ«ï¿½ï¿½ï¿½ï¿½
+	private int currIndex = 0;// ï¿½ï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int bmpW; // ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,7 @@ public class TestViewPagerDemoActivity extends Activity implements OnClickListen
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.viewpager_layout);
 		
-		setTitle("ViewPager²âÊÔ");
+		setTitle("ViewPagerï¿½ï¿½ï¿½ï¿½");
 
 		initImageView();
 		initTextView();
@@ -78,29 +77,29 @@ public class TestViewPagerDemoActivity extends Activity implements OnClickListen
 //		listViews.add(mInflater.inflate(R.layout.viewpager_lay5, null));
 		
 		viewPager.setAdapter(new MyViewPagerAdapter(listViews));
-		//ÉèÖÃÄ¬ÈÏÒ³Ãæ
+		//ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Ò³ï¿½ï¿½
 		viewPager.setCurrentItem(0);
 		viewPager.setOnPageChangeListener(new MyPageListen());
 	}
 
-	// ³õÊ¼»¯¶¯»­
+	// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void initImageView() {
 		cursor1 = (ImageView) findViewById(R.id.cursor1);
 		cursor2 = (ImageView) findViewById(R.id.cursor2);
 		cursor3 = (ImageView) findViewById(R.id.cursor3);
-		// »ñÈ¡Í¼Æ¬¿í¶È
+		// ï¿½ï¿½È¡Í¼Æ¬ï¿½ï¿½ï¿½
 		bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.viewpager).getWidth();
-		// »ñÈ¡ÆÁÄ»·Ö±æÂÊ
+		// ï¿½ï¿½È¡ï¿½ï¿½Ä»ï¿½Ö±ï¿½ï¿½ï¿½
 		DisplayMetrics dMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dMetrics);
-		// »ñÈ¡·Ö±æÂÊ¿í¶È
+		// ï¿½ï¿½È¡ï¿½Ö±ï¿½ï¿½Ê¿ï¿½ï¿½
 		int screenW = dMetrics.widthPixels;
-		// ¼ÆËãÆ«ÒÆÁ¿
+		// ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½
 		offset = (screenW / 3 - bmpW) / 2;
 
 		Matrix matrix = new Matrix();
 		matrix.postTranslate(offset, 0);
-		// ÉèÖÃ¶¯»­³õÊ¼Î»ÖÃ
+		// ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½
 //		cursor.setImageMatrix(matrix);
 		cursor1.setVisibility(View.VISIBLE);
 		cursor2.setVisibility(View.GONE);
@@ -128,9 +127,9 @@ public class TestViewPagerDemoActivity extends Activity implements OnClickListen
 
 	class MyPageListen implements OnPageChangeListener{
 
-		// Ò³¿¨ÇÐ»»¼àÌý
-		int one = offset * 2 + bmpW;// Ò³¿¨1 -> Ò³¿¨2 Æ«ÒÆÁ¿
-		int two = one * 2;// Ò³¿¨1 -> Ò³¿¨3 Æ«ÒÆÁ¿
+		// Ò³ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½
+		int one = offset * 2 + bmpW;// Ò³ï¿½ï¿½1 -> Ò³ï¿½ï¿½2 Æ«ï¿½ï¿½ï¿½ï¿½
+		int two = one * 2;// Ò³ï¿½ï¿½1 -> Ò³ï¿½ï¿½3 Æ«ï¿½ï¿½ï¿½ï¿½
 		
 		@Override
 		public void onPageScrollStateChanged(int arg0) {
@@ -177,7 +176,7 @@ public class TestViewPagerDemoActivity extends Activity implements OnClickListen
 				break;
 			}
 			currIndex = arg0;
-			animation.setFillAfter(true);// True:Í¼Æ¬Í£ÁôÔÚ¶¯»­½áÊøÎ»ÖÃ
+			animation.setFillAfter(true);// True:Í¼Æ¬Í£ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 			animation.setDuration(300);
 //			cursor.startAnimation(animation);
 		}

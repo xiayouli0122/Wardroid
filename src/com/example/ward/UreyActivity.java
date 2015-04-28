@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -145,10 +146,30 @@ public class UreyActivity extends ListActivity {
 		startActivity(intent);
 		super.onListItemClick(l, v, position, id);
 	}
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		return super.onPrepareOptionsMenu(menu);
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	// TODO Auto-generated method stub
+    	switch (item.getItemId()) {
+		case R.id.menu_exit:
+			UreyActivity.this.finish();
+			break;
+
+		default:
+			break;
+		}
+    	return super.onOptionsItemSelected(item);
     }
 }

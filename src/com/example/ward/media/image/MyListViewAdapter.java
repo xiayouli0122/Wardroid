@@ -101,6 +101,8 @@ public class MyListViewAdapter extends BaseAdapter{
 //	     }		 
 		
 		/////////////////////
+		viewHolder.imageview_thumbnail.setImageResource(R.drawable.imageloader_default_icon);
+		
 		if (!busyFlag) {
 			if (AsyncImageLoader2.bitmapCache.size() > 0 &&
 					AsyncImageLoader2.bitmapCache.get(url) != null) {

@@ -22,7 +22,10 @@ public class SpinnerActivity extends Activity {
 	private EditText mEditText;
 	private Button ok;
 	private ArrayAdapter countiesAdapter;
-	private String[] mCounties={"@126.com","@163.com","@gmail.com","@139.com","@qq.com"};
+	private String[] mCounties={"@126.com","@163.com","@gmail.com","@139.com","@qq.com",
+			"@gmail.com","@sina.com","@phiee.com.cn","@hotmail.com",
+			"@126.com","@163.com","@gmail.com","@139.com","@qq.com",
+			"@gmail.com","@sina.com","@phiee.com.cn","@hotmail.com"};
 	private List<String> allCounties=new ArrayList<String>();
 	private String result="ÄãÑ¡ÔñµÄÊÇ£º";
 	

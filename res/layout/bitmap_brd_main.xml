@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical"
+    >
+
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Use BitmapRegionDecode"
+        />
+    
+    <ImageView 
+        android:id="@+id/bitmap_iv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use BitmapRegionDecode"
+        />
+    
+    <ImageView 
+        android:id="@+id/bitmap_iv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    
+    <ImageView 
+        android:id="@+id/bitmap_iv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    
+    <ImageView 
+        android:id="@+id/bitmap_iv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    
+    <ImageView 
+        android:id="@+id/bitmap_iv_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

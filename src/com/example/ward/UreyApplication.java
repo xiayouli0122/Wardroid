@@ -12,26 +12,59 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import android.app.Application;
 import android.content.Context;
 
-@ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
-mode = ReportingInteractionMode.DIALOG,
-resToastText = R.string.crash_toast_text, // optional, displayed as soon as the crash occurs, before collecting data which can take a few seconds
-resDialogText = R.string.crash_dialog_text,
-resDialogIcon = android.R.drawable.ic_dialog_info, //optional. default is a warning sign
-//resDialogTitle = R.string.crash_dialog_title, // optional. default is your application name
-resDialogCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. when defined, adds a user text field input with this text resource as a label
-resDialogOkToast = R.string.crash_dialog_ok_toast) // optional. displays a Toast message when the user accepts to send a report.
+//@ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
+//mode = ReportingInteractionMode.DIALOG,
+//resToastText = R.string.crash_toast_text, // optional, displayed as soon as the crash occurs, before collecting data which can take a few seconds
+//resDialogText = R.string.crash_dialog_text,
+//resDialogIcon = android.R.drawable.ic_dialog_info, //optional. default is a warning sign
+////resDialogTitle = R.string.crash_dialog_title, // optional. default is your application name
+//resDialogCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. when defined, adds a user text field input with this text resource as a label
+//resDialogOkToast = R.string.crash_dialog_ok_toast) // optional. displays a Toast message when the user accepts to send a report.
 
 //send report by email
 //@ReportsCrashes(formKey = "", // will not be used
 //mailTo = "reports@yourdomain.com",
 //mode = ReportingInteractionMode.TOAST,
 //resToastText = R.string.crash_toast_text)
+
+////notification
+////use google doc
+////@ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
+////use email
+//@ReportsCrashes(formKey="",
+//mailTo = "xlog2013@163.com",
+//mode = ReportingInteractionMode.NOTIFICATION,
+//resNotifTickerText = R.string.crash_toast_text,
+//resNotifTitle = R.string.crash_dialog_text,
+//resNotifText = R.string.crash_dialog_text,
+//resNotifIcon = android.R.drawable.stat_notify_error,
+//resDialogText = R.string.crash_dialog_text,
+//resDialogIcon = android.R.drawable.ic_dialog_info, //optional. default is a warning sign
+//resDialogTitle = R.string.crash_dialog_title, // optional. default is your application name
+//resDialogCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. when defined, adds a user text field input with this text resource as a label
+//resDialogOkToast = R.string.crash_dialog_ok_toast // optional. displays a Toast message when the user accepts to send a report.
+//		)
+
+//notification
+//use google doc
+//@ReportsCrashes(formKey="dGVacG0ydVHnaNHjRjVTUTEtb3FPWGc6MQ",
+//use email
+@ReportsCrashes(formKey="",
+mailTo = "xlog2013@163.com",
+mode = ReportingInteractionMode.DIALOG,
+resDialogText = R.string.crash_dialog_text,
+resDialogIcon = android.R.drawable.ic_dialog_info, //optional. default is a warning sign
+resDialogTitle = R.string.crash_dialog_title, // optional. default is your application name
+resDialogCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. when defined, adds a user text field input with this text resource as a label
+resDialogOkToast = R.string.crash_dialog_ok_toast // optional. displays a Toast message when the user accepts to send a report.
+		)
 public class UreyApplication extends Application {
 	@Override
 	public void onCreate() {
+		ACRA.init(this);
+		
 		super.onCreate();
 		
-//		ACRA.init(this);
 		initImageLoader(getApplicationContext());
 	}
 	

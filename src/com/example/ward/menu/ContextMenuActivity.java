@@ -8,6 +8,8 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ward.R;
@@ -34,7 +36,8 @@ public class ContextMenuActivity extends Activity {
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
-		menu.add(0, ITEM0, 0, "红色背景");
+		String line=System.getProperty("line.separator");
+		menu.add(0, ITEM0, 0, "将xlog2013@163.com添加到联系人");
 		menu.add(0,ITEM1,0,"绿色背景");
 		menu.add(0,ITEM2,0,"白色背景");
 		

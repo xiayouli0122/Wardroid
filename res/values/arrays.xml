@@ -61,4 +61,29 @@
     </string-array>
     <integer name="ledonms">1000</integer>
     <integer name="ledoffms">180000</integer>
+    
+    <integer-array name="vibrator_pattern1">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+    </integer-array>
+    
+    <integer-array name="vibrator_pattern2">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>30</item>
+    </integer-array>
+    
+    <integer-array name="vibrator_pattern3">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>20</item>
+    </integer-array>
+    
+    <integer-array name="vibrator_pattern4">
+        <item>40</item>
+    </integer-array>
 </resources>

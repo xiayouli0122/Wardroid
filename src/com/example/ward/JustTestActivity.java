@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -50,13 +52,21 @@ public class JustTestActivity extends Activity {
 				// TODO Auto-generated method stub
 //				Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
 //				startActivity(intent);
-				Intent intent = new Intent();
-				intent.setClassName("com.android.soundrecorder", "com.android.soundrecorder.SoundRecorder");
-				startActivity(intent);
+//				Intent intent = new Intent();
+//				intent.setClassName("com.android.soundrecorder", "com.android.soundrecorder.SoundRecorder");
+//				startActivity(intent);
+				int a = 15/0;
+				
+				boolean isEnable = Settings.System.getInt(getContentResolver(), Settings.System.AIRPLANE_MODE_ON, 0) == 1;
+				Settings.System.putInt(getContentResolver(), Settings.System.AIRPLANE_MODE_ON, isEnable ? 0 :1);
+				Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+				intent.putExtra("state", !isEnable);
+				sendBroadcast(intent);
 			}
 		});
 		
 		EditText editText = (EditText)findViewById(R.id.content_edit);
+		editText.addTextChangedListener(mTextWatcher);
 		
 		System.out.println("1:" + Environment.getDataDirectory().getPath());
 		System.out.println("2:" + Environment.getExternalStorageDirectory().getAbsolutePath());
@@ -101,4 +111,27 @@ public class JustTestActivity extends Activity {
 		
 		return super.onCreateOptionsMenu(menu);
 	}
+	
+	private TextWatcher mTextWatcher = new TextWatcher() {
+		private int mStart;
+		private int mEnd;
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			System.out.println("count=" + count);
+			System.out.println("s:" + s);
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			System.out.println("s.len=" + s.toString().length());
+		}
+	};
 }
