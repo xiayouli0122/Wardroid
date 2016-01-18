@@ -15,7 +15,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.util.Xml;
 
-//½«¶ÌĞÅµ¼³öµ½xmlÎÄ¼şÖĞ
+//å°†çŸ­ä¿¡å¯¼å‡ºåˆ°xmlæ–‡ä»¶ä¸­
 public class ExportSmsXml {
 	private Context context;
 	
@@ -61,13 +61,13 @@ public class ExportSmsXml {
 					SmsField.ADDRESS, SmsField.PERSON, SmsField.DATE, SmsField.PROTOCOL,   
                     SmsField.READ, SmsField.STATUS, SmsField.TYPE, SmsField.REPLY_PATH_PRESENT,  
                     SmsField.BODY,SmsField.LOCKED,SmsField.ERROR_CODE, SmsField.SEEN
-                 // type=1ÊÇÊÕ¼şÏä£¬==2ÊÇ·¢¼şÏä;read=0±íÊ¾Î´¶Á£¬read=1±íÊ¾¶Á¹ı£¬seen=0±íÊ¾Î´¶Á£¬seen=1±íÊ¾¶Á¹ı
+                 // type=1æ˜¯æ”¶ä»¶ç®±ï¼Œ==2æ˜¯å‘ä»¶ç®±;read=0è¡¨ç¤ºæœªè¯»ï¼Œread=1è¡¨ç¤ºè¯»è¿‡ï¼Œseen=0è¡¨ç¤ºæœªè¯»ï¼Œseen=1è¡¨ç¤ºè¯»è¿‡
                     };
 			
 			Uri uri = Uri.parse(SMS_URI_ALL); 
 			cursor = contentResolver.query(uri, projection, null, null, "_id asc");
 			if (cursor.moveToFirst()) {
-				// ²é¿´Êı¾İ¿âsms±íµÃÖª subjectºÍservice_centerÊ¼ÖÕÊÇnullËùÒÔÕâÀï¾Í²»»ñÈ¡ËüÃÇµÄÊı¾İÁË
+				// æŸ¥çœ‹æ•°æ®åº“smsè¡¨å¾—çŸ¥ subjectå’Œservice_centerå§‹ç»ˆæ˜¯nullæ‰€ä»¥è¿™é‡Œå°±ä¸è·å–å®ƒä»¬çš„æ•°æ®äº†
 				String address;  
                 String person;  
                 String date;  
@@ -81,7 +81,7 @@ public class ExportSmsXml {
                 String error_code;  
                 String seen;  
                 do {
-                	// Èç¹ûaddress == null£¬xmlÎÄ¼şÖĞÊÇ²»»áÉú³É¸ÃÊôĞÔµÄ,ÎªÁË±£Ö¤½âÎöÊ±£¬ÊôĞÔÄÜ¹»¸ù¾İË÷ÒıÒ»Ò»¶ÔÓ¦£¬±ØĞëÒª±£Ö¤ËùÓĞµÄitem±ê¼ÇµÄÊôĞÔÊıÁ¿ºÍË³ĞòÊÇÒ»ÖÂµÄ  
+                	// å¦‚æœaddress == nullï¼Œxmlæ–‡ä»¶ä¸­æ˜¯ä¸ä¼šç”Ÿæˆè¯¥å±æ€§çš„,ä¸ºäº†ä¿è¯è§£ææ—¶ï¼Œå±æ€§èƒ½å¤Ÿæ ¹æ®ç´¢å¼•ä¸€ä¸€å¯¹åº”ï¼Œå¿…é¡»è¦ä¿è¯æ‰€æœ‰çš„itemæ ‡è®°çš„å±æ€§æ•°é‡å’Œé¡ºåºæ˜¯ä¸€è‡´çš„  
                     address = cursor.getString(cursor.getColumnIndex(SmsField.ADDRESS));  
                     if (address == null) {  
                         address = "";  
@@ -95,7 +95,7 @@ public class ExportSmsXml {
                         date = "";  
                     }  
                     protocol = cursor.getString(cursor.getColumnIndex(SmsField.PROTOCOL));  
-                    if (protocol == null) {// ÎªÁË±ãÓÚxml½âÎö  
+                    if (protocol == null) {// ä¸ºäº†ä¾¿äºxmlè§£æ  
                         protocol = "";  
                     }  
                     read = cursor.getString(cursor.getColumnIndex(SmsField.READ));  
@@ -111,7 +111,7 @@ public class ExportSmsXml {
                         type = "";  
                     }  
                     reply_path_present = cursor.getString(cursor.getColumnIndex(SmsField.REPLY_PATH_PRESENT));  
-                    if (reply_path_present == null) {// ÎªÁË±ãÓÚXML½âÎö  
+                    if (reply_path_present == null) {// ä¸ºäº†ä¾¿äºXMLè§£æ  
                         reply_path_present = "";  
                     }  
                     body = cursor.getString(cursor.getColumnIndex(SmsField.BODY));  
@@ -130,10 +130,10 @@ public class ExportSmsXml {
                     if (seen == null) {  
                         seen = "";  
                     }  
-                    // Éú³Éxml×Ó±ê¼Ç  
-                    // ¿ªÊ¼±ê¼Ç  
+                    // ç”Ÿæˆxmlå­æ ‡è®°  
+                    // å¼€å§‹æ ‡è®°  
                     serializer.startTag(null, "item");  
-                    // ¼ÓÈëÊôĞÔ  
+                    // åŠ å…¥å±æ€§  
                     serializer.attribute(null, SmsField.ADDRESS, address);  
                     serializer.attribute(null, SmsField.PERSON, person);  
                     serializer.attribute(null, SmsField.DATE, date);  
@@ -146,7 +146,7 @@ public class ExportSmsXml {
                     serializer.attribute(null, SmsField.LOCKED, locked);  
                     serializer.attribute(null, SmsField.ERROR_CODE, error_code);  
                     serializer.attribute(null, SmsField.SEEN, seen);  
-                    // ½áÊø±ê¼Ç  
+                    // ç»“æŸæ ‡è®°  
                     serializer.endTag(null, "item");
 				} while (cursor.moveToNext());
 			}else {

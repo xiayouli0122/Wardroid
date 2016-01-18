@@ -7,17 +7,16 @@ import android.widget.TabHost;
 
 import com.example.ward.R;
 
-//标签控件Tab
 public class TabDemoActivity extends TabActivity {
 
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setTitle("标签控件Tab");
+		setTitle("TabDemoActivity");
 		TabHost tabHost=getTabHost();
 		LayoutInflater.from(this).inflate(R.layout.tab, tabHost.getTabContentView(),true);
-		tabHost.addTab(tabHost.newTabSpec("biaoqian1").setIndicator("标签tab1").setContent(R.id.tab1));
-		tabHost.addTab(tabHost.newTabSpec("biaoqian2").setIndicator("标签tab2").setContent(R.id.tab2));
-		tabHost.addTab(tabHost.newTabSpec("biaoqian3").setIndicator("标签tab3").setContent(R.id.tab3));
+		tabHost.addTab(tabHost.newTabSpec("biaoqian1").setIndicator("tab1").setContent(R.id.tab1));
+		tabHost.addTab(tabHost.newTabSpec("biaoqian2").setIndicator("tab2").setContent(R.id.tab2));
+		tabHost.addTab(tabHost.newTabSpec("biaoqian3").setIndicator("tab3").setContent(R.id.tab3));
 	}	
 }

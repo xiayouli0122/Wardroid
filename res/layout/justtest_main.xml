@@ -11,6 +11,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="myButton"
+        android:visibility="gone"
+        android:background="@drawable/btn_bg_selector"
         />
     
      <EditText

@@ -11,7 +11,7 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 
 public class ExpandListViewDemo extends Activity {
-	
+
 	ExpandableListView  eListView;
 	ExpandListViewAdapter mAdapter;
 	@Override
@@ -19,18 +19,18 @@ public class ExpandListViewDemo extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.expandlistview_main);
-		
+
 		eListView = (ExpandableListView) findViewById(R.id.expandableListView);
 		eListView.setGroupIndicator(null);//remove the arrow icon
-		
+
 		List<String> groupList = new ArrayList<String>();
 		for (int i = 0; i < 6; i++) {
-			groupList.add("ÕâÊÇµÚ"+ i + "Ìõ");
+			groupList.add("è¿™æ˜¯ç¬¬"+ i + "æ¡");
 		}
 		mAdapter = new ExpandListViewAdapter(getApplicationContext(), groupList);
 		eListView.setAdapter(mAdapter);
 		eListView.setOnGroupExpandListener(new OnGroupExpandListener() {
-			
+
 			@Override
 			public void onGroupExpand(int groupPosition) {
 				// TODO Auto-generated method stub
@@ -38,13 +38,13 @@ public class ExpandListViewDemo extends Activity {
 				eListView.setSelection(groupPosition);
 				for (int i = 0; i < len; i++) {
 					if (i != groupPosition) {
-						//µ±Ò»¸öÕ¹¿ªÊ±£¬ÆäËûµÄitem¶¼ÊÕÆð
+						//å½“ä¸€ä¸ªå±•å¼€æ—¶ï¼Œå…¶ä»–çš„iteméƒ½æ”¶èµ·
 						eListView.collapseGroup(i);
 					}
 				}
 			}
 		});
-		
+
 	}
-	
+
 }

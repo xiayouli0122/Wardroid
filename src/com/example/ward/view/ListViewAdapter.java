@@ -24,23 +24,23 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 /**
- * Ë½Äî
- * 
+ * ç§å¿µ
+ *
  * @author Administrator
- * 
+ *
  */
 public class ListViewAdapter extends BaseExpandableListAdapter implements
 		OnItemClickListener
 {
-	public static final int ItemHeight = 48;// Ã¿ÏîµÄ¸ß¶È
-	public static final int PaddingLeft = 36;// Ã¿ÏîµÄ¸ß¶È
+	public static final int ItemHeight = 48;// æ¯é¡¹çš„é«˜åº¦
+	public static final int PaddingLeft = 36;// æ¯é¡¹çš„é«˜åº¦
 	private int myPaddingLeft = 0;
 
 	private MyGridView toolbarGrid;
 
-	private String menu_toolbar_name_array[] = { "´æ´¢¿¨", "ÎÒµÄÏÂÔØ", "Í¼Êéµ¼Èë", "ÏµÍ³±¸·İ",
-			"ÏµÍ³»Ö¸´", "Çå³ıÈ«²¿", "ÔÚÏßÉı¼¶", "¿ìËÙÈëÃÅ", "¹ØÓÚ¿ª¾í", "ÍË³öÏµÍ³", "ÔÚÏßÉı¼¶", "¿ìËÙÈëÃÅ",
-			"¹ØÓÚ¿ª¾í", "ÍË³öÏµÍ³", "¹ØÓÚ¿ª¾í", "ÍË³öÏµÍ³", "¹ØÓÚ¿ª¾í", "ÍË³öÏµÍ³", "¹ØÓÚ¿ª¾í", "ÍË³öÏµÍ³" };
+	private String menu_toolbar_name_array[] = { "å­˜å‚¨å¡", "æˆ‘çš„ä¸‹è½½", "å›¾ä¹¦å¯¼å…¥", "ç³»ç»Ÿå¤‡ä»½",
+			"ç³»ç»Ÿæ¢å¤", "æ¸…é™¤å…¨éƒ¨", "åœ¨çº¿å‡çº§", "å¿«é€Ÿå…¥é—¨", "å…³äºå¼€å·", "é€€å‡ºç³»ç»Ÿ", "åœ¨çº¿å‡çº§", "å¿«é€Ÿå…¥é—¨",
+			"å…³äºå¼€å·", "é€€å‡ºç³»ç»Ÿ", "å…³äºå¼€å·", "é€€å‡ºç³»ç»Ÿ", "å…³äºå¼€å·", "é€€å‡ºç³»ç»Ÿ", "å…³äºå¼€å·", "é€€å‡ºç³»ç»Ÿ" };
 	private int menu_toolbar_image_array[] = { android.R.drawable.sym_action_call,
 			android.R.drawable.sym_action_call, android.R.drawable.sym_action_call,
 			android.R.drawable.sym_action_call, android.R.drawable.sym_action_call,
@@ -108,10 +108,10 @@ public class ListViewAdapter extends BaseExpandableListAdapter implements
 	}
 
 	/**
-	 * ¿É×Ô¶¨ÒåExpandableListView
+	 * å¯è‡ªå®šä¹‰ExpandableListView
 	 */
 	public View getChildView(int groupPosition, int childPosition,
-			boolean isLastChild, View convertView, ViewGroup parent)
+							 boolean isLastChild, View convertView, ViewGroup parent)
 	{
 		if (convertView == null)
 		{
@@ -121,11 +121,11 @@ public class ListViewAdapter extends BaseExpandableListAdapter implements
 
 			toolbarGrid = (MyGridView) convertView
 					.findViewById(R.id.GridView_toolbar);
-			toolbarGrid.setNumColumns(4);// ÉèÖÃÃ¿ĞĞÁĞÊı
-			toolbarGrid.setGravity(Gravity.CENTER);// Î»ÖÃ¾ÓÖĞ
-			toolbarGrid.setHorizontalSpacing(10);// Ë®Æ½¼ä¸ô
+			toolbarGrid.setNumColumns(4);// è®¾ç½®æ¯è¡Œåˆ—æ•°
+			toolbarGrid.setGravity(Gravity.CENTER);// ä½ç½®å±…ä¸­
+			toolbarGrid.setHorizontalSpacing(10);// æ°´å¹³é—´éš”
 			toolbarGrid.setAdapter(getMenuAdapter(menu_toolbar_name_array,
-					menu_toolbar_image_array));// ÉèÖÃ²Ëµ¥Adapter
+					menu_toolbar_image_array));// è®¾ç½®èœå•Adapter
 			toolbarGrid.setOnItemClickListener(this);
 
 		}
@@ -134,10 +134,10 @@ public class ListViewAdapter extends BaseExpandableListAdapter implements
 	}
 
 	/**
-	 * ¿É×Ô¶¨Òålist
+	 * å¯è‡ªå®šä¹‰list
 	 */
 	public View getGroupView(int groupPosition, boolean isExpanded,
-			View convertView, ViewGroup parent)
+							 View convertView, ViewGroup parent)
 	{
 		TextView textView = getTextView(this.parentContext);
 		textView.setText(getGroup(groupPosition).toString());
@@ -176,16 +176,16 @@ public class ListViewAdapter extends BaseExpandableListAdapter implements
 	}
 
 	/**
-	 * ¹¹Ôì²Ëµ¥Adapter
-	 * 
+	 * æ„é€ èœå•Adapter
+	 *
 	 * @param menuNameArray
-	 *            Ãû³Æ
+	 *            åç§°
 	 * @param imageResourceArray
-	 *            Í¼Æ¬
+	 *            å›¾ç‰‡
 	 * @return SimpleAdapter
 	 */
 	private SimpleAdapter getMenuAdapter(String[] menuNameArray,
-			int[] imageResourceArray)
+										 int[] imageResourceArray)
 	{
 		ArrayList<HashMap<String, Object>> data = new ArrayList<HashMap<String, Object>>();
 		for (int i = 0; i < menuNameArray.length; i++)
@@ -203,9 +203,9 @@ public class ListViewAdapter extends BaseExpandableListAdapter implements
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id)
+							long id)
 	{
-		Toast.makeText(parentContext, "µ±Ç°Ñ¡ÖĞµÄÊÇ:" + position, Toast.LENGTH_SHORT)
+		Toast.makeText(parentContext, "å½“å‰é€‰ä¸­çš„æ˜¯:" + position, Toast.LENGTH_SHORT)
 				.show();
 
 	}

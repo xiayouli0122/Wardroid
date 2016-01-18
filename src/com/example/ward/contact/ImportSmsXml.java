@@ -38,8 +38,8 @@ public class ImportSmsXml {
         if (!file.exists()) {  
   
             Looper.prepare();  
-            Toast.makeText(context, "message.xml¶ÌĞÅ±¸·İÎÄ¼ş²»ÔÚsd¿¨ÖĞ", 1).show();  
-            Looper.loop();//ÍË³öÏß³Ì  
+            Toast.makeText(context, "message.xmlçŸ­ä¿¡å¤‡ä»½æ–‡ä»¶ä¸åœ¨sdå¡ä¸­", 1).show();  
+            Looper.loop();//é€€å‡ºçº¿ç¨‹  
 //          return null;  
         }  
         try {  
@@ -52,7 +52,7 @@ public class ImportSmsXml {
                     smsItems = new ArrayList<SmsItem>();  
                     break;  
   
-                case XmlPullParser.START_TAG: // Èç¹ûÓöµ½¿ªÊ¼±ê¼Ç£¬Èç<smsItems>,<smsItem>µÈ  
+                case XmlPullParser.START_TAG: // å¦‚æœé‡åˆ°å¼€å§‹æ ‡è®°ï¼Œå¦‚<smsItems>,<smsItem>ç­‰  
                     if ("item".equals(parser.getName())) {  
                         smsItem = new SmsItem();  
   
@@ -71,7 +71,7 @@ public class ImportSmsXml {
   
                     }  
                     break;  
-                case XmlPullParser.END_TAG:// ½áÊø±ê¼Ç,Èç</smsItems>,</smsItem>µÈ  
+                case XmlPullParser.END_TAG:// ç»“æŸæ ‡è®°,å¦‚</smsItems>,</smsItem>ç­‰  
                     if ("item".equals(parser.getName())) {  
                         smsItems.add(smsItem);  
                         smsItem = null;  
@@ -83,21 +83,21 @@ public class ImportSmsXml {
         } catch (FileNotFoundException e) {  
             // TODO Auto-generated catch block  
             Looper.prepare();  
-            Toast.makeText(context, "¶ÌĞÅ»Ö¸´³ö´í", 1).show();  
+            Toast.makeText(context, "çŸ­ä¿¡æ¢å¤å‡ºé”™", 1).show();  
             Looper.loop();  
             e.printStackTrace();  
               
         } catch (XmlPullParserException e) {  
             // TODO Auto-generated catch block  
             Looper.prepare();  
-            Toast.makeText(context, "¶ÌĞÅ»Ö¸´³ö´í", 1).show();  
+            Toast.makeText(context, "çŸ­ä¿¡æ¢å¤å‡ºé”™", 1).show();  
             Looper.loop();  
             e.printStackTrace();          
               
         } catch (IOException e) {  
             // TODO Auto-generated catch block  
             Looper.prepare();  
-            Toast.makeText(context, "¶ÌĞÅ»Ö¸´³ö´í", 1).show();  
+            Toast.makeText(context, "çŸ­ä¿¡æ¢å¤å‡ºé”™", 1).show();  
             Looper.loop();  
             e.printStackTrace();  
         }  

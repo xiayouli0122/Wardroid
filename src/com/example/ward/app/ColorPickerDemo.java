@@ -30,7 +30,7 @@ public class ColorPickerDemo extends Activity implements OnClickListener {
 		mColorPickerView.setOnClickListener(this);
 		mColorShowView = (TextView) findViewById(R.id.tv_color_show);
 		mCurrentColor = (TextView) findViewById(R.id.tv_current_color);
-		mCurrentColor.setText("当前颜色为：" + Integer.toHexString(initColor));
+		mCurrentColor.setText("?????????" + Integer.toHexString(initColor));
 		mButton = (Button) findViewById(R.id.btn_ok);
 		mButton.setOnClickListener(this);
 	}
@@ -47,7 +47,7 @@ public class ColorPickerDemo extends Activity implements OnClickListener {
 					System.out.println("color:" + color);
 					System.out.println("16color:" + Integer.toHexString(color));
 					mColorPickerView.setBackgroundColor(color);
-					mCurrentColor.setText("当前颜色为：" + Integer.toHexString(color));
+					mCurrentColor.setText("?????????" + Integer.toHexString(color));
 				}
 			});
 			mColorDialog.show();
@@ -85,7 +85,7 @@ public class ColorPickerDemo extends Activity implements OnClickListener {
 				sg = code.substring(4, 6);
 				sb = code.substring(6, 8);
 			}else {
-				Toast.makeText(this, "请输入正确的代码", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "??????????????", Toast.LENGTH_SHORT).show();
 				break;
 			}
 			
@@ -97,7 +97,7 @@ public class ColorPickerDemo extends Activity implements OnClickListener {
 				ib = Integer.parseInt(sb, 16);
 			} catch (Exception e) {
 				// TODO: handle exception
-				Toast.makeText(this, "请输入正确的代码", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "??????????????", Toast.LENGTH_SHORT).show();
 				break;
 			}
 			

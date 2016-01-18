@@ -10,37 +10,37 @@ import android.widget.TextView;
 import com.example.ward.R;
 
 /**
- * 
+ *
  * @author nwang
- * 
- * ½ø¶ÈÌõProgressBarÓëÏß³ÌÊ¹ÓÃ¡£µ¥»÷¿ªÊ¼°´Å¥£¬½ø¶ÈÌõË®Æ½·½ÏòÇ°½ø£¡
+ *
+ * è¿›åº¦æ¡ProgressBarä¸Žçº¿ç¨‹ä½¿ç”¨ã€‚å•å‡»å¼€å§‹æŒ‰é’®ï¼Œè¿›åº¦æ¡æ°´å¹³æ–¹å‘å‰è¿›ï¼
  *
  */
 public class ProgressBarHandlerActivity extends Activity {
-    /** Called when the activity is first created. */
-	
+	/** Called when the activity is first created. */
+
 	private Button startButton;
 	private Button stopButton;
 	private TextView result;
 	private ProgressBar firstProgressBar;
 	private final static int defaultValue=10;
 	private int i=0;
-	
-	
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.progress_bar);
-        setTitle("ProgressBarÊ¹ÓÃ£¡");
-        startButton=(Button)findViewById(R.id.startButton);
-        stopButton=(Button)findViewById(R.id.stopButton);
-        result=(TextView)findViewById(R.id.result);
-        firstProgressBar=(ProgressBar)findViewById(R.id.firstProgressBar);
-        
-        firstProgressBar.setVisibility(0);//¸Õ¿ªÊ¼ÉèÖÃ½ø¶ÈÌõ¿É¼û
-        
-        startButton.setOnClickListener(new View.OnClickListener() {
-			
+
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.progress_bar);
+		setTitle("ProgressBarä½¿ç”¨ï¼");
+		startButton=(Button)findViewById(R.id.startButton);
+		stopButton=(Button)findViewById(R.id.stopButton);
+		result=(TextView)findViewById(R.id.result);
+		firstProgressBar=(ProgressBar)findViewById(R.id.firstProgressBar);
+
+		firstProgressBar.setVisibility(0);//åˆšå¼€å§‹è®¾ç½®è¿›åº¦æ¡å¯è§
+
+		startButton.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				/*i+=defaultValue;
@@ -50,22 +50,22 @@ public class ProgressBarHandlerActivity extends Activity {
 				handler.post(progressBarThread);
 			}
 		});
-        
-        stopButton.setOnClickListener(new View.OnClickListener() {
-			
+
+		stopButton.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-				handler.removeCallbacks(progressBarThread);			
+				handler.removeCallbacks(progressBarThread);
 			}
 		});
-    }
-    
-    //´´½¨Handler¶ÔÏó
-    Handler handler=new Handler();
-    
-    //´´½¨Ïß³Ì¶ÔÏó
-    MyRunnable progressBarThread=new MyRunnable();
-    class MyRunnable implements Runnable{
+	}
+
+	//åˆ›å»ºHandlerå¯¹è±¡
+	Handler handler=new Handler();
+
+	//åˆ›å»ºçº¿ç¨‹å¯¹è±¡
+	MyRunnable progressBarThread=new MyRunnable();
+	class MyRunnable implements Runnable{
 		@Override
 		public void run() {
 			i+=defaultValue;
@@ -74,9 +74,9 @@ public class ProgressBarHandlerActivity extends Activity {
 			firstProgressBar.setSecondaryProgress(i+defaultValue);
 			result.setText(((double)i/firstProgressBar.getMax()*100)+"%");
 			if(i>=firstProgressBar.getMax()) i=0;
-			
+
 		}
-    	
-    }
-    
+
+	}
+
 }

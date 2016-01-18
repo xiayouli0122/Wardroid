@@ -3,30 +3,30 @@ package com.example.ward.contact;
 import java.util.Date;
 
 public class CallsLog {
-	//Êı¾İ¿â±£´æµÄID
+	//æ•°æ®åº“ä¿å­˜çš„ID
 	private int id;
 	
-	//À´µç£¬Î´½Ó£¬ÒÑ½Ó±íÊ¾µÄÍ¼±êID£¨×îºóÒ»´ÎÍ¨»°µÄ×´Ì¬£©
+	//æ¥ç”µï¼Œæœªæ¥ï¼Œå·²æ¥è¡¨ç¤ºçš„å›¾æ ‡IDï¼ˆæœ€åä¸€æ¬¡é€šè¯çš„çŠ¶æ€ï¼‰
 	private int iconID;
-	//Í¬Ò»¸öºÅÂë×ÜµÄÍ¨»°¼ÇÂ¼Êı£¬°üÀ¨ÒÑ½Ó£¬Î´½Ó£¬
+	//åŒä¸€ä¸ªå·ç æ€»çš„é€šè¯è®°å½•æ•°ï¼ŒåŒ…æ‹¬å·²æ¥ï¼Œæœªæ¥ï¼Œ
 	private int callNos;
 	
-	//ĞÕÃû  
+	//å§“å  
 	private String name;
-	//ºÅÂë
+	//å·ç 
 	private String phoneNumber;
 	
-	//Í¨»°×´Ì¬£ºÒÑ½Ó£¬Î´½Ó£¬²¦³ö
+	//é€šè¯çŠ¶æ€ï¼šå·²æ¥ï¼Œæœªæ¥ï¼Œæ‹¨å‡º
 	private int callType;
 	
-	//sim card ¹éÊôµØĞÅÏ¢
+	//sim card å½’å±åœ°ä¿¡æ¯
 	private String simCardInfo;
 	
-	//Í¨»°µÄÈÕÆÚ£¬Ê±¼ä,ÒÔºÁÃëËã
+	//é€šè¯çš„æ—¥æœŸï¼Œæ—¶é—´,ä»¥æ¯«ç§’ç®—
 //	private Date dataTime;
 	private long dateTime;
 	
-	//Ò»¹²´òÁË¶àÉÙÃë
+	//ä¸€å…±æ‰“äº†å¤šå°‘ç§’
 	private long duration;
 	public CallsLog(int id) {
 		super();

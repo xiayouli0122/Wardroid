@@ -72,11 +72,10 @@ public class StorageDemo extends Activity {
 		}
 		
 		
-		System.getenv(); // 返回的是一个map  
+		System.getenv();
 		Map<String, String> map = System.getenv();  
 		  
-		//遍历出来可以看到最后一项是外置SD卡路径  
-		  
+
 //		Set<String> set = map.keySet();  
 //		        Iterator<String> key = set.iterator();  
 //		        while(key.hasNext())  
@@ -87,7 +86,6 @@ public class StorageDemo extends Activity {
 //		        while(val.hasNext())  
 //		            Log.d("123", val.next());  
 		  
-		//不同的机型获得的会有所不同，先试试！！  
 
 		        
 		        DevMountInfo dev = DevMountInfo.getInstance();  

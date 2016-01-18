@@ -25,30 +25,30 @@ public class Bundle2Activity extends Activity{
 		setContentView(R.layout.bundle2);
 		result=(TextView)findViewById(R.id.result);
 		backButton=(Button)findViewById(R.id.button_back);
-		
+
 		intent=this.getIntent();
 		Bundle bundle=intent.getExtras();
 		double height=bundle.getDouble("height");
 		String sex=bundle.getString("sex");
 		String sexStr="";
 		if("M".equals(sex)){
-			sexStr="ÄĞĞÔ";
+			sexStr="ç”·æ€§";
 		}else{
-			sexStr="Å®ĞÔ";
+			sexStr="å¥³æ€§";
 		}
 		String weight=this.getWeight(sex, height);
-		result.setText("ÄãÊÇÒ»Î»£º"+sexStr+"\nÉí¸ßÊÇ£º"+height+"ÀåÃ× \nÄãµÄ±ê×¼ÌåÖØ£º"+weight+"¹«½ï");
-		
-		//·µ»ØÉÏÒ»Ò³
+		result.setText("ä½ æ˜¯ä¸€ä½ï¼š"+sexStr+"\nèº«é«˜æ˜¯ï¼š"+height+"å˜ç±³ \nä½ çš„æ ‡å‡†ä½“é‡ï¼š"+weight+"å…¬æ–¤");
+
+		//è¿”å›ä¸Šä¸€é¡µ
 		backButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Bundle2Activity.this.setResult(RESULT_OK, intent);	
+				Bundle2Activity.this.setResult(RESULT_OK, intent);
 				Bundle2Activity.this.finish();
 			}
 		});
 	}
-	
+
 	public String getWeight(String sex,double height){
 		String weight="";
 		if("M".endsWith(sex)){
@@ -58,7 +58,7 @@ public class Bundle2Activity extends Activity{
 		}
 		return weight;
 	}
-	
+
 	public String format(double num){
 		NumberFormat formatter=new DecimalFormat("0.00");
 		String s=formatter.format(num);

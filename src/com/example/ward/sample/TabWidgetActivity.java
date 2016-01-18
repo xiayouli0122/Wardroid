@@ -38,7 +38,7 @@ public class TabWidgetActivity extends TabActivity {
 				// TODO Auto-generated method stub
 				Dialog dialog=new AlertDialog.Builder(TabWidgetActivity.this)
 				.setTitle("TabHost")
-				.setMessage(tabId+"±»Ñ¡ÖÐ")
+				.setMessage(tabId+"****")
 				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {

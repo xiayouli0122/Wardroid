@@ -20,18 +20,18 @@ public class ColorPickerDialog extends Dialog {
 	private final String TAG = "ColorPicker";
 
 	Context context;
-	private String title;// ±êÌâ
-	private int mInitialColor;// ³õÊ¼ÑÕÉ«
+	private String title;// æ ‡é¢˜
+	private int mInitialColor;// åˆå§‹é¢œè‰²
 	private OnColorChangedListener mListener;
 
 	/**
-	 * ³õÊ¼ÑÕÉ«ºÚÉ«
+	 * åˆå§‹é¢œè‰²é»‘è‰²
 	 * 
 	 * @param context
 	 * @param title
-	 *            ¶Ô»°¿ò±êÌâ
+	 *            å¯¹è¯æ¡†æ ‡é¢˜
 	 * @param listener
-	 *            »Øµ÷
+	 *            å›è°ƒ
 	 */
 	public ColorPickerDialog(Context context, String title,
 			OnColorChangedListener listener) {
@@ -42,11 +42,11 @@ public class ColorPickerDialog extends Dialog {
 	 * 
 	 * @param context
 	 * @param initialColor
-	 *            ³õÊ¼ÑÕÉ«
+	 *            åˆå§‹é¢œè‰²
 	 * @param title
-	 *            ±êÌâ
+	 *            æ ‡é¢˜
 	 * @param listener
-	 *            »Øµ÷
+	 *            å›è°ƒ
 	 */
 	public ColorPickerDialog(Context context, int initialColor, String title,
 			OnColorChangedListener listener) {
@@ -71,29 +71,29 @@ public class ColorPickerDialog extends Dialog {
 	}
 
 	private class ColorPickerView extends View {
-		private Paint mPaint;// ½¥±äÉ«»·»­±Ê
-		private Paint mCenterPaint;// ÖĞ¼äÔ²»­±Ê
-		private Paint mLinePaint;// ·Ö¸ôÏß»­±Ê
-		private Paint mRectPaint;// ½¥±ä·½¿é»­±Ê
+		private Paint mPaint;// æ¸å˜è‰²ç¯ç”»ç¬”
+		private Paint mCenterPaint;// ä¸­é—´åœ†ç”»ç¬”
+		private Paint mLinePaint;// åˆ†éš”çº¿ç”»ç¬”
+		private Paint mRectPaint;// æ¸å˜æ–¹å—ç”»ç¬”
 
-		private Shader rectShader;// ½¥±ä·½¿é½¥±äÍ¼Ïñ
-		private float rectLeft;// ½¥±ä·½¿é×óx×ø±ê
-		private float rectTop;// ½¥±ä·½¿éÓÒx×ø±ê
-		private float rectRight;// ½¥±ä·½¿éÉÏy×ø±ê
-		private float rectBottom;// ½¥±ä·½¿éÏÂy×ø±ê
+		private Shader rectShader;// æ¸å˜æ–¹å—æ¸å˜å›¾åƒ
+		private float rectLeft;// æ¸å˜æ–¹å—å·¦xåæ ‡
+		private float rectTop;// æ¸å˜æ–¹å—å³xåæ ‡
+		private float rectRight;// æ¸å˜æ–¹å—ä¸Šyåæ ‡
+		private float rectBottom;// æ¸å˜æ–¹å—ä¸‹yåæ ‡
 
-		private final int[] mCircleColors;// ½¥±äÉ«»·ÑÕÉ«
-		private final int[] mRectColors;// ½¥±ä·½¿éÑÕÉ«
+		private final int[] mCircleColors;// æ¸å˜è‰²ç¯é¢œè‰²
+		private final int[] mRectColors;// æ¸å˜æ–¹å—é¢œè‰²
 
-		private int mHeight;// View¸ß
-		private int mWidth;// View¿í
-		private float r;// É«»·°ë¾¶(paintÖĞ²¿)
-		private float centerRadius;// ÖĞĞÄÔ²°ë¾¶
+		private int mHeight;// Viewé«˜
+		private int mWidth;// Viewå®½
+		private float r;// è‰²ç¯åŠå¾„(paintä¸­éƒ¨)
+		private float centerRadius;// ä¸­å¿ƒåœ†åŠå¾„
 
-		private boolean downInCircle = true;// °´ÔÚ½¥±ä»·ÉÏ
-		private boolean downInRect;// °´ÔÚ½¥±ä·½¿éÉÏ
-		private boolean highlightCenter;// ¸ßÁÁ
-		private boolean highlightCenterLittle;// Î¢ÁÁ
+		private boolean downInCircle = true;// æŒ‰åœ¨æ¸å˜ç¯ä¸Š
+		private boolean downInRect;// æŒ‰åœ¨æ¸å˜æ–¹å—ä¸Š
+		private boolean highlightCenter;// é«˜äº®
+		private boolean highlightCenterLittle;// å¾®äº®
 
 		public ColorPickerView(Context context, int height, int width) {
 			super(context);
@@ -102,7 +102,7 @@ public class ColorPickerDialog extends Dialog {
 			setMinimumHeight(height - 36);
 			setMinimumWidth(width);
 
-			// ½¥±äÉ«»·²ÎÊı
+			// æ¸å˜è‰²ç¯å‚æ•°
 			mCircleColors = new int[] { 0xFFFF0000, 0xFFFF00FF, 0xFF0000FF,
 					0xFF00FFFF, 0xFF00FF00, 0xFFFFFF00, 0xFFFF0000 };
 			Shader s = new SweepGradient(0, 0, mCircleColors, null);
@@ -112,18 +112,18 @@ public class ColorPickerDialog extends Dialog {
 			mPaint.setStrokeWidth(50);
 			r = width / 2 * 0.7f - mPaint.getStrokeWidth() * 0.5f;
 
-			// ÖĞĞÄÔ²²ÎÊı
+			// ä¸­å¿ƒåœ†å‚æ•°
 			mCenterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 			mCenterPaint.setColor(mInitialColor);
 			mCenterPaint.setStrokeWidth(5);
 			centerRadius = (r - mPaint.getStrokeWidth() / 2) * 0.7f;
 
-			// ±ß¿ò²ÎÊı
+			// è¾¹æ¡†å‚æ•°
 			mLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 			mLinePaint.setColor(Color.parseColor("#72A1D1"));
 			mLinePaint.setStrokeWidth(4);
 
-			// ºÚ°×½¥±ä²ÎÊı
+			// é»‘ç™½æ¸å˜å‚æ•°
 			mRectColors = new int[] { 0xFF000000, mCenterPaint.getColor(),
 					0xFFFFFFFF };
 			mRectPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -137,11 +137,11 @@ public class ColorPickerDialog extends Dialog {
 
 		@Override
 		protected void onDraw(Canvas canvas) {
-			// ÒÆ¶¯ÖĞĞÄ
+			// ç§»åŠ¨ä¸­å¿ƒ
 			canvas.translate(mWidth / 2, mHeight / 2 - 50);
-			// »­ÖĞĞÄÔ²
+			// ç”»ä¸­å¿ƒåœ†
 			canvas.drawCircle(0, 0, centerRadius, mCenterPaint);
-			// ÊÇ·ñÏÔÊ¾ÖĞĞÄÔ²ÍâµÄĞ¡Ô²»·
+			// æ˜¯å¦æ˜¾ç¤ºä¸­å¿ƒåœ†å¤–çš„å°åœ†ç¯
 			if (highlightCenter || highlightCenterLittle) {
 				int c = mCenterPaint.getColor();
 				mCenterPaint.setStyle(Paint.Style.STROKE);
@@ -157,9 +157,9 @@ public class ColorPickerDialog extends Dialog {
 				mCenterPaint.setStyle(Paint.Style.FILL);
 				mCenterPaint.setColor(c);
 			}
-			// »­É«»·
+			// ç”»è‰²ç¯
 			canvas.drawOval(new RectF(-r, -r, r, r), mPaint);
-			// »­ºÚ°×½¥±ä¿é
+			// ç”»é»‘ç™½æ¸å˜å—
 			if (downInCircle) {
 				mRectColors[1] = mCenterPaint.getColor();
 			}
@@ -170,13 +170,13 @@ public class ColorPickerDialog extends Dialog {
 					mRectPaint);
 			float offset = mLinePaint.getStrokeWidth() / 2;
 			canvas.drawLine(rectLeft - offset, rectTop - offset * 2, rectLeft
-					- offset, rectBottom + offset * 2, mLinePaint);// ×ó
+					- offset, rectBottom + offset * 2, mLinePaint);// å·¦
 			canvas.drawLine(rectLeft - offset * 2, rectTop - offset, rectRight
-					+ offset * 2, rectTop - offset, mLinePaint);// ÉÏ
+					+ offset * 2, rectTop - offset, mLinePaint);// ä¸Š
 			canvas.drawLine(rectRight + offset, rectTop - offset * 2, rectRight
-					+ offset, rectBottom + offset * 2, mLinePaint);// ÓÒ
+					+ offset, rectBottom + offset * 2, mLinePaint);// å³
 			canvas.drawLine(rectLeft - offset * 2, rectBottom + offset,
-					rectRight + offset * 2, rectBottom + offset, mLinePaint);// ÏÂ
+					rectRight + offset * 2, rectBottom + offset, mLinePaint);// ä¸‹
 			super.onDraw(canvas);
 		}
 
@@ -195,7 +195,7 @@ public class ColorPickerDialog extends Dialog {
 				downInRect = inRect;
 				highlightCenter = inCenter;
 			case MotionEvent.ACTION_MOVE:
-				if (downInCircle && inCircle) {// down°´ÔÚ½¥±äÉ«»·ÄÚ, ÇÒmoveÒ²ÔÚ½¥±äÉ«»·ÄÚ
+				if (downInCircle && inCircle) {// downæŒ‰åœ¨æ¸å˜è‰²ç¯å†…, ä¸”moveä¹Ÿåœ¨æ¸å˜è‰²ç¯å†…
 					float angle = (float) Math.atan2(y, x);
 					float unit = (float) (angle / (2 * Math.PI));
 					if (unit < 0) {
@@ -204,20 +204,20 @@ public class ColorPickerDialog extends Dialog {
 					mCenterPaint
 							.setColor(interpCircleColor(mCircleColors, unit));
 					if (debug)
-						Log.v(TAG, "É«»·ÄÚ, ×ø±ê: " + x + "," + y);
-				} else if (downInRect && inRect) {// downÔÚ½¥±ä·½¿éÄÚ, ÇÒmoveÒ²ÔÚ½¥±ä·½¿éÄÚ
+						Log.v(TAG, "è‰²ç¯å†…, åæ ‡: " + x + "," + y);
+				} else if (downInRect && inRect) {// downåœ¨æ¸å˜æ–¹å—å†…, ä¸”moveä¹Ÿåœ¨æ¸å˜æ–¹å—å†…
 					mCenterPaint.setColor(interpRectColor(mRectColors, x));
 				}
 				if (debug)
-					Log.v(TAG, "[MOVE] ¸ßÁÁ: " + highlightCenter + "Î¢ÁÁ: "
-							+ highlightCenterLittle + " ÖĞĞÄ: " + inCenter);
+					Log.v(TAG, "[MOVE] é«˜äº®: " + highlightCenter + "å¾®äº®: "
+							+ highlightCenterLittle + " ä¸­å¿ƒ: " + inCenter);
 				if ((highlightCenter && inCenter)
-						|| (highlightCenterLittle && inCenter)) {// µã»÷ÖĞĞÄÔ²,
-																	// µ±Ç°ÒÆ¶¯ÔÚÖĞĞÄÔ²
+						|| (highlightCenterLittle && inCenter)) {// ç‚¹å‡»ä¸­å¿ƒåœ†,
+																	// å½“å‰ç§»åŠ¨åœ¨ä¸­å¿ƒåœ†
 					highlightCenter = true;
 					highlightCenterLittle = false;
-				} else if (highlightCenter || highlightCenterLittle) {// µã»÷ÔÚÖĞĞÄÔ²,
-																		// µ±Ç°ÒÆ³öÖĞĞÄÔ²
+				} else if (highlightCenter || highlightCenterLittle) {// ç‚¹å‡»åœ¨ä¸­å¿ƒåœ†,
+																		// å½“å‰ç§»å‡ºä¸­å¿ƒåœ†
 					highlightCenter = false;
 					highlightCenterLittle = true;
 				} else {
@@ -227,7 +227,7 @@ public class ColorPickerDialog extends Dialog {
 				invalidate();
 				break;
 			case MotionEvent.ACTION_UP:
-				if (highlightCenter && inCenter) {// µã»÷ÔÚÖĞĞÄÔ², ÇÒµ±Ç°Æô¶¯ÔÚÖĞĞÄÔ²
+				if (highlightCenter && inCenter) {// ç‚¹å‡»åœ¨ä¸­å¿ƒåœ†, ä¸”å½“å‰å¯åŠ¨åœ¨ä¸­å¿ƒåœ†
 					if (mListener != null) {
 						mListener.colorChanged(mCenterPaint.getColor());
 						ColorPickerDialog.this.dismiss();
@@ -257,16 +257,16 @@ public class ColorPickerDialog extends Dialog {
 		}
 
 		/**
-		 * ×ø±êÊÇ·ñÔÚÉ«»·ÉÏ
+		 * åæ ‡æ˜¯å¦åœ¨è‰²ç¯ä¸Š
 		 * 
 		 * @param x
-		 *            ×ø±ê
+		 *            åæ ‡
 		 * @param y
-		 *            ×ø±ê
+		 *            åæ ‡
 		 * @param outRadius
-		 *            É«»·Íâ°ë¾¶
+		 *            è‰²ç¯å¤–åŠå¾„
 		 * @param inRadius
-		 *            É«»·ÄÚ°ë¾¶
+		 *            è‰²ç¯å†…åŠå¾„
 		 * @return
 		 */
 		private boolean inColorCircle(float x, float y, float outRadius,
@@ -282,14 +282,14 @@ public class ColorPickerDialog extends Dialog {
 		}
 
 		/**
-		 * ×ø±êÊÇ·ñÔÚÖĞĞÄÔ²ÉÏ
+		 * åæ ‡æ˜¯å¦åœ¨ä¸­å¿ƒåœ†ä¸Š
 		 * 
 		 * @param x
-		 *            ×ø±ê
+		 *            åæ ‡
 		 * @param y
-		 *            ×ø±ê
+		 *            åæ ‡
 		 * @param centerRadius
-		 *            Ô²°ë¾¶
+		 *            åœ†åŠå¾„
 		 * @return
 		 */
 		private boolean inCenter(float x, float y, float centerRadius) {
@@ -303,7 +303,7 @@ public class ColorPickerDialog extends Dialog {
 		}
 
 		/**
-		 * ×ø±êÊÇ·ñÔÚ½¥±äÉ«ÖĞ
+		 * åæ ‡æ˜¯å¦åœ¨æ¸å˜è‰²ä¸­
 		 * 
 		 * @param x
 		 * @param y
@@ -319,7 +319,7 @@ public class ColorPickerDialog extends Dialog {
 		}
 
 		/**
-		 * »ñÈ¡Ô²»·ÉÏÑÕÉ«
+		 * è·å–åœ†ç¯ä¸Šé¢œè‰²
 		 * 
 		 * @param colors
 		 * @param unit
@@ -349,7 +349,7 @@ public class ColorPickerDialog extends Dialog {
 		}
 
 		/**
-		 * »ñÈ¡½¥±ä¿éÉÏÑÕÉ«
+		 * è·å–æ¸å˜å—ä¸Šé¢œè‰²
 		 * 
 		 * @param colors
 		 * @param x
@@ -380,19 +380,19 @@ public class ColorPickerDialog extends Dialog {
 	}
 
 	/**
-	 * »Øµ÷½Ó¿Ú
+	 * å›è°ƒæ¥å£
 	 * 
 	 * @author <a href="clarkamx@gmail.com">LynK</a>
 	 * 
-	 *         Create on 2012-1-6 ÉÏÎç8:21:05
+	 *         Create on 2012-1-6 ä¸Šåˆ8:21:05
 	 * 
 	 */
 	public interface OnColorChangedListener {
 		/**
-		 * »Øµ÷º¯Êı
+		 * å›è°ƒå‡½æ•°
 		 * 
 		 * @param color
-		 *            Ñ¡ÖĞµÄÑÕÉ«
+		 *            é€‰ä¸­çš„é¢œè‰²
 		 */
 		void colorChanged(int color);
 	}

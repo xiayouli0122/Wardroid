@@ -32,8 +32,8 @@ public class MyListViewAdapter extends BaseAdapter{
 	
 	private AsyncImageLoader2 asyncImageLoader;
 
-	private int width = 120;//每个Item的宽度,可以根据实际情况修改
-	private int height = 150;//每个Item的高度,可以根据实际情况修改
+	private int width = 120;
+	private int height = 150;
 
 	
 	public static class MyGridViewHolder{
@@ -90,9 +90,6 @@ public class MyListViewAdapter extends BaseAdapter{
 		}
 		
 		String url = mList.get(position);
-		//首先我们先通过cancelPotentialLoad方法去判断imageview是否有线程正在为它加载图片资源，
-		//如果有现在正在加载，那么判断加载的这个图片资源（url）是否和现在的图片资源一样，不一样则取消之前的线程（之前的下载线程作废）。
-		//见下面cancelPotentialLoad方法代码
 //		if (cancelPotentialLoad(url, viewHolder.imageview_thumbnail)) {
 //	         AsyncLoadImageTask task = new AsyncLoadImageTask(viewHolder.imageview_thumbnail);
 //	         LoadedDrawable loadedDrawable = new LoadedDrawable(task);
@@ -151,15 +148,10 @@ public class MyListViewAdapter extends BaseAdapter{
 			System.out.println(url);
 			return bitmap;
 		}
-//		url = url.substring(0, url.lastIndexOf("/"));//处理之前的路径区分，否则路径不对，获取不到图片
 //		System.out.println("url:" + url);
 		
 		bitmap = BitmapFactory.decodeFile(url);
-		//这里我们不用BitmapFactory.decodeFile(url)这个方法
-		//用decodeFileDescriptor()方法来生成bitmap会节省内存
-		//查看源码对比一下我们会发现decodeFile()方法最终是以流的方式生成bitmap
-		//而decodeFileDescriptor()方法是通过Native方法decodeFileDescriptor生成bitmap的
-		
+
 //		try {
 //			FileInputStream is = new FileInputStream(url);
 //			bitmap = BitmapFactory.decodeFileDescriptor(is.getFD());
@@ -174,7 +166,6 @@ public class MyListViewAdapter extends BaseAdapter{
 		return bitmap;
 	}
 
-	//加载图片的异步任务	
 	private class AsyncLoadImageTask extends AsyncTask<Integer, Void, Bitmap>{
 		private String url = null;
 		private final WeakReference<ImageView> imageViewReference;
@@ -223,7 +214,6 @@ public class MyListViewAdapter extends BaseAdapter{
 	        if ((bitmapUrl == null) || (!bitmapUrl.equals(url))) {
 	        	loadImageTask.cancel(true);	        	
 	        } else {
-	            // 相同的url已经在加载中.
 	            return false;
 	        }
 	    }
@@ -231,10 +221,6 @@ public class MyListViewAdapter extends BaseAdapter{
 
 	}
 	
-	//当 loadImageTask.cancel(true)被执行的时候，则AsyncLoadImageTask 就会被取消，
-	//当AsyncLoadImageTask 任务执行到onPostExecute的时候，如果这个任务加载到了图片，
-	//它也会把这个bitmap设为null了。 
-	//getAsyncLoadImageTask代码如下：
 	private AsyncLoadImageTask getAsyncLoadImageTask(ImageView imageview){
 		if (imageview != null) {
 	        Drawable drawable = imageview.getDrawable();
@@ -246,7 +232,6 @@ public class MyListViewAdapter extends BaseAdapter{
 	    return null;
 	}
 
-	//该类功能为：记录imageview加载任务并且为imageview设置默认的drawable
 	public static class LoadedDrawable extends ColorDrawable{
 		private final WeakReference<AsyncLoadImageTask> loadImageTaskReference;
 

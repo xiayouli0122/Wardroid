@@ -19,44 +19,44 @@ public class EditTextLengthTest extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.editlen_test);
-		
+
 		EditText editText = (EditText)findViewById(R.id.test_edit);
 //		editText.setFocusable(true);
 //		editText.requestFocus();
 //		editText.setInputType(InputType.TYPE_CLASS_TEXT);
 		onFocusChange(editText, true);
-		
-		lengthFilter(EditTextLengthTest.this, editText, 20, "Ó¢ÎÄ²»ÄÜ³¬¹ı20¸ö×Ö·û£¬ÖĞÎÄ²»ÄÜ³¬¹ı10¸ö×Ö·û");
+
+		lengthFilter(EditTextLengthTest.this, editText, 20, "è‹±æ–‡ä¸èƒ½è¶…è¿‡20ä¸ªå­—ç¬¦ï¼Œä¸­æ–‡ä¸èƒ½è¶…è¿‡10ä¸ªå­—ç¬¦");
 	}
-	
-	//ÊÖ¶¯µ¯³öÊäÈë·¨
+
+	//æ‰‹åŠ¨å¼¹å‡ºè¾“å…¥æ³•
 	void onFocusChange(final View v, boolean hasFocus)
 	{
-	       	final boolean isFocus = hasFocus;
-	        (new Handler()).postDelayed(new Runnable() {
-	            public void run() {
-	                    InputMethodManager imm = (InputMethodManager)
-	                    v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-	                    if(isFocus)
-	                    {
-	                        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-	                    }
-	                    else
-	                    {
-	                        imm.hideSoftInputFromWindow(v.getWindowToken(),0);
-	                    }
-	            }
-	        }, 500);
+		final boolean isFocus = hasFocus;
+		(new Handler()).postDelayed(new Runnable() {
+			public void run() {
+				InputMethodManager imm = (InputMethodManager)
+						v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+				if(isFocus)
+				{
+					imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+				}
+				else
+				{
+					imm.hideSoftInputFromWindow(v.getWindowToken(),0);
+				}
+			}
+		}, 500);
 	}
-	
+
 	public  void lengthFilter(final Context context, final EditText editText, final int max_length, final String err_msg) {
 		InputFilter[] filters = new InputFilter[1];
 		filters[0] = new InputFilter.LengthFilter(max_length) {
 			@Override
 			public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-				int destLen = getCharacterNum(dest.toString()); // »ñÈ¡×Ö·û¸öÊı(Ò»¸öÖĞÎÄËã2¸ö×Ö·û)
+				int destLen = getCharacterNum(dest.toString()); // è·å–å­—ç¬¦ä¸ªæ•°(ä¸€ä¸ªä¸­æ–‡ç®—2ä¸ªå­—ç¬¦)
 				int sourceLen = getCharacterNum(source.toString());
 				if (destLen + sourceLen > max_length) {
 					Toast.makeText(context, err_msg, Toast.LENGTH_SHORT).show();
@@ -67,9 +67,9 @@ public class EditTextLengthTest extends Activity {
 		};
 		editText.setFilters(filters);
 	}
-	
+
 	/**
-	 * @description »ñÈ¡Ò»¶Î×Ö·û´®µÄ×Ö·û¸öÊı£¨°üº¬ÖĞÓ¢ÎÄ£¬Ò»¸öÖĞÎÄËã2¸ö×Ö·û£©
+	 * @description è·å–ä¸€æ®µå­—ç¬¦ä¸²çš„å­—ç¬¦ä¸ªæ•°ï¼ˆåŒ…å«ä¸­è‹±æ–‡ï¼Œä¸€ä¸ªä¸­æ–‡ç®—2ä¸ªå­—ç¬¦ï¼‰
 	 * @param content
 	 * @return
 	 */
@@ -80,13 +80,13 @@ public class EditTextLengthTest extends Activity {
 			return (content.length() + getChineseNum(content));
 		}
 	}
-	
-	
+
+
 	/**
-	* @description ·µ»Ø×Ö·û´®ÀïÖĞÎÄ×Ö»òÕßÈ«½Ç×Ö·ûµÄ¸öÊı
-	* @param s
-	* @return
-	*/
+	 * @description è¿”å›å­—ç¬¦ä¸²é‡Œä¸­æ–‡å­—æˆ–è€…å…¨è§’å­—ç¬¦çš„ä¸ªæ•°
+	 * @param s
+	 * @return
+	 */
 	public static int getChineseNum(String s) {
 		int num = 0;
 		char[] myChar = s.toCharArray();

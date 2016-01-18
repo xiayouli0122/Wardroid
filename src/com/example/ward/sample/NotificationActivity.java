@@ -15,7 +15,7 @@ import android.widget.Button;
 import com.example.ward.R;
 import com.example.ward.UreyActivity;
 
-//ÔÚ×´Ì¬À¸ÖĞÌáÊ¾
+//åœ¨çŠ¶æ€æ ä¸­æç¤º
 public class NotificationActivity extends Activity {
 
 	private Button sumButton;
@@ -23,60 +23,60 @@ public class NotificationActivity extends Activity {
 	private Button rainButton;
 	private Button defaultSound;
 	private NotificationManager notificationManager;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.notification);
-		setTitle("ÌìÆøÔ¤±¨£¡");
+		setTitle("å¤©æ°”é¢„æŠ¥ï¼");
 		sumButton=(Button)findViewById(R.id.sum_1);
 		cloudyButton=(Button)findViewById(R.id.cloudy_1);
 		rainButton=(Button)findViewById(R.id.rain_1);
 		defaultSound=(Button)findViewById(R.id.defaultSound);
-		
+
 		sumButton.setOnClickListener(new SumButtonListener());
 		cloudyButton.setOnClickListener(new CloudyButtonListener());
 		rainButton.setOnClickListener(new RainButtonListener());
 		defaultSound.setOnClickListener(new DefaultSoundListener());
 		notificationManager=(NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
 	}
-	
+
 	class SumButtonListener implements OnClickListener{
 		@Override
 		public void onClick(View v) {
-			setWeather("Çç","ÌìÆø","ºÃ2",R.drawable.sun);
+			setWeather("æ™´","å¤©æ°”","å¥½2",R.drawable.sun);
 		}
 	}
-	
+
 	class CloudyButtonListener implements OnClickListener{
 		@Override
 		public void onClick(View v) {
-			setWeather("Òõ","ÌìÆø","Ò»°ã2",R.drawable.cloudy);
+			setWeather("é˜´","å¤©æ°”","ä¸€èˆ¬2",R.drawable.cloudy);
 		}
 	}
-	
+
 	class RainButtonListener implements OnClickListener{
 		@Override
 		public void onClick(View v) {
-			setWeather("ÏÂÓê","ÌìÆø","²»ºÃ2",R.drawable.rain);
+			setWeather("ä¸‹é›¨","å¤©æ°”","ä¸å¥½2",R.drawable.rain);
 		}
 	}
-	
+
 	class DefaultSoundListener implements OnClickListener{
 		@Override
 		public void onClick(View v) {
-			//²¥·Åa.mp3ÎÄ¼ş
+			//æ’­æ”¾a.mp3æ–‡ä»¶
 			/*MediaPlayer mediaPlayer;
 			mediaPlayer = MediaPlayer.create(NotificationActivity.this, R.drawable.a);
 			mediaPlayer.setLooping(true);
 			mediaPlayer.start();*/
 			//setDefault(Notification.DEFAULT_SOUND);
-			
+
 			setSound();
 		}
-		
+
 	}
-	
+
 	private void setWeather(String tickerText,String title,String content,int drawable){
 		Notification notification=new Notification(drawable, tickerText, System.currentTimeMillis());
 		Intent intent=new Intent();
@@ -85,25 +85,25 @@ public class NotificationActivity extends Activity {
 		notification.setLatestEventInfo(this, title, content, pendingIntent);
 		notificationManager.notify(R.layout.notification, notification);
 	}
-	
+
 	private void setDefault(int defaults){
 		Intent intent=new Intent();
 		intent.setClass(this, UreyActivity.class);
 		PendingIntent pendingIntent=PendingIntent.getActivity(this, 0, intent, 0);
-		String title="Ä¬ÈÏ£º ÌìÆøÔ¤±¨";
-		String content="Çç";
+		String title="é»˜è®¤ï¼š å¤©æ°”é¢„æŠ¥";
+		String content="æ™´";
 		Notification notification=new Notification(R.drawable.sun,content,System.currentTimeMillis());
 		notification.setLatestEventInfo(this, title, content, pendingIntent);
 		notification.defaults=defaults;
 		notificationManager.notify(R.layout.notification, notification);
 	}
-	
+
 	private void setSound(){
 		Intent intent=new Intent();
 		intent.setClass(this, UreyActivity.class);
 		PendingIntent pendingIntent=PendingIntent.getActivity(this, 0, intent, 0);
-		String title="Ä¬ÈÏ£º ÉùÒô²âÊÔ";
-		String content="Çç";
+		String title="é»˜è®¤ï¼š å£°éŸ³æµ‹è¯•";
+		String content="æ™´";
 		Notification notification=new Notification(R.drawable.sun,content,System.currentTimeMillis());
 		notification.setLatestEventInfo(this, title, content, pendingIntent);
 		notification.sound=Uri.parse("file:///sdcard/mp3/nobody.mp3");

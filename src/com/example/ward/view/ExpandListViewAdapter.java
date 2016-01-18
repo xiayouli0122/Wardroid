@@ -25,10 +25,10 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 /**
- * 私念
- * 
+ * 脣陆脛卯
+ *
  * @author Administrator
- * 
+ *
  */
 public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 	private List<String> mGroupTitleList = new ArrayList<String>();
@@ -50,14 +50,14 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 	}
 
 	/**
-	 * 可自定义ExpandableListView
+	 * 驴脡脳脭露篓脪氓ExpandableListView
 	 */
 	public View getChildView(int groupPosition, int childPosition,
-			boolean isLastChild, View convertView, ViewGroup parent) {
+							 boolean isLastChild, View convertView, ViewGroup parent) {
 		System.out.println("getChildView.groupPosition=" + groupPosition);
 		View view = null;
 //		if (null == convertView) {
-			switch (groupPosition) {
+		switch (groupPosition) {
 			case 0:
 				view = layoutInflater.inflate(R.layout.bubble_main, null);
 				break;
@@ -78,7 +78,7 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 				break;
 			default:
 				break;
-			}
+		}
 //		}else {
 //			view = convertView;
 //		}
@@ -88,10 +88,10 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 	}
 
 	/**
-	 * 可自定义list
+	 * 驴脡脳脭露篓脪氓list
 	 */
 	public View getGroupView(int groupPosition, boolean isExpanded,
-			View convertView, ViewGroup parent) {
+							 View convertView, ViewGroup parent) {
 		View view = layoutInflater.inflate(R.layout.explandlistview_group, null);
 		ImageView imageView = (ImageView) view.findViewById(R.id.iv_elistview_icon);
 		TextView textView = (TextView) view.findViewById(R.id.tv_elistview_title);
@@ -100,7 +100,7 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 		}else {
 			imageView.setImageResource(R.drawable.profile_arrow1);
 		}
-		
+
 		textView.setText(mGroupTitleList.get(groupPosition));
 		return view;
 	}

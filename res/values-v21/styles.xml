@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Material.Light" >
+        <!-- Actionbar color -->
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <!--Status bar color-->
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@android:color/background_light</item>
+    </style>
+
+</resources>

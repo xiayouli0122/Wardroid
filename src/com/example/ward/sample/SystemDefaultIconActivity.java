@@ -14,27 +14,27 @@ public class SystemDefaultIconActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.system_default_icon_main);
 
 		ListView listView = (ListView) findViewById(R.id.list);
 
 		ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();
 		for (int i = 0; i < SystemDefaultIconList.ICONs.length; i++) {
-			HashMap<String, Object> map = new HashMap<String, Object>(); // Í¼Ïñ×ÊÔ´µÄID
+			HashMap<String, Object> map = new HashMap<String, Object>(); // å›¾åƒèµ„æºçš„ID
 			map.put("ItemImage", SystemDefaultIconList.ICONs[i]);
 			map.put("ItemTitle", SystemDefaultIconList.ICON_STR[i]);
 			listItem.add(map);
 		}
 
-		// Éú³ÉÊÊÅäÆ÷µÄItemºÍ¶¯Ì¬Êı×é¶ÔÓ¦µÄÔªËØ
-		SimpleAdapter listItemAdapter = new SimpleAdapter(this, listItem,// Êı¾İÔ´
-				R.layout.system_default_icon_item,// ListItemµÄXMLÊµÏÖ
-				// ¶¯Ì¬Êı×éÓëImageItem¶ÔÓ¦µÄ×ÓÏî
+		// ç”Ÿæˆé€‚é…å™¨çš„Itemå’ŒåŠ¨æ€æ•°ç»„å¯¹åº”çš„å…ƒç´ 
+		SimpleAdapter listItemAdapter = new SimpleAdapter(this, listItem,// æ•°æ®æº
+				R.layout.system_default_icon_item,// ListItemçš„XMLå®ç°
+				// åŠ¨æ€æ•°ç»„ä¸ImageItemå¯¹åº”çš„å­é¡¹
 				new String[] { "ItemImage", "ItemTitle" },
-				// ImageItemµÄXMLÎÄ¼şÀïÃæµÄÒ»¸öImageView,Á½¸öTextView ID
+				// ImageItemçš„XMLæ–‡ä»¶é‡Œé¢çš„ä¸€ä¸ªImageView,ä¸¤ä¸ªTextView ID
 				new int[] { R.id.img, R.id.ItemTitle });
-		// Ìí¼Ó²¢ÇÒÏÔÊ¾
+		// æ·»åŠ å¹¶ä¸”æ˜¾ç¤º
 		listView.setAdapter(listItemAdapter);
 	}
 }

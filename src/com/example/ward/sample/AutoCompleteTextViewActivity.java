@@ -10,30 +10,30 @@ import android.widget.Button;
 import com.example.ward.R;
 
 
-//×Ô¶¯ÌáÊ¾¿ò
+//è‡ªåŠ¨æç¤ºæ¡†
 public class AutoCompleteTextViewActivity extends Activity {
 
 	private AutoCompleteTextView autoComplete;
 	private Button cleanButton;
 	static final String[] COUNTRIES = new String[] {
-		"China" ,"Russia", "Germany",
-		"Ukraine", "Belarus", "USA" ,"China1" ,"China12", "Germany",
-		"Russia2", "Belarus", "USA" ,"UAA","UBC","UBB","CCC","BBB","¹ãÖİ1","¹ãÖİ2","¹ãÖİ3","¹ãÖİ4","¹ã¶«1","¹ã¶«2","¹ã¶«3",
-	    };
-	
+			"China" ,"Russia", "Germany",
+			"Ukraine", "Belarus", "USA" ,"China1" ,"China12", "Germany",
+			"Russia2", "Belarus", "USA" ,"UAA","UBC","UBB","CCC","BBB","å¹¿å·1","å¹¿å·2","å¹¿å·3","å¹¿å·4","å¹¿ä¸œ1","å¹¿ä¸œ2","å¹¿ä¸œ3",
+	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.auto_complete_text_view);
-		setTitle("AutoCompleteTextViewÊ¾Àı£¡");
+		setTitle("AutoCompleteTextViewç¤ºä¾‹ï¼");
 		autoComplete=(AutoCompleteTextView)findViewById(R.id.auto_complete);
 		cleanButton=(Button)findViewById(R.id.cleanButton);
-		
+
 		ArrayAdapter<String> adapter=new ArrayAdapter<String>(AutoCompleteTextViewActivity.this,android.R.layout.simple_dropdown_item_1line,COUNTRIES);
 		autoComplete.setAdapter(adapter);
-		
-		//Çå¿Õ
+
+		//æ¸…ç©º
 		cleanButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -41,5 +41,5 @@ public class AutoCompleteTextViewActivity extends Activity {
 			}
 		});
 	}
-	
+
 }

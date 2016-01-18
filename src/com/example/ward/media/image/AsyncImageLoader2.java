@@ -20,7 +20,7 @@ import android.widget.ImageView;
 
 public class AsyncImageLoader2 {
 	private static final String TAG = AsyncImageLoader2.class.getName();
-	// SoftReferenceæ˜¯è½¯å¼•ç”¨ï¼Œæ˜¯ä¸ºäº†æ›´å¥½çš„ä¸ºäº†ç³»ç»Ÿå›æ”¶å˜é‡?
+	// SoftReferenceæ˜¯è½¯å¼•ç”¨ï¼Œæ˜¯ä¸ºäº†æ›´å¥½çš„ä¸ºäº†ç³»ç»Ÿå›æ”¶å˜
 	private HashMap<Long, SoftReference<Bitmap>> audioCache;
 	private HashMap<String, SoftReference<Drawable>> apkCache;
 	private HashMap<String, SoftReference<Bitmap>> videoCache;
@@ -69,8 +69,8 @@ public class AsyncImageLoader2 {
 		return null;
 	}
 	
-	private int width = 120;//Ã¿¸öItemµÄ¿í¶È,¿ÉÒÔ¸ù¾İÊµ¼ÊÇé¿öĞŞ¸Ä
-	private int height = 150;//Ã¿¸öItemµÄ¸ß¶È,¿ÉÒÔ¸ù¾İÊµ¼ÊÇé¿öĞŞ¸Ä
+	private int width = 120;//
+	private int height = 150;//
 	private Bitmap getBitmapFromUrl(String url){
 		Bitmap bitmap = null;
 		bitmap = ImageLoaderGridViewActivity.gridviewBitmapCaches.get(url);
@@ -78,15 +78,7 @@ public class AsyncImageLoader2 {
 			System.out.println(url);
 			return bitmap;
 		}
-//		url = url.substring(0, url.lastIndexOf("/"));//´¦ÀíÖ®Ç°µÄÂ·¾¶Çø·Ö£¬·ñÔòÂ·¾¶²»¶Ô£¬»ñÈ¡²»µ½Í¼Æ¬
-//		System.out.println("url:" + url);
-		
-		//bitmap = BitmapFactory.decodeFile(url);
-		//ÕâÀïÎÒÃÇ²»ÓÃBitmapFactory.decodeFile(url)Õâ¸ö·½·¨
-		//ÓÃdecodeFileDescriptor()·½·¨À´Éú³Ébitmap»á½ÚÊ¡ÄÚ´æ
-		//²é¿´Ô´Âë¶Ô±ÈÒ»ÏÂÎÒÃÇ»á·¢ÏÖdecodeFile()·½·¨×îÖÕÊÇÒÔÁ÷µÄ·½Ê½Éú³Ébitmap
-		//¶ødecodeFileDescriptor()·½·¨ÊÇÍ¨¹ıNative·½·¨decodeFileDescriptorÉú³ÉbitmapµÄ
-		
+
 //		try {
 //			FileInputStream is = new FileInputStream(url);
 //			bitmap = BitmapFactory.decodeFileDescriptor(is.getFD());
@@ -163,7 +155,7 @@ public class AsyncImageLoader2 {
 			}
 		};
 		
-		// å»ºç«‹ä¸?¸ªè·å–ä¸“è¾‘å›¾ç‰‡
+		// å»ºç«‹ï¿½?ï¿½ï¿½è·å–ä¸“è¾‘å›¾ç‰‡
 		new Thread() {
 			public void run() {
 //				Bitmap bitmap = MediaInfoManager.getArtwork(context, songId, albumId, true, false);
@@ -210,7 +202,7 @@ public class AsyncImageLoader2 {
 	}
 
 	/**
-	 * å¼‚æ­¥åŠ è½½å›¾ç‰‡çš„å›è°ƒæ¥å?
+	 * å¼‚æ­¥åŠ è½½å›¾ç‰‡çš„å›è°ƒæ¥
 	 */
 	public interface ILoadImageCallback {
 		public void onObtainBitmap(Bitmap bitmap, ImageView imageView);

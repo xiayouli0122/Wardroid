@@ -15,7 +15,7 @@ import android.widget.TabHost.TabSpec;
 @SuppressWarnings("deprecation")
 public class TabHostActivity extends TabActivity{
 	private TabHost tabHost;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -23,39 +23,39 @@ public class TabHostActivity extends TabActivity{
 		setContentView(R.layout.tabhost_main);
 		init();
 	}
-	
+
 	private void init(){
 		tabHost = getTabHost();
-		//Ò³Ãæ1
-		TabSpec spec1 = tabHost.newTabSpec("1");	
+		//é¡µé¢1
+		TabSpec spec1 = tabHost.newTabSpec("1");
 		spec1.setIndicator("1", getResources().getDrawable(R.drawable.alert_dialog_icon));
 		Intent intent1 = new Intent(this,Tab1Activity.class);
 		spec1.setContent(intent1);
-		
-		//Ò³Ãæ2
-		TabSpec spec2 = tabHost.newTabSpec("2");	
+
+		//é¡µé¢2
+		TabSpec spec2 = tabHost.newTabSpec("2");
 		spec2.setIndicator("2", getResources().getDrawable(R.drawable.alert_dialog_icon));
 		Intent intent2 = new Intent(this,Tab2Activity.class);
 		spec2.setContent(intent2);
-		
-		//Ò³Ãæ2
-		TabSpec spec3 = tabHost.newTabSpec("3");	
+
+		//é¡µé¢2
+		TabSpec spec3 = tabHost.newTabSpec("3");
 		spec3.setIndicator("3", getResources().getDrawable(R.drawable.alert_dialog_icon));
 		Intent intent3 = new Intent(this,Tab3Activity.class);
 		spec3.setContent(intent3);
-		
+
 		tabHost.addTab(spec1);
 		tabHost.addTab(spec2);
 		tabHost.addTab(spec3);
 	}
-	
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		detector.onTouchEvent(event);
 		return super.onTouchEvent(event);
 	}
-	
+
 	private GestureDetector detector = new GestureDetector(new GestureDetector.SimpleOnGestureListener(){
 
 		@Override
@@ -66,7 +66,7 @@ public class TabHostActivity extends TabActivity{
 				showPre();
 				return true;
 			}
-			
+
 			if ((e1.getRawX() - e2.getRawX()) > 80) {
 //				showPre();
 				showNext();
@@ -75,27 +75,27 @@ public class TabHostActivity extends TabActivity{
 			return super.onFling(e1, e2, velocityX, velocityY);
 		}
 	});
-	
+
 	/**
-	 * µ±Ç°Ò³ÃæË÷Òı
+	 * å½“å‰é¡µé¢ç´¢å¼•
 	 */
 	int i = 0;
-	
+
 	/**
-	 * ÏÔÊ¾ÏÂÒ»¸öÒ³Ãæ
+	 * æ˜¾ç¤ºä¸‹ä¸€ä¸ªé¡µé¢
 	 */
 	protected void showNext() {
-		// ÈıÔª±í´ïÊ½¿ØÖÆ3¸öÒ³ÃæµÄÑ­»·.
+		// ä¸‰å…ƒè¡¨è¾¾å¼æ§åˆ¶3ä¸ªé¡µé¢çš„å¾ªç¯.
 		tabHost.setCurrentTab(i = i == 2 ? i = 0 : ++i);
 		Log.i("kennet", i + "");
 
 	}
 
 	/**
-	 * ÏÔÊ¾Ç°Ò»¸öÒ³Ãæ
+	 * æ˜¾ç¤ºå‰ä¸€ä¸ªé¡µé¢
 	 */
 	protected void showPre() {
-		// ÈıÔª±í´ïÊ½¿ØÖÆ3¸öÒ³ÃæµÄÑ­»·.
+		// ä¸‰å…ƒè¡¨è¾¾å¼æ§åˆ¶3ä¸ªé¡µé¢çš„å¾ªç¯.
 		tabHost.setCurrentTab(i = i == 0 ? i = 2 : --i);
 	}
 }

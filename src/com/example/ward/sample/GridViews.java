@@ -7,13 +7,11 @@ public class GridViews {
 
 	public static String AUTHORITY = "com.cellcom.sqlite";
 	
-	//构造方法私有化，使之不能被实例化
 	private GridViews(){
 		
 	}
 	
 	public static final class GridInfos implements BaseColumns{
-//		//构造方法私有化，使之不能被实例化
 //		private GridInfos(){
 //			
 //		}

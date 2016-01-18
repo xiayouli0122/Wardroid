@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import com.example.ward.util.WardUtils;
 
+import android.animation.Animator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -21,9 +23,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
+@SuppressLint("NewApi")
 public class JustTestActivity extends Activity {
 	
 	BroadcastReceiver myReceiver = new BroadcastReceiver() {
@@ -43,6 +47,7 @@ public class JustTestActivity extends Activity {
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Intent.ACTION_HEADSET_PLUG);
 		registerReceiver(myReceiver, filter);
+		
 		
 		Button mButton = (Button)findViewById(R.id.button);
 		mButton.setOnClickListener(new OnClickListener() {
@@ -64,6 +69,19 @@ public class JustTestActivity extends Activity {
 				sendBroadcast(intent);
 			}
 		});
+		
+		// get the center for the clipping circle
+		int cx = (mButton.getLeft() + mButton.getRight()) / 2;
+		int cy = (mButton.getTop() + mButton.getBottom()) / 2;
+		
+		// get the final radius for the clipping circle
+		int finalRadius = Math.max(mButton.getWidth(), mButton.getHeight());
+
+		
+		Animator animator = ViewAnimationUtils.createCircularReveal(mButton, cx, cy, 0, finalRadius);
+		mButton.setVisibility(View.VISIBLE);
+		animator.start();
+		
 		
 		EditText editText = (EditText)findViewById(R.id.content_edit);
 		editText.addTextChangedListener(mTextWatcher);

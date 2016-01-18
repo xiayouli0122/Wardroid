@@ -189,13 +189,13 @@ public class AppPackageManager extends Activity {
 	}
 
 	/**
-	 * ²åÈëÒ»¸öÊı¾İµ½ÒÑ¾­ÅÅºÃĞòµÄlistÖĞ
+	 * æ’å…¥ä¸€ä¸ªæ•°æ®åˆ°å·²ç»æ’å¥½åºçš„listä¸­
 	 * 
 	 * @param list
-	 *            ÒÑ¾­ÅÅºÃĞòµÄlist
+	 *            å·²ç»æ’å¥½åºçš„list
 	 * @param appEntry
-	 *            Òª²åÈëµÄÊı¾İ
-	 * @return ½«Òª²åÈëµÄÎ»ÖÃ
+	 *            è¦æ’å…¥çš„æ•°æ®
+	 * @return å°†è¦æ’å…¥çš„ä½ç½®
 	 */
 	public static int getInsertIndex(List<AppEntry> list, AppEntry appEntry) {
 		Collator sCollator = Collator.getInstance();

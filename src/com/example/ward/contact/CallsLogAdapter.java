@@ -45,7 +45,7 @@ public class CallsLogAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		//ÓÉÕâ¸ö¾ö¶¨listÏÔÊ¾µÄÁĞÊı
+		//ç”±è¿™ä¸ªå†³å®šlistæ˜¾ç¤ºçš„åˆ—æ•°
 		return list.size();
 	}
 

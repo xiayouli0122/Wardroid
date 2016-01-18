@@ -8,32 +8,32 @@ import android.widget.RadioButton;
 
 import com.example.ward.R;
 
-//µ¥Ñ¡¿Ø¼ş
+//å•é€‰æ§ä»¶
 public class RadioGroupActivity extends Activity {
 
 	private RadioButton radioFemale;
 	private RadioButton radioMale;
 	private Button ok;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.radio_group);
-		
+
 		radioFemale=(RadioButton)findViewById(R.id.radioFemale);
 		radioMale=(RadioButton)findViewById(R.id.radioMale);
 		ok=(Button)findViewById(R.id.ok);
-		
+
 		ok.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String result="ÄãÑ¡ÔñµÄÊÇ£º";
+				String result="ä½ é€‰æ‹©çš„æ˜¯ï¼š";
 				if(radioFemale.isChecked()){
-					setTitle(result+"Å®");
+					setTitle(result+"å¥³");
 				}else{
-					setTitle(result+"ÄĞ");
+					setTitle(result+"ç”·");
 				}
 			}
 		});

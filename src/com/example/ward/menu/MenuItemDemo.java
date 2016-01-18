@@ -1,8 +1,6 @@
 package com.example.ward.menu;
 
 /**
- * ЛЅДо
- * 
  * @author Administrator
  * 
  */

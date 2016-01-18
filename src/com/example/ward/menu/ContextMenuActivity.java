@@ -27,19 +27,19 @@ public class ContextMenuActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.context_menu);
-		setTitle("单击Menu键看到效果！");
+		setTitle("ContextMenuActivity");
 		tv=(TextView)findViewById(R.id.tv1);
 		
-		this.registerForContextMenu(tv);//将上下文注册到TextView
+		this.registerForContextMenu(tv);//锟斤拷锟斤拷锟斤拷锟斤拷注锟结到TextView
 	}
 	
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 		String line=System.getProperty("line.separator");
-		menu.add(0, ITEM0, 0, "将xlog2013@163.com添加到联系人");
-		menu.add(0,ITEM1,0,"绿色背景");
-		menu.add(0,ITEM2,0,"白色背景");
+		menu.add(0, ITEM0, 0, "D澶ц皟xlog2013@163.comsdfsd");
+		menu.add(0,ITEM1,0,"Menu1");
+		menu.add(0,ITEM2,0,"Menu2");
 		
 	}
 	

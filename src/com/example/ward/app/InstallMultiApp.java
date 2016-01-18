@@ -40,7 +40,7 @@ public class InstallMultiApp extends Activity implements OnScrollListener, OnIte
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.app_install);
-		setTitle("ÊµÏÖ¾²Ä¬°²×°ÒªÓÃÔ´Âë±àÒë£¬EclipseÃ»·¨×ö£¬ÒÔºóÔÙËµ°É");
+		setTitle("å®ç°é™é»˜å®‰è£…è¦ç”¨æºç ç¼–è¯‘ï¼ŒEclipseæ²¡æ³•åšï¼Œä»¥åå†è¯´å§");
 		mListView = (ListView) findViewById(R.id.listview);
 		mListView.setOnScrollListener(this);
 		mListView.setOnItemClickListener(this);

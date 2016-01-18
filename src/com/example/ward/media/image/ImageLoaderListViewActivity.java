@@ -39,7 +39,6 @@ public class ImageLoaderListViewActivity extends Activity implements OnScrollLis
 	private ListView listView;
 	
 	private ArrayList<String> mList = null;
-	//用来保存GridView中每个Item的图片，以便释放
 	public static Map<String,Bitmap> gridviewBitmapCaches = new HashMap<String,Bitmap>();
 
 	private MyListViewAdapter mAdapter;
@@ -70,11 +69,6 @@ public class ImageLoaderListViewActivity extends Activity implements OnScrollLis
     private void initData(){
     	mList = new ArrayList<String>();
     	mList = getData();
-//    	String url = "/mnt/sdcard/testGridView/jay.png";//为sd卡下面创建testGridView文件夹，将图片放入其中
-//    	//为了方便测试，我们这里只存入一张图片，将其路径后面添加数字进行区分，到后面要获取图片时候再处理该路径。
-//    	for(int i=0;i<1000;i++){
-//    		mList.add(url+"/"+i);//区分路径
-//    	}
     }
     
     private void setAdapter(){
@@ -92,16 +86,13 @@ public class ImageLoaderListViewActivity extends Activity implements OnScrollLis
     	return super.onContextItemSelected(item);
     }
     
-    //卸载图片的函数
-  	private void recycleBitmapCaches(int fromPosition,int toPosition){		
+  	private void recycleBitmapCaches(int fromPosition,int toPosition){
   		Bitmap delBitmap = null;
   		for(int del=fromPosition;del<toPosition;del++){
   			delBitmap = gridviewBitmapCaches.get(mList.get(del));	
   			if(delBitmap != null){	
-  				//如果非空则表示有缓存的bitmap，需要清理	
-  				Log.d(TAG, "release position:"+ del);		
-  				//从缓存中移除该del->bitmap的映射		
-  				gridviewBitmapCaches.remove(mList.get(del));		
+  				Log.d(TAG, "release position:"+ del);
+  				gridviewBitmapCaches.remove(mList.get(del));
   				delBitmap.recycle();	
   				delBitmap = null;
   			}
@@ -112,9 +103,6 @@ public class ImageLoaderListViewActivity extends Activity implements OnScrollLis
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
 		// TODO Auto-generated method stub
-		//注释：firstVisibleItem为第一个可见的Item的position，从0开始，随着拖动会改变
-		//visibleItemCount为当前页面总共可见的Item的项数
-		//totalItemCount为当前总共已经出现的Item的项数
 		recycleBitmapCaches(0,firstVisibleItem);
 		recycleBitmapCaches(firstVisibleItem+visibleItemCount, totalItemCount);
 		

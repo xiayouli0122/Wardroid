@@ -15,27 +15,27 @@ package com.example.ward.sqlite;
 //
 //public class DBAdapter {
 //	public static final String TAG = "SQLite" ;//LogCat
-//	private static final String DB_NAME = "grid.db" ;//Êı¾İ¿âÃû
-//	private static final String DB_TABLE = "gridview" ;//Êı¾İ¿â±íÃû
-//	private static final int DB_VERSION = 1 ;//Êı¾İ¿â°æ±¾ºÅ
-//	public static final String KEY_ID = "_id" ; //±íÊôĞÔID
-//	public static final String KEY_IMG_ID = "img_id"; //±íÊôĞÔÍ¼Æ¬ID
-//	public static final String KEY_NAME = "name"; //±íÊôĞÔ
+//	private static final String DB_NAME = "grid.db" ;//æ•°æ®åº“å
+//	private static final String DB_TABLE = "gridview" ;//æ•°æ®åº“è¡¨å
+//	private static final int DB_VERSION = 1 ;//æ•°æ®åº“ç‰ˆæœ¬å·
+//	public static final String KEY_ID = "_id" ; //è¡¨å±æ€§ID
+//	public static final String KEY_IMG_ID = "img_id"; //è¡¨å±æ€§å›¾ç‰‡ID
+//	public static final String KEY_NAME = "name"; //è¡¨å±æ€§
 //	
-//	private SQLiteDatabase db ;   //ÉùÃ÷Ò»¸öSQLiteDatanbase¶ÔÏó
-//	private Context mContext ;    //ÉùÃ÷Ò»¸öContext¶ÔÏó
+//	private SQLiteDatabase db ;   //å£°æ˜ä¸€ä¸ªSQLiteDatanbaseå¯¹è±¡
+//	private Context mContext ;    //å£°æ˜ä¸€ä¸ªContextå¯¹è±¡
 //	
-//	private DBOpenHelper dbOpenHelper;  //ÉùÃ÷Ò»¸öDBOpenHelper¶ÔÏó
+//	private DBOpenHelper dbOpenHelper;  //å£°æ˜ä¸€ä¸ªDBOpenHelperå¯¹è±¡
 //	
 //	public DBAdapter(Context context){
 //		mContext = context;
 //	}
 //	
-//	/** ¿Õ¼ä²»¹»´æ´¢µÄÊ±ºòÉèÎªÖ»¶Á
+//	/** ç©ºé—´ä¸å¤Ÿå­˜å‚¨çš„æ—¶å€™è®¾ä¸ºåªè¯»
 //	* @throws SQLiteException
 //	*/
 //	public void open() throws SQLiteException {
-//		//´´½¨£¬´ò¿ªÊı¾İ¿âgrade.db
+//		//åˆ›å»ºï¼Œæ‰“å¼€æ•°æ®åº“grade.db
 //		dbOpenHelper = new DBOpenHelper(mContext, DB_NAME, null, DB_VERSION);
 //		try {
 //			db = dbOpenHelper.getWritableDatabase();
@@ -45,7 +45,7 @@ package com.example.ward.sqlite;
 //	}
 //	
 //	/**
-//	* µ÷ÓÃSQLiteDatabase¶ÔÏóµÄclose()·½·¨¹Ø±ÕÊı¾İ¿â
+//	* è°ƒç”¨SQLiteDatabaseå¯¹è±¡çš„close()æ–¹æ³•å…³é—­æ•°æ®åº“
 //	*/
 //	public void close() {
 //		if (db != null) {
@@ -55,7 +55,7 @@ package com.example.ward.sqlite;
 //	}
 //	
 //	/**
-//	* Ïò±íÖĞÌí¼ÓÒ»ÌõÊı¾İ
+//	* å‘è¡¨ä¸­æ·»åŠ ä¸€æ¡æ•°æ®
 //	*/
 //	public long insert(GridViews gridInfo) {
 //		ContentValues newValues = new ContentValues();
@@ -65,7 +65,7 @@ package com.example.ward.sqlite;
 //	}
 //	
 //	/**
-//	* ¸ù¾İÊäÈëIDÉ¾³ıÒ»ÌõÊı¾İ
+//	* æ ¹æ®è¾“å…¥IDåˆ é™¤ä¸€æ¡æ•°æ®
 //	* @param id
 //	* @return
 //	*/
@@ -74,7 +74,7 @@ package com.example.ward.sqlite;
 //	}
 //	
 //	/**
-//	* É¾³ıËùÓĞÊı¾İ
+//	* åˆ é™¤æ‰€æœ‰æ•°æ®
 //	* @return
 //	*/
 //	public long deleteAllData() {
@@ -82,7 +82,7 @@ package com.example.ward.sqlite;
 //	}
 //	
 //	/**
-//	* ¸ù¾İid²éÑ¯Êı¾İµÄ´úÂë
+//	* æ ¹æ®idæŸ¥è¯¢æ•°æ®çš„ä»£ç 
 //	* @param id
 //	* @return
 //	*/
@@ -94,7 +94,7 @@ package com.example.ward.sqlite;
 //	}
 //	
 //	/**
-//	* ²éÑ¯È«²¿Êı¾İ
+//	* æŸ¥è¯¢å…¨éƒ¨æ•°æ®
 //	* @return
 //	*/
 //	public GridViews[] queryAllData() {
@@ -103,7 +103,7 @@ package com.example.ward.sqlite;
 //	}
 //	
 //	/**
-//	* ¸ù¾İid¸üĞÂÒ»ÌõÊı¾İ
+//	* æ ¹æ®idæ›´æ–°ä¸€æ¡æ•°æ®
 //	*/
 //	public long updateOneData(long id, GridViews gridInfo) {
 //		ContentValues newValues = new ContentValues();
@@ -113,8 +113,8 @@ package com.example.ward.sqlite;
 //	}
 //	
 //	/**
-//	* ConvertToGrade(Cursor cursor)ÊÇË½ÓĞº¯Êı£¬
-//	* ×÷ÓÃÊÇ½«²éÑ¯½á¹û×ª»»ÎªÓÃÀ´´æ´¢Êı¾İ×Ô¶¨ÒåµÄgradeÀà¶ÔÏó
+//	* ConvertToGrade(Cursor cursor)æ˜¯ç§æœ‰å‡½æ•°ï¼Œ
+//	* ä½œç”¨æ˜¯å°†æŸ¥è¯¢ç»“æœè½¬æ¢ä¸ºç”¨æ¥å­˜å‚¨æ•°æ®è‡ªå®šä¹‰çš„gradeç±»å¯¹è±¡
 //	*/
 ////	private GridViews[] ConvertToGridInfo(Cursor cursor) {
 ////		int resultCounts = cursor.getCount();
@@ -137,11 +137,11 @@ package com.example.ward.sqlite;
 //	
 //	
 //	/**
-//	* ¾²Ì¬HelperÀà£¬ÓÃÓÚ½¨Á¢¡¢¸üĞÂºÍ´ò¿ªÊı¾İ¿â
+//	* é™æ€Helperç±»ï¼Œç”¨äºå»ºç«‹ã€æ›´æ–°å’Œæ‰“å¼€æ•°æ®åº“
 //	*/
 //	private static class DBOpenHelper extends SQLiteOpenHelper {
 //		/*
-//		 * Ê¹ÓÃSQL ÃüÁî´´½¨±í
+//		 * ä½¿ç”¨SQL å‘½ä»¤åˆ›å»ºè¡¨
 //		 */
 //		private static final String DB_CREATE = "CREATE TABLE " + DB_TABLE + " ("
 //				+ KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -149,14 +149,14 @@ package com.example.ward.sqlite;
 //				+ KEY_NAME + " TEXT"
 //				+ ");";
 //
-//		//´´½¨ºÍ´ò¿ªÊı¾İ¿â
+//		//åˆ›å»ºå’Œæ‰“å¼€æ•°æ®åº“
 //		public DBOpenHelper(Context context, String name,
 //				CursorFactory factory, int version) {
 //			super(context, name, factory, version);
 //		}
 //
 //		/*
-//		 * º¯ÊıÔÚÊı¾İ¿âµÚÒ»´Î½¨Á¢Ê±±»µ÷ÓÃ£¬ Ò»°ãÓÃÀ´ÓÃÀ´´´½¨Êı¾İ¿âÖĞµÄ±í£¬²¢×öÊÊµ±µÄ³õÊ¼»¯¹¤×÷
+//		 * å‡½æ•°åœ¨æ•°æ®åº“ç¬¬ä¸€æ¬¡å»ºç«‹æ—¶è¢«è°ƒç”¨ï¼Œ ä¸€èˆ¬ç”¨æ¥ç”¨æ¥åˆ›å»ºæ•°æ®åº“ä¸­çš„è¡¨ï¼Œå¹¶åšé€‚å½“çš„åˆå§‹åŒ–å·¥ä½œ
 //		 */
 //		@Override
 //		public void onCreate(SQLiteDatabase db) {
@@ -165,12 +165,12 @@ package com.example.ward.sqlite;
 //		}
 //
 //		/*
-//		 * SQLÃüÁî¡£onUpgrade()º¯ÊıÔÚÊı¾İ¿âĞèÒªÉı¼¶Ê±±»µ÷ÓÃ£¬ Í¨¹ıµ÷ÓÃSQLiteDatabase¶ÔÏóµÄexecSQL()·½·¨£¬
-//		 * Ö´ĞĞ´´½¨±íµÄÒ»°ãÓÃÀ´É¾³ı¾ÉµÄÊı¾İ¿â±í£¬²¢½«Êı¾İ×ªÒÆµ½ĞÂ°æ±¾µÄÊı¾İ¿â±íÖĞ
+//		 * SQLå‘½ä»¤ã€‚onUpgrade()å‡½æ•°åœ¨æ•°æ®åº“éœ€è¦å‡çº§æ—¶è¢«è°ƒç”¨ï¼Œ é€šè¿‡è°ƒç”¨SQLiteDatabaseå¯¹è±¡çš„execSQL()æ–¹æ³•ï¼Œ
+//		 * æ‰§è¡Œåˆ›å»ºè¡¨çš„ä¸€èˆ¬ç”¨æ¥åˆ é™¤æ—§çš„æ•°æ®åº“è¡¨ï¼Œå¹¶å°†æ•°æ®è½¬ç§»åˆ°æ–°ç‰ˆæœ¬çš„æ•°æ®åº“è¡¨ä¸­
 //		 */
 //		@Override
 //		public void onUpgrade(SQLiteDatabase _db, int oldVersion, int newVersion) {
-//			// ÎªÁË¼òµ¥Æğ¼û£¬²¢Ã»ÓĞ×öÈÎºÎµÄµÄÊı¾İ×ªÒÆ£¬¶ø½ö½öÉ¾³ıÔ­ÓĞµÄ±íºó½¨Á¢ĞÂµÄÊı¾İ¿â±í
+//			// ä¸ºäº†ç®€å•èµ·è§ï¼Œå¹¶æ²¡æœ‰åšä»»ä½•çš„çš„æ•°æ®è½¬ç§»ï¼Œè€Œä»…ä»…åˆ é™¤åŸæœ‰çš„è¡¨åå»ºç«‹æ–°çš„æ•°æ®åº“è¡¨
 //			Log.i(TAG, "oldVersion : " + oldVersion + "newVersion: " + newVersion );
 //			_db.execSQL("DROP TABLE IF EXISTS " + DB_TABLE);
 //			onCreate(_db);

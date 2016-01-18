@@ -85,7 +85,6 @@ public class FullScreenTest extends Activity implements OnClickListener {
             break;  
         case R.id.btn9:
         	mRLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-        			| View.SYSTEM_UI_FLAG_FULLSCREEN
         			| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         	break;
         }  

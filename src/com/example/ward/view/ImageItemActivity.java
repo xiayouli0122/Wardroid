@@ -41,7 +41,7 @@ public class ImageItemActivity extends Activity {
 	DisplayImageOptions options;
 	ViewPager pager;
 	private List<String> imageList = new ArrayList<String>();
-	private int window_width, window_height;// 鎺т欢瀹藉害
+	private int window_width, window_height;
 
 	public void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -51,8 +51,7 @@ public class ImageItemActivity extends Activity {
 		Bundle bundle = getIntent().getExtras();
 		imageList = bundle.getStringArrayList("list");
 		int pagerPosition = bundle.getInt("position", 0);
-		
-		/** 鑾峰彇鍙鍖哄煙楂樺害 **/
+
 		WindowManager manager = getWindowManager();
 		window_width = manager.getDefaultDisplay().getWidth();
 		window_height = manager.getDefaultDisplay().getHeight();
@@ -69,7 +68,7 @@ public class ImageItemActivity extends Activity {
 		pager = (ViewPager) findViewById(R.id.image_viewpager);
 		pager.setAdapter(new ImagePagerAdapter(imageList));
 		pager.setCurrentItem(pagerPosition);
-		
+
 	}
 
 	@Override
@@ -101,7 +100,7 @@ public class ImageItemActivity extends Activity {
 			return list.size();
 		}
 
-		private int state_height;// 鐘舵�鏍忕殑楂樺害
+		private int state_height;
 		private ViewTreeObserver viewTreeObserver;
 		@Override
 		public Object instantiateItem(ViewGroup view, int position) {
@@ -109,25 +108,23 @@ public class ImageItemActivity extends Activity {
 			final DragImageView imageView = (DragImageView) imageLayout.findViewById(R.id.image_pager);
 //			imageView.setOnTouchListener(ImageItemActivity.this);
 			imageView.setmActivity(ImageItemActivity.this);
-			/** 娴嬮噺鐘舵�鏍忛珮搴�**/
 			viewTreeObserver = imageView.getViewTreeObserver();
 			viewTreeObserver
-			.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+					.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
 
-				@Override
-				public void onGlobalLayout() {
-					if (state_height == 0) {
-						// 鑾峰彇鐘跺喌鏍忛珮搴�						
-						Rect frame = new Rect();
-						getWindow().getDecorView()
-								.getWindowVisibleDisplayFrame(frame);
-						state_height = frame.top;
-						imageView.setScreen_H(window_height-state_height);
-						imageView.setScreen_W(window_width);
-					}
+						@Override
+						public void onGlobalLayout() {
+							if (state_height == 0) {
+								Rect frame = new Rect();
+								getWindow().getDecorView()
+										.getWindowVisibleDisplayFrame(frame);
+								state_height = frame.top;
+								imageView.setScreen_H(window_height-state_height);
+								imageView.setScreen_W(window_width);
+							}
 
-				}
-			});
+						}
+					});
 			final ProgressBar spinner = (ProgressBar) imageLayout.findViewById(R.id.loading_image);
 
 			String path = "file://" + list.get(position);
@@ -141,21 +138,21 @@ public class ImageItemActivity extends Activity {
 				public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
 					String message = null;
 					switch (failReason.getType()) {
-					case IO_ERROR:
-						message = "Input/Output error";
-						break;
-					case DECODING_ERROR:
-						message = "Image can't be decoded";
-						break;
-					case NETWORK_DENIED:
-						message = "Downloads are denied";
-						break;
-					case OUT_OF_MEMORY:
-						message = "Out Of Memory error";
-						break;
-					case UNKNOWN:
-						message = "Unknown error";
-						break;
+						case IO_ERROR:
+							message = "Input/Output error";
+							break;
+						case DECODING_ERROR:
+							message = "Image can't be decoded";
+							break;
+						case NETWORK_DENIED:
+							message = "Downloads are denied";
+							break;
+						case OUT_OF_MEMORY:
+							message = "Out Of Memory error";
+							break;
+						case UNKNOWN:
+							message = "Unknown error";
+							break;
 					}
 					Toast.makeText(ImageItemActivity.this, message, Toast.LENGTH_SHORT).show();
 
@@ -198,5 +195,5 @@ public class ImageItemActivity extends Activity {
 		imageLoader.clearMemoryCache();
 		imageLoader.clearDiscCache();
 	}
-	
+
 }

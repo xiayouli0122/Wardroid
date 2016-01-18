@@ -55,7 +55,6 @@ public class MediaVolumeDemo extends Activity implements OnClickListener {
 			stopService(intent);
 			break;
 		case R.id.volume_up:
-			//第一个参数：音频流；第二个参数：音量上升；第三个参数：显示UI
 			mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, AudioManager.FLAG_SHOW_UI);
 			break;
 		case R.id.volume_down:

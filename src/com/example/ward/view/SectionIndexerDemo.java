@@ -5,11 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import com.example.ward.R;
-import com.yuri.utilslib.LogUtil;
-import com.yuri.utilslib.ViewUtil.ViewHolder;
-
-import android.R.integer;
 import android.app.Activity;
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
@@ -18,8 +13,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Contacts;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +20,10 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
+
+import com.example.ward.R;
+import com.yuri.utilslib.ViewUtil.ViewHolder;
+import com.yuri.utilslib.log.Log;
 
 public class SectionIndexerDemo extends Activity {
 	private ListView mListView;
@@ -167,8 +164,7 @@ public class SectionIndexerDemo extends Activity {
 			// TODO Auto-generated method stub
 			String later = section - 2 >= 0 ? sections[section - 2] :sections[section];
 			int position = alphaIndexer.get(later);
-			LogUtil.d(getApplicationContext(), 
-					"getPositionForSection:" + section + "," + later + ","+ position + ",title=" + mList.get(position).getAsString("name"));
+			Log.d("getPositionForSection:" + section + "," + later + ","+ position + ",title=" + mList.get(position).getAsString("name"));
 			return position;
 		}
 
@@ -189,7 +185,6 @@ public class SectionIndexerDemo extends Activity {
 			}
 			
 			char c = str.trim().substring(0, 1).charAt(0);
-			//正则表达式，判断首字母是否为英文
 			Pattern pattern = Pattern.compile("^[A-za-z]+$");
 			if (pattern.matcher(c + "").matches()) {
 				return (c + "").toUpperCase();

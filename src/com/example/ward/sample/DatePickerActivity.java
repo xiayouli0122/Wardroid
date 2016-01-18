@@ -12,44 +12,44 @@ import android.widget.TimePicker;
 
 import com.example.ward.R;
 
-//DatePickerÈÕÆÚÑ¡ÔñÆ÷¡¢TimePickerÊ±¼äÑ¡ÔñÆ÷ Ê¹ÓÃ
+//DatePickeræ—¥æœŸé€‰æ‹©å™¨ã€TimePickeræ—¶é—´é€‰æ‹©å™¨ ä½¿ç”¨
 public class DatePickerActivity extends Activity {
 
 	private Button datePickerButton;
 	private DatePicker datePicker1;
 	private TimePicker timePicker1;
-	
-	//Ä¬ÈÏÉú³ÉÏµÍ³µ±Ç°Ê±¼ä
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");		
+
+	//é»˜è®¤ç”Ÿæˆç³»ç»Ÿå½“å‰æ—¶é—´
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	String str=sdf.format(new Date());
 	int year=Integer.parseInt(str.substring(0, 4));
 	int month=Integer.parseInt(str.substring(5,7))-1;
 	int day=Integer.parseInt(str.substring(8,10));
 	int hour=Integer.parseInt(str.substring(11,13));
 	int minute=Integer.parseInt(str.substring(14,16));
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.date_picker);
-		setTitle("DatePicker¡¢TimePickerÊ¾Àı!");
-		
+		setTitle("DatePickerã€TimePickerç¤ºä¾‹!");
+
 		datePicker1=(DatePicker)findViewById(R.id.datePicker1);
 		timePicker1=(TimePicker)findViewById(R.id.timePicker1);
 		datePickerButton=(Button)findViewById(R.id.datePickerButton1);
 
 		datePicker1.init(year,month,day, null);
-		
+
 		timePicker1.setCurrentHour(hour);
 		timePicker1.setCurrentMinute(minute);
-		
+
 		timePicker1.setIs24HourView(true);
-		
+
 		datePickerButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				setTitle("ÄãÑ¡ÔñµÄÊÇ£º"+datePicker1.getYear()+"Äê"+datePicker1.getMonth()+"ÔÂ"+datePicker1.getDayOfMonth()+"ÈÕ "+timePicker1.getCurrentHour()+"Ğ¡Ê±"+timePicker1.getCurrentMinute()+"·Ö");
+				setTitle("ä½ é€‰æ‹©çš„æ˜¯ï¼š"+datePicker1.getYear()+"å¹´"+datePicker1.getMonth()+"æœˆ"+datePicker1.getDayOfMonth()+"æ—¥ "+timePicker1.getCurrentHour()+"å°æ—¶"+timePicker1.getCurrentMinute()+"åˆ†");
 			}
 		});
 	}

@@ -13,8 +13,8 @@ import com.example.ward.R;
 
 /**
  * @author nwang
- * 
- * ÊäÈëÉí¸ßºÍÑ¡ÔñĞÔ±ğ£¬¼ÆËã±ê×¼ÌåÖØ¡£²¢°ÑÊı¾İ·µ»Øµ½Ô­À´Activity
+ *
+ * è¾“å…¥èº«é«˜å’Œé€‰æ‹©æ€§åˆ«ï¼Œè®¡ç®—æ ‡å‡†ä½“é‡ã€‚å¹¶æŠŠæ•°æ®è¿”å›åˆ°åŸæ¥Activity
  */
 public class Bundle1Activity extends Activity {
 
@@ -23,18 +23,18 @@ public class Bundle1Activity extends Activity {
 	private RadioButton sexWoman;
 	private EditText heightEdit;
 	private Button okButton;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bundle1);
-		
+
 		sexMan=(RadioButton)findViewById(R.id.sex_man);
 		sexWoman=(RadioButton)findViewById(R.id.sex_woman);
 		heightEdit=(EditText)findViewById(R.id.height_edit);
 		okButton=(Button)findViewById(R.id.button_ok);
-		
+
 		okButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -45,10 +45,10 @@ public class Bundle1Activity extends Activity {
 				}else{
 					sex="F";
 				}
-				
+
 				Intent intent=new Intent();
 				intent.setClass(Bundle1Activity.this, Bundle2Activity.class);
-				//·â×°Êı¾İ
+				//å°è£…æ•°æ®
 				Bundle bundle=new Bundle();
 				bundle.putDouble("height", height);
 				bundle.putString("sex", sex);
@@ -57,29 +57,29 @@ public class Bundle1Activity extends Activity {
 			}
 		});
 	}
-	
-	//»Øµ÷·½·¨
+
+	//å›è°ƒæ–¹æ³•
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		
-		switch (requestCode) {
-		case RESULT_OK:
-			//RESULT_OK±íÊ¾·µ»Ø³É¹¦£¬ÌáÈ¡Êı¾İ¡£
-			Bundle bundle=data.getExtras();
-			String sex=bundle.getString("sex");
-			double height=bundle.getDouble("height");
-			heightEdit.setText(String.valueOf(height));
-			if(sex.equals("M")){
-				sexMan.setChecked(true);
-			}else{
-				sexWoman.setChecked(true);
-			}
-			break;
 
-		default:
-			break;
+		switch (requestCode) {
+			case RESULT_OK:
+				//RESULT_OKè¡¨ç¤ºè¿”å›æˆåŠŸï¼Œæå–æ•°æ®ã€‚
+				Bundle bundle=data.getExtras();
+				String sex=bundle.getString("sex");
+				double height=bundle.getDouble("height");
+				heightEdit.setText(String.valueOf(height));
+				if(sex.equals("M")){
+					sexMan.setChecked(true);
+				}else{
+					sexWoman.setChecked(true);
+				}
+				break;
+
+			default:
+				break;
 		}
 	}
-	
+
 }

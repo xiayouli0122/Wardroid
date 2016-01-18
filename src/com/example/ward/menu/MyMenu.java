@@ -23,14 +23,12 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
- * 我的菜单
- * 
  * @author haozi
  * 
  */
 public class MyMenu extends PopupWindow implements OnItemClickListener {
 
-	private MyMenuAdapter myMenuAdapter; // 自定义菜单的适配器
+	private MyMenuAdapter myMenuAdapter; //
 	private OnMenuItemClickListener mListener;
 	private LinearLayout mLayout;
 	private GridView gvTitle;  
@@ -41,18 +39,11 @@ public class MyMenu extends PopupWindow implements OnItemClickListener {
 	}
 	
 	/**
-	 * MyMenu适配器
-	 * 
 	 * @param context
-	 *            调用方的上下文
 	 * @param titleClick
-	 *            菜单点击事件
 	 * @param myMenuAdapter
-	 *            菜单适配器
 	 * @param menu
-	 *            菜单具体内容
 	 * @param myMenuAnim
-	 *            菜单需要的动画效果
 	 */
 	public MyMenu(Context context, Menu menu,
 			int myMenuAnim) {
@@ -63,12 +54,10 @@ public class MyMenu extends PopupWindow implements OnItemClickListener {
 		mLayout = (LinearLayout) inflater.inflate(R.layout.custommenu, null);
 		gvTitle = (GridView) mLayout.findViewById(R.id.gv_custom_menu);
 		
-		// 创建适配器
 		myMenuAdapter = new MyMenuAdapter(context, menu);
 		gvTitle.setAdapter(myMenuAdapter);
 		gvTitle.setOnItemClickListener(this);
 
-		// 设置菜单的特征
 		setContentView(this.mLayout);
 		
 		setWidth(LayoutParams.FILL_PARENT);
@@ -102,8 +91,6 @@ public class MyMenu extends PopupWindow implements OnItemClickListener {
 	}
 
 	/**
-	 * 适配器
-	 * 
 	 * @author haozi
 	 * 
 	 */
@@ -115,7 +102,6 @@ public class MyMenu extends PopupWindow implements OnItemClickListener {
 
 		/**
 		 * @param context
-		 *            调用方的上下文
 		 */
 		public MyMenuAdapter(Context context, Menu menu) {
 			this.context = context;

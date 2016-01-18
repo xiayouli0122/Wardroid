@@ -8,7 +8,7 @@ import android.view.SubMenu;
 
 import com.example.ward.R;
 
-//×Ó²Ëµ¥subMenu
+//å­èœå•subMenu
 public class SubMenuActivity extends Activity {
 
 	private final static int ITEM_NEW_FILE=Menu.FIRST;
@@ -19,48 +19,48 @@ public class SubMenuActivity extends Activity {
 	private final static int ITEM_SAVE_ALL=Menu.FIRST+5;
 	private final static int ITEM_CUT=Menu.FIRST+6;
 	private final static int ITEM_PASTE=Menu.FIRST+7;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sub_menu);
-		setTitle("µ¥»÷Menu¼ü¿´µ½Ğ§¹û£¡");
+		setTitle("å•å‡»Menué”®çœ‹åˆ°æ•ˆæœï¼");
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		SubMenu file=menu.addSubMenu("ÎÄ¼ş");
-		SubMenu edit=menu.addSubMenu("±à¼­");
-		
-		file.add(0,ITEM_NEW_FILE,0,"ĞÂ½¨");
-		file.add(0,ITEM_OPEN_FILE,0,"´ò¿ª");
-		file.add(0,ITEM_CLOSE,0,"¹Ø±Õ");
-		file.add(0,ITEM_SAVE,0,"±£´æ");
-		file.add(0,ITEM_SAVE_ALL,0,"±£´æÈ«²¿");
-		
-		
-		edit.add(0,ITEM_COPY,0,"¸´ÖÆ");
-		edit.add(0,ITEM_CUT,0,"¼ôÇĞ");
-		edit.add(0,ITEM_PASTE,0,"Õ³Ìù");
-		
+		SubMenu file=menu.addSubMenu("æ–‡ä»¶");
+		SubMenu edit=menu.addSubMenu("ç¼–è¾‘");
+
+		file.add(0,ITEM_NEW_FILE,0,"æ–°å»º");
+		file.add(0,ITEM_OPEN_FILE,0,"æ‰“å¼€");
+		file.add(0,ITEM_CLOSE,0,"å…³é—­");
+		file.add(0,ITEM_SAVE,0,"ä¿å­˜");
+		file.add(0,ITEM_SAVE_ALL,0,"ä¿å­˜å…¨éƒ¨");
+
+
+		edit.add(0,ITEM_COPY,0,"å¤åˆ¶");
+		edit.add(0,ITEM_CUT,0,"å‰ªåˆ‡");
+		edit.add(0,ITEM_PASTE,0,"ç²˜è´´");
+
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case ITEM_NEW_FILE:
-			setTitle("ĞÂ½¨ÎÄ¼ş£¡");
-			break;
-		case ITEM_OPEN_FILE:
-			setTitle("´ò¿ªÎÄ¼ş");
-			break;
-		case ITEM_COPY:
-			setTitle("¸´ÖÆÎÄ¼ş");
-			break;
-		default:
-			break;
+			case ITEM_NEW_FILE:
+				setTitle("æ–°å»ºæ–‡ä»¶ï¼");
+				break;
+			case ITEM_OPEN_FILE:
+				setTitle("æ‰“å¼€æ–‡ä»¶");
+				break;
+			case ITEM_COPY:
+				setTitle("å¤åˆ¶æ–‡ä»¶");
+				break;
+			default:
+				break;
 		}
 		return true;
 	}

@@ -67,7 +67,7 @@ public class CustomMenuDemo extends Activity {
 						Gravity.BOTTOM, 0, 0);
 			}
 		}
-		return false;// 返回为true 则显示系统menu
+		return false;
 	}
 	
 	class MyMenuClick implements OnMenuItemClickListener{

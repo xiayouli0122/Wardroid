@@ -14,39 +14,39 @@ public class SelectionModeAdapter extends BaseAdapter {
 	private Context mContext;
 	private String[] mDatas = null;
 	private final LayoutInflater mInflater;
-	
+
 	public static final int MODE_EDIT = 1;
 	public static final int MODE_NORMAL = 2;
-	
-	//Ìî³äÊı¾İµÄ×ÜÊı
-	private int mSize = -1; 
-	
+
+	//å¡«å……æ•°æ®çš„æ€»æ•°
+	private int mSize = -1;
+
 	private int mMode = MODE_NORMAL;
-	
-	//¶¨ÒåÒ»¸öÊı×é£¬±£´æÃ¿Ò»¸öitemÊÇ·ñ±»Ñ¡ÖĞ
+
+	//å®šä¹‰ä¸€ä¸ªæ•°ç»„ï¼Œä¿å­˜æ¯ä¸€ä¸ªitemæ˜¯å¦è¢«é€‰ä¸­
 	private boolean mCheckedArray[] = null;
-	
+
 	/**
-	 * ±»Ñ¡ÖĞµÄÊıÁ¿
+	 * è¢«é€‰ä¸­çš„æ•°é‡
 	 */
 	private int mCheckedCount = 0;
-	
+
 	public SelectionModeAdapter(Context context, String[] datas){
 		this.mContext = context;
 		this.mDatas = datas;
-		
+
 		mSize = datas.length;
-		
+
 		mInflater = LayoutInflater.from(mContext);
-		
+
 		mCheckedArray = new boolean[datas.length];
-		//³õÊ¼»¯£¬¶¼²»±»Ñ¡ÖĞ
+		//åˆå§‹åŒ–ï¼Œéƒ½ä¸è¢«é€‰ä¸­
 		for (int i = 0; i < datas.length; i++) {
 			mCheckedArray[i] = false;
 		}
 	}
-	
-	//µãÒ»ÏÂ£¬Ñ¡ÖĞ£¬µãÁ½ÏÂÈ¡ÏûÑ¡ÖĞ
+
+	//ç‚¹ä¸€ä¸‹ï¼Œé€‰ä¸­ï¼Œç‚¹ä¸¤ä¸‹å–æ¶ˆé€‰ä¸­
 	public void setChecked(int position){
 		mCheckedArray[position] = !mCheckedArray[position];
 		if (mCheckedArray[position]) {
@@ -56,9 +56,9 @@ public class SelectionModeAdapter extends BaseAdapter {
 		}
 		notifyDataSetChanged();
 	}
-	
+
 	/**
-	 * È«Ñ¡
+	 * å…¨é€‰
 	 */
 	public void selectAll(){
 		for (int i = 0; i < mSize; i++) {
@@ -66,9 +66,9 @@ public class SelectionModeAdapter extends BaseAdapter {
 		}
 		notifyDataSetChanged();
 	}
-	
+
 	/**
-	 * È¡ÏûÈ«Ñ¡
+	 * å–æ¶ˆå…¨é€‰
 	 */
 	public void unSelectAll(){
 		for (int i = 0; i < mSize; i++) {
@@ -78,48 +78,48 @@ public class SelectionModeAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñ±»Ñ¡ÖĞ
+	 * åˆ¤æ–­æ˜¯å¦è¢«é€‰ä¸­
 	 * @param position
 	 * @return
 	 */
 	public boolean isChecked(int position){
 		return mCheckedArray[position];
 	}
-	
+
 	public void changeMode(int mode){
 		switch (mode) {
-		case MODE_NORMAL:
-			unSelectAll();
-			break;
+			case MODE_NORMAL:
+				unSelectAll();
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 		mMode = mode;
 		notifyDataSetChanged();
 	}
-	
+
 	public int getMode(){
 		return mMode;
 	}
-	
+
 	public boolean isMode(int mode){
 		return mMode == mode;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public int getCheckedCount(){
 		return mCheckedCount;
 	}
-	
+
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
 		return mSize;
 	}
-	
+
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
@@ -135,16 +135,16 @@ public class SelectionModeAdapter extends BaseAdapter {
 	public class ViewHolder{
 		TextView mTextView;
 	}
-	
+
 	private static final int THEME_COLOR_DEFAULT = 0x7F33b5e5;
-    private static final int COLOR_ALPHA = 0x7FFFFFFF;
-    
+	private static final int COLOR_ALPHA = 0x7FFFFFFF;
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		ViewHolder viewHolder = null;
 		View view = convertView;
-		
+
 		if (view == null) {
 			view = mInflater.inflate(R.layout.listview_selection_mode_item, null);
 			viewHolder = new ViewHolder();
@@ -153,24 +153,24 @@ public class SelectionModeAdapter extends BaseAdapter {
 		}else {
 			viewHolder = (ViewHolder) view.getTag();
 		}
-		
-		viewHolder.mTextView.setText(mDatas[position]);
-		
-		switch (mMode) {
-		case MODE_EDIT:
-			if (mCheckedArray[position]) {
-				//±»Ñ¡ÖĞ£¬¾Í¸ü¸Ä±³¾°ÑÕÉ«
-				view.setBackgroundColor(THEME_COLOR_DEFAULT);
-			}else {
-				view.setBackgroundColor(Color.TRANSPARENT);
-			}
-			break;
-		case MODE_NORMAL:
-			//do nothing
-			break;
 
-		default:
-			break;
+		viewHolder.mTextView.setText(mDatas[position]);
+
+		switch (mMode) {
+			case MODE_EDIT:
+				if (mCheckedArray[position]) {
+					//è¢«é€‰ä¸­ï¼Œå°±æ›´æ”¹èƒŒæ™¯é¢œè‰²
+					view.setBackgroundColor(THEME_COLOR_DEFAULT);
+				}else {
+					view.setBackgroundColor(Color.TRANSPARENT);
+				}
+				break;
+			case MODE_NORMAL:
+				//do nothing
+				break;
+
+			default:
+				break;
 		}
 		return view;
 	}

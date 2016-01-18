@@ -30,19 +30,19 @@ public class NotificationService extends Service{
 //		builder.set
 		builder.setLights(Color.RED, 750, 750);
 		builder.setSmallIcon(R.drawable.ic_launcher);
-		builder.setTicker("ÕâÊÇÒ»¸ö¼òµ¥µÄNOtification");
+		builder.setTicker("è¿™æ˜¯ä¸€ä¸ªç®€å•çš„NOtification");
 		builder.setWhen(System.currentTimeMillis() + 100);
 		final NotificationManager mNotificationManager = (NotificationManager) getSystemService( Context.NOTIFICATION_SERVICE );
-		//´´½¨Notification¶ÔÏó
+		//åˆ›å»ºNotificationå¯¹è±¡
 //		final Notification notification =  new Notification();
 		final Notification notification = builder.getNotification();
 //		Notification.Builder builder = new Notification.Builder(NotificationService.this);
 //		builder.
 //		notification.icon = R.drawable.ic_launcher;
-//		notification.tickerText = "ÕâÊÇÒ»¸ö¼òµ¥µÄNOtification";
+//		notification.tickerText = "è¿™æ˜¯ä¸€ä¸ªç®€å•çš„NOtification";
 //		notification.when = System.currentTimeMillis() + 100;
 //		
-//		//Ìî³äÊôĞÔ
+//		//å¡«å……å±æ€§
 //		Context context = getApplicationContext(); 
 //		CharSequence contentTitle = "My notification"; 
 //		CharSequence contentText = "Hello World!"; 
@@ -50,12 +50,12 @@ public class NotificationService extends Service{
 //		PendingIntent contentIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0); 
 //		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 //		
-//		//ÉèÖÃled
-//		//Ê¹ÓÃÄ¬ÈÏµÄµÆ¹â
+//		//è®¾ç½®led
+//		//ä½¿ç”¨é»˜è®¤çš„ç¯å…‰
 ////		notification.defaults |= Notification.DEFAULT_LIGHTS;
 //		notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 ////		
-////		//×Ô¶¨ÒåµÆ¹â
+////		//è‡ªå®šä¹‰ç¯å…‰
 //		notification.ledARGB = color;
 //		notification.ledOnMS = 1;
 //		notification.ledOffMS = 0;

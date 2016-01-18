@@ -17,63 +17,63 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
 /****
- * ÕâÀïÄãÒªÃ÷°×¼¸¸ö·½·¨Ö´ĞĞµÄÁ÷³Ì£º Ê×ÏÈImageViewÊÇ¼Ì³Ğ×ÔViewµÄ×ÓÀà.
- * onLayout·½·¨£ºÊÇÒ»¸ö»Øµ÷·½·¨.¸Ã·½·¨»áÔÚÔÚViewÖĞµÄlayout·½·¨ÖĞÖ´ĞĞ£¬ÔÚÖ´ĞĞlayout·½·¨Ç°Ãæ»áÊ×ÏÈÖ´ĞĞsetFrame·½·¨.
- * layout·½·¨£º
- * setFrame·½·¨£ºÅĞ¶ÏÎÒÃÇµÄViewÊÇ·ñ·¢Éú±ä»¯£¬Èç¹û·¢Éú±ä»¯£¬ÄÇÃ´½«×îĞÂµÄl£¬t£¬r£¬b´«µİ¸øView£¬È»ºóË¢ĞÂ½øĞĞ¶¯Ì¬¸üĞÂUI.
- * ²¢ÇÒ·µ»Øture.Ã»ÓĞ±ä»¯·µ»Øfalse.
- * 
- * invalidate·½·¨£ºÓÃÓÚË¢ĞÂµ±Ç°¿Ø¼ş,
- * 
- * 
+ * è¿™é‡Œä½ è¦æ˜ç™½å‡ ä¸ªæ–¹æ³•æ‰§è¡Œçš„æµç¨‹ï¼š é¦–å…ˆImageViewæ˜¯ç»§æ‰¿è‡ªViewçš„å­ç±».
+ * onLayoutæ–¹æ³•ï¼šæ˜¯ä¸€ä¸ªå›è°ƒæ–¹æ³•.è¯¥æ–¹æ³•ä¼šåœ¨åœ¨Viewä¸­çš„layoutæ–¹æ³•ä¸­æ‰§è¡Œï¼Œåœ¨æ‰§è¡Œlayoutæ–¹æ³•å‰é¢ä¼šé¦–å…ˆæ‰§è¡ŒsetFrameæ–¹æ³•.
+ * layoutæ–¹æ³•ï¼š
+ * setFrameæ–¹æ³•ï¼šåˆ¤æ–­æˆ‘ä»¬çš„Viewæ˜¯å¦å‘ç”Ÿå˜åŒ–ï¼Œå¦‚æœå‘ç”Ÿå˜åŒ–ï¼Œé‚£ä¹ˆå°†æœ€æ–°çš„lï¼Œtï¼Œrï¼Œbä¼ é€’ç»™Viewï¼Œç„¶ååˆ·æ–°è¿›è¡ŒåŠ¨æ€æ›´æ–°UI.
+ * å¹¶ä¸”è¿”å›ture.æ²¡æœ‰å˜åŒ–è¿”å›false.
+ *
+ * invalidateæ–¹æ³•ï¼šç”¨äºåˆ·æ–°å½“å‰æ§ä»¶,
+ *
+ *
  * @author zhangjia
- * 
+ *
  */
 public class DragImageView extends ImageView {
 
 	private Activity mActivity;
 
-	private int screen_W, screen_H;// ¿É¼ûÆÁÄ»µÄ¿í¸ß¶È
+	private int screen_W, screen_H;// å¯è§å±å¹•çš„å®½é«˜åº¦
 
-	private int bitmap_W, bitmap_H;// µ±Ç°Í¼Æ¬¿í¸ß
+	private int bitmap_W, bitmap_H;// å½“å‰å›¾ç‰‡å®½é«˜
 
-	private int MAX_W, MAX_H, MIN_W, MIN_H;// ¼«ÏŞÖµ
+	private int MAX_W, MAX_H, MIN_W, MIN_H;// æé™å€¼
 
-	private int current_Top, current_Right, current_Bottom, current_Left;// µ±Ç°Í¼Æ¬ÉÏÏÂ×óÓÒ×ø±ê
+	private int current_Top, current_Right, current_Bottom, current_Left;// å½“å‰å›¾ç‰‡ä¸Šä¸‹å·¦å³åæ ‡
 
 	private int start_Top = -1, start_Right = -1, start_Bottom = -1,
-			start_Left = -1;// ³õÊ¼»¯Ä¬ÈÏÎ»ÖÃ.
+			start_Left = -1;// åˆå§‹åŒ–é»˜è®¤ä½ç½®.
 
-	private int start_x, start_y, current_x, current_y;// ´¥ÃşÎ»ÖÃ
+	private int start_x, start_y, current_x, current_y;// è§¦æ‘¸ä½ç½®
 
-	private float beforeLenght, afterLenght;// Á½´¥µã¾àÀë
+	private float beforeLenght, afterLenght;// ä¸¤è§¦ç‚¹è·ç¦»
 
-	private float scale_temp;// Ëõ·Å±ÈÀı
+	private float scale_temp;// ç¼©æ”¾æ¯”ä¾‹
 
 	/**
-	 * Ä£Ê½ NONE£ºÎŞ DRAG£ºÍÏ×§. ZOOM:Ëõ·Å
-	 * 
+	 * æ¨¡å¼ NONEï¼šæ—  DRAGï¼šæ‹–æ‹½. ZOOM:ç¼©æ”¾
+	 *
 	 * @author zhangjia
-	 * 
+	 *
 	 */
 	private enum MODE {
 		NONE, DRAG, ZOOM
 
 	};
 
-	private MODE mode = MODE.NONE;// Ä¬ÈÏÄ£Ê½
+	private MODE mode = MODE.NONE;// é»˜è®¤æ¨¡å¼
 
-	private boolean isControl_V = false;// ´¹Ö±¼à¿Ø
+	private boolean isControl_V = false;// å‚ç›´ç›‘æ§
 
-	private boolean isControl_H = false;// Ë®Æ½¼à¿Ø
+	private boolean isControl_H = false;// æ°´å¹³ç›‘æ§
 
-	private ScaleAnimation scaleAnimation;// Ëõ·Å¶¯»­
+	private ScaleAnimation scaleAnimation;// ç¼©æ”¾åŠ¨ç”»
 
-	private boolean isScaleAnim = false;// Ëõ·Å¶¯»­
+	private boolean isScaleAnim = false;// ç¼©æ”¾åŠ¨ç”»
 
-	private MyAsyncTask myAsyncTask;// Òì²½¶¯»­
+	private MyAsyncTask myAsyncTask;// å¼‚æ­¥åŠ¨ç”»
 
-	/** ¹¹Ôì·½·¨ **/
+	/** æ„é€ æ–¹æ³• **/
 	public DragImageView(Context context) {
 		super(context);
 	}
@@ -82,12 +82,12 @@ public class DragImageView extends ImageView {
 		this.mActivity = mActivity;
 	}
 
-	/** ¿É¼ûÆÁÄ»¿í¶È **/
+	/** å¯è§å±å¹•å®½åº¦ **/
 	public void setScreen_W(int screen_W) {
 		this.screen_W = screen_W;
 	}
 
-	/** ¿É¼ûÆÁÄ»¸ß¶È **/
+	/** å¯è§å±å¹•é«˜åº¦ **/
 	public void setScreen_H(int screen_H) {
 		this.screen_H = screen_H;
 	}
@@ -97,12 +97,12 @@ public class DragImageView extends ImageView {
 	}
 
 	/***
-	 * ÉèÖÃÏÔÊ¾Í¼Æ¬
+	 * è®¾ç½®æ˜¾ç¤ºå›¾ç‰‡
 	 */
 	@Override
 	public void setImageBitmap(Bitmap bm) {
 		super.setImageBitmap(bm);
-		/** »ñÈ¡Í¼Æ¬¿í¸ß **/
+		/** è·å–å›¾ç‰‡å®½é«˜ **/
 		bitmap_W = bm.getWidth();
 		bitmap_H = bm.getHeight();
 
@@ -116,7 +116,7 @@ public class DragImageView extends ImageView {
 
 	@Override
 	protected void onLayout(boolean changed, int left, int top, int right,
-			int bottom) {
+							int bottom) {
 		super.onLayout(changed, left, top, right, bottom);
 		if (start_Top == -1) {
 			start_Top = top;
@@ -128,41 +128,41 @@ public class DragImageView extends ImageView {
 	}
 
 	/***
-	 * touch ÊÂ¼ş
+	 * touch äº‹ä»¶
 	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		/** ´¦Àíµ¥µã¡¢¶àµã´¥Ãş **/
+		/** å¤„ç†å•ç‚¹ã€å¤šç‚¹è§¦æ‘¸ **/
 		switch (event.getAction() & MotionEvent.ACTION_MASK) {
-		case MotionEvent.ACTION_DOWN:
-			onTouchDown(event);
-			break;
-		// ¶àµã´¥Ãş
-		case MotionEvent.ACTION_POINTER_DOWN:
-			onPointerDown(event);
-			break;
+			case MotionEvent.ACTION_DOWN:
+				onTouchDown(event);
+				break;
+			// å¤šç‚¹è§¦æ‘¸
+			case MotionEvent.ACTION_POINTER_DOWN:
+				onPointerDown(event);
+				break;
 
-		case MotionEvent.ACTION_MOVE:
-			onTouchMove(event);
-			break;
-		case MotionEvent.ACTION_UP:
-			mode = MODE.NONE;
-			break;
+			case MotionEvent.ACTION_MOVE:
+				onTouchMove(event);
+				break;
+			case MotionEvent.ACTION_UP:
+				mode = MODE.NONE;
+				break;
 
-		// ¶àµãËÉ¿ª
-		case MotionEvent.ACTION_POINTER_UP:
-			mode = MODE.NONE;
-			/** Ö´ĞĞËõ·Å»¹Ô­ **/
-			if (isScaleAnim) {
-				doScaleAnim();
-			}
-			break;
+			// å¤šç‚¹æ¾å¼€
+			case MotionEvent.ACTION_POINTER_UP:
+				mode = MODE.NONE;
+				/** æ‰§è¡Œç¼©æ”¾è¿˜åŸ **/
+				if (isScaleAnim) {
+					doScaleAnim();
+				}
+				break;
 		}
 
 		return true;
 	}
 
-	/** °´ÏÂ **/
+	/** æŒ‰ä¸‹ **/
 	void onTouchDown(MotionEvent event) {
 		mode = MODE.DRAG;
 
@@ -174,29 +174,29 @@ public class DragImageView extends ImageView {
 
 	}
 
-	/** Á½¸öÊÖÖ¸ Ö»ÄÜ·Å´óËõĞ¡ **/
+	/** ä¸¤ä¸ªæ‰‹æŒ‡ åªèƒ½æ”¾å¤§ç¼©å° **/
 	void onPointerDown(MotionEvent event) {
 		if (event.getPointerCount() == 2) {
 			mode = MODE.ZOOM;
-			beforeLenght = getDistance(event);// »ñÈ¡Á½µãµÄ¾àÀë
+			beforeLenght = getDistance(event);// è·å–ä¸¤ç‚¹çš„è·ç¦»
 		}
 	}
 
-	/** ÒÆ¶¯µÄ´¦Àí **/
+	/** ç§»åŠ¨çš„å¤„ç† **/
 	void onTouchMove(MotionEvent event) {
 		int left = 0, top = 0, right = 0, bottom = 0;
-		/** ´¦ÀíÍÏ¶¯ **/
+		/** å¤„ç†æ‹–åŠ¨ **/
 		if (mode == MODE.DRAG) {
 
-			/** ÔÚÕâÀïÒª½øĞĞÅĞ¶Ï´¦Àí£¬·ÀÖ¹ÔÚdragÊ±ºòÔ½½ç **/
+			/** åœ¨è¿™é‡Œè¦è¿›è¡Œåˆ¤æ–­å¤„ç†ï¼Œé˜²æ­¢åœ¨dragæ—¶å€™è¶Šç•Œ **/
 
-			/** »ñÈ¡ÏàÓ¦µÄl£¬t,r ,b **/
+			/** è·å–ç›¸åº”çš„lï¼Œt,r ,b **/
 			left = current_x - start_x;
 			right = current_x + this.getWidth() - start_x;
 			top = current_y - start_y;
 			bottom = current_y - start_y + this.getHeight();
 
-			/** Ë®Æ½½øĞĞÅĞ¶Ï **/
+			/** æ°´å¹³è¿›è¡Œåˆ¤æ–­ **/
 			if (isControl_H) {
 				if (left >= 0) {
 					left = 0;
@@ -210,7 +210,7 @@ public class DragImageView extends ImageView {
 				left = this.getLeft();
 				right = this.getRight();
 			}
-			/** ´¹Ö±ÅĞ¶Ï **/
+			/** å‚ç›´åˆ¤æ–­ **/
 			if (isControl_V) {
 				if (top >= 0) {
 					top = 0;
@@ -232,15 +232,15 @@ public class DragImageView extends ImageView {
 			current_y = (int) event.getRawY();
 
 		}
-		/** ´¦ÀíËõ·Å **/
+		/** å¤„ç†ç¼©æ”¾ **/
 		else if (mode == MODE.ZOOM) {
 
-			afterLenght = getDistance(event);// »ñÈ¡Á½µãµÄ¾àÀë
+			afterLenght = getDistance(event);// è·å–ä¸¤ç‚¹çš„è·ç¦»
 
-			float gapLenght = afterLenght - beforeLenght;// ±ä»¯µÄ³¤¶È
+			float gapLenght = afterLenght - beforeLenght;// å˜åŒ–çš„é•¿åº¦
 
 			if (Math.abs(gapLenght) > 5f) {
-				scale_temp = afterLenght / beforeLenght;// ÇóµÄËõ·ÅµÄ±ÈÀı
+				scale_temp = afterLenght / beforeLenght;// æ±‚çš„ç¼©æ”¾çš„æ¯”ä¾‹
 
 				this.setScale(scale_temp);
 
@@ -250,7 +250,7 @@ public class DragImageView extends ImageView {
 
 	}
 
-	/** »ñÈ¡Á½µãµÄ¾àÀë **/
+	/** è·å–ä¸¤ç‚¹çš„è·ç¦» **/
 	float getDistance(MotionEvent event) {
 		float x = event.getX(0) - event.getX(1);
 		float y = event.getY(0) - event.getY(1);
@@ -258,17 +258,17 @@ public class DragImageView extends ImageView {
 		return FloatMath.sqrt(x * x + y * y);
 	}
 
-	/** ÊµÏÖ´¦ÀíÍÏ¶¯ **/
+	/** å®ç°å¤„ç†æ‹–åŠ¨ **/
 	private void setPosition(int left, int top, int right, int bottom) {
 		this.layout(left, top, right, bottom);
 	}
 
-	/** ´¦ÀíËõ·Å **/
+	/** å¤„ç†ç¼©æ”¾ **/
 	void setScale(float scale) {
-		int disX = (int) (this.getWidth() * Math.abs(1 - scale)) / 4;// »ñÈ¡Ëõ·ÅË®Æ½¾àÀë
-		int disY = (int) (this.getHeight() * Math.abs(1 - scale)) / 4;// »ñÈ¡Ëõ·Å´¹Ö±¾àÀë
+		int disX = (int) (this.getWidth() * Math.abs(1 - scale)) / 4;// è·å–ç¼©æ”¾æ°´å¹³è·ç¦»
+		int disY = (int) (this.getHeight() * Math.abs(1 - scale)) / 4;// è·å–ç¼©æ”¾å‚ç›´è·ç¦»
 
-		// ·Å´ó
+		// æ”¾å¤§
 		if (scale > 1 && this.getWidth() <= MAX_W) {
 			current_Left = this.getLeft() - disX;
 			current_Top = this.getTop() - disY;
@@ -278,65 +278,65 @@ public class DragImageView extends ImageView {
 			this.setFrame(current_Left, current_Top, current_Right,
 					current_Bottom);
 			/***
-			 * ´ËÊ±ÒòÎª¿¼ÂÇµ½¶Ô³Æ£¬ËùÒÔÖ»×öÒ»±éÅĞ¶Ï¾Í¿ÉÒÔÁË¡£
+			 * æ­¤æ—¶å› ä¸ºè€ƒè™‘åˆ°å¯¹ç§°ï¼Œæ‰€ä»¥åªåšä¸€éåˆ¤æ–­å°±å¯ä»¥äº†ã€‚
 			 */
 			if (current_Top <= 0 && current_Bottom >= screen_H) {
-		//		Log.e("jj", "ÆÁÄ»¸ß¶È=" + this.getHeight());
-				isControl_V = true;// ¿ªÆô´¹Ö±¼à¿Ø
+				//		Log.e("jj", "å±å¹•é«˜åº¦=" + this.getHeight());
+				isControl_V = true;// å¼€å¯å‚ç›´ç›‘æ§
 			} else {
 				isControl_V = false;
 			}
 			if (current_Left <= 0 && current_Right >= screen_W) {
-				isControl_H = true;// ¿ªÆôË®Æ½¼à¿Ø
+				isControl_H = true;// å¼€å¯æ°´å¹³ç›‘æ§
 			} else {
 				isControl_H = false;
 			}
 
 		}
-		// ËõĞ¡
+		// ç¼©å°
 		else if (scale < 1 && this.getWidth() >= MIN_W) {
 			current_Left = this.getLeft() + disX;
 			current_Top = this.getTop() + disY;
 			current_Right = this.getRight() - disX;
 			current_Bottom = this.getBottom() - disY;
 			/***
-			 * ÔÚÕâÀïÒª½øĞĞËõ·Å´¦Àí
+			 * åœ¨è¿™é‡Œè¦è¿›è¡Œç¼©æ”¾å¤„ç†
 			 */
-			// ÉÏ±ßÔ½½ç
+			// ä¸Šè¾¹è¶Šç•Œ
 			if (isControl_V && current_Top > 0) {
 				current_Top = 0;
 				current_Bottom = this.getBottom() - 2 * disY;
 				if (current_Bottom < screen_H) {
 					current_Bottom = screen_H;
-					isControl_V = false;// ¹Ø±Õ´¹Ö±¼àÌı
+					isControl_V = false;// å…³é—­å‚ç›´ç›‘å¬
 				}
 			}
-			// ÏÂ±ßÔ½½ç
+			// ä¸‹è¾¹è¶Šç•Œ
 			if (isControl_V && current_Bottom < screen_H) {
 				current_Bottom = screen_H;
 				current_Top = this.getTop() + 2 * disY;
 				if (current_Top > 0) {
 					current_Top = 0;
-					isControl_V = false;// ¹Ø±Õ´¹Ö±¼àÌı
+					isControl_V = false;// å…³é—­å‚ç›´ç›‘å¬
 				}
 			}
 
-			// ×ó±ßÔ½½ç
+			// å·¦è¾¹è¶Šç•Œ
 			if (isControl_H && current_Left >= 0) {
 				current_Left = 0;
 				current_Right = this.getRight() - 2 * disX;
 				if (current_Right <= screen_W) {
 					current_Right = screen_W;
-					isControl_H = false;// ¹Ø±Õ
+					isControl_H = false;// å…³é—­
 				}
 			}
-			// ÓÒ±ßÔ½½ç
+			// å³è¾¹è¶Šç•Œ
 			if (isControl_H && current_Right <= screen_W) {
 				current_Right = screen_W;
 				current_Left = this.getLeft() + 2 * disX;
 				if (current_Left >= 0) {
 					current_Left = 0;
-					isControl_H = false;// ¹Ø±Õ
+					isControl_H = false;// å…³é—­
 				}
 			}
 
@@ -346,7 +346,7 @@ public class DragImageView extends ImageView {
 			} else {
 				this.setFrame(current_Left, current_Top, current_Right,
 						current_Bottom);
-				isScaleAnim = true;// ¿ªÆôËõ·Å¶¯»­
+				isScaleAnim = true;// å¼€å¯ç¼©æ”¾åŠ¨ç”»
 			}
 
 		}
@@ -354,7 +354,7 @@ public class DragImageView extends ImageView {
 	}
 
 	/***
-	 * Ëõ·Å¶¯»­´¦Àí
+	 * ç¼©æ”¾åŠ¨ç”»å¤„ç†
 	 */
 	public void doScaleAnim() {
 		myAsyncTask = new MyAsyncTask(screen_W, this.getWidth(),
@@ -362,20 +362,20 @@ public class DragImageView extends ImageView {
 		myAsyncTask.setLTRB(this.getLeft(), this.getTop(), this.getRight(),
 				this.getBottom());
 		myAsyncTask.execute();
-		isScaleAnim = false;// ¹Ø±Õ¶¯»­
+		isScaleAnim = false;// å…³é—­åŠ¨ç”»
 	}
 
 	/***
-	 * »ØËõ¶¯»­ˆÌĞĞ
+	 * å›ç¼©åŠ¨ç”»åŸ·è¡Œ
 	 */
 	class MyAsyncTask extends AsyncTask<Void, Integer, Void> {
 		private int screen_W, current_Width, current_Height;
 
 		private int left, top, right, bottom;
 
-		private float scale_WH;// ¿í¸ßµÄ±ÈÀı
+		private float scale_WH;// å®½é«˜çš„æ¯”ä¾‹
 
-		/** µ±Ç°µÄÎ»ÖÃÊôĞÔ **/
+		/** å½“å‰çš„ä½ç½®å±æ€§ **/
 		public void setLTRB(int left, int top, int right, int bottom) {
 			this.left = left;
 			this.top = top;
@@ -383,9 +383,9 @@ public class DragImageView extends ImageView {
 			this.bottom = bottom;
 		}
 
-		private float STEP = 8f;// ²½·¥
+		private float STEP = 8f;// æ­¥ä¼
 
-		private float step_H, step_V;// Ë®Æ½²½·¥£¬´¹Ö±²½·¥
+		private float step_H, step_V;// æ°´å¹³æ­¥ä¼ï¼Œå‚ç›´æ­¥ä¼
 
 		public MyAsyncTask(int screen_W, int current_Width, int current_Height) {
 			super();
@@ -413,7 +413,7 @@ public class DragImageView extends ImageView {
 				top = Math.max(top, start_Top);
 				right = Math.min(right, start_Right);
 				bottom = Math.min(bottom, start_Bottom);
-                Log.e("jj", "top="+top+",bottom="+bottom+",left="+left+",right="+right);
+				Log.e("jj", "top="+top+",bottom="+bottom+",left="+left+",right="+right);
 				onProgressUpdate(new Integer[] { left, top, right, bottom });
 				try {
 					Thread.sleep(10);

@@ -21,15 +21,10 @@ public class BitmapUtilities {
 	
 	public static Bitmap getBitmapThumbnail(String path,int width,int height){
 		Bitmap bitmap = null;
-		//这里可以按比例缩小图片：
 		/*BitmapFactory.Options opts = new BitmapFactory.Options();
-		opts.inSampleSize = 4;//宽和高都是原来的1/4
+		opts.inSampleSize = 4;
 		bitmap = BitmapFactory.decodeFile(path, opts); */
 		
-		/*进一步的，
-	            如何设置恰当的inSampleSize是解决该问题的关键之一。BitmapFactory.Options提供了另一个成员inJustDecodeBounds。
-	           设置inJustDecodeBounds为true后，decodeFile并不分配空间，但可计算出原始图片的长度和宽度，即opts.width和opts.height。
-	           有了这两个参数，再通过一定的算法，即可得到一个恰当的inSampleSize。*/
 		BitmapFactory.Options opts = new BitmapFactory.Options();
 	    opts.inJustDecodeBounds = true;
 	    BitmapFactory.decodeFile(path, opts); 
@@ -58,10 +53,7 @@ public class BitmapUtilities {
 	}
 	
 	/**
-	 * 转换图片成圆形
-	 * 
 	 * @param bitmap
-	 *             传入Bitmap对象
 	 * @return
 	 */
 	public static Bitmap toRoundBitmap(Bitmap bitmap) {
@@ -108,23 +100,21 @@ public class BitmapUtilities {
 		final Rect dst = new Rect((int) dst_left, (int) dst_top, (int) dst_right, (int) dst_bottom);
 		final RectF rectF = new RectF(dst);
 
-		paint.setAntiAlias(true);// 设置画笔无锯齿
+		paint.setAntiAlias(true);
 
-		canvas.drawARGB(0, 0, 0, 0); // 填充整个Canvas
+		canvas.drawARGB(0, 0, 0, 0);
 
-		// 以下有两种方法画圆,drawRounRect和drawCircle
-		canvas.drawRoundRect(rectF, roundPx, roundPx, paint);// 画圆角矩形，第一个参数为图形显示区域，第二个参数和第三个参数分别是水平圆角半径和垂直圆角半径。
+		canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
 		// canvas.drawCircle(roundPx, roundPx, roundPx, paint);
 
-		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));// 设置两张图片相交时的模式,参考http://trylovecatch.iteye.com/blog/1189452
-		canvas.drawBitmap(bitmap, src, dst, paint); // 以Mode.SRC_IN模式合并bitmap和已经draw了的Circle
+		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));//http://trylovecatch.iteye.com/blog/1189452
+		canvas.drawBitmap(bitmap, src, dst, paint);
 
 
 		return output;
 	}
 	
 	/**
-	 * 圆角图片
 	 * @param bitmap
 	 * @return
 	 */
@@ -156,51 +146,38 @@ public class BitmapUtilities {
 	}  
 	
 	/***
-	 * 设置图片倒影
 	 * @param originalBitmap
 	 * @return
 	 */
 	public static Bitmap createReflectedImage(Bitmap originalBitmap) {  
-        // 图片与倒影间隔距离  
-        final int reflectionGap = 4;  
+        final int reflectionGap = 4;
           
-        // 图片的宽度  
-        int width = originalBitmap.getWidth();  
-        // 图片的高度  
-        int height = originalBitmap.getHeight();  
+        int width = originalBitmap.getWidth();
+        int height = originalBitmap.getHeight();
           
         Matrix matrix = new Matrix();  
-        // 图片缩放，x轴变为原来的1倍，y轴为-1倍,实现图片的反转  
-        matrix.preScale(1, -1);  
-        // 创建反转后的图片Bitmap对象，图片高是原图的一半。  
-        Bitmap reflectionBitmap = Bitmap.createBitmap(originalBitmap, 0,  
+        matrix.preScale(1, -1);
+        Bitmap reflectionBitmap = Bitmap.createBitmap(originalBitmap, 0,
                 height / 2, width, height / 2, matrix, false);  
-        // 创建标准的Bitmap对象，宽和原图一致，高是原图的1.5倍。  
-        Bitmap withReflectionBitmap = Bitmap.createBitmap(width, (height  
+        Bitmap withReflectionBitmap = Bitmap.createBitmap(width, (height
                 + height / 2 + reflectionGap), Config.ARGB_8888);  
   
-        // 构造函数传入Bitmap对象，为了在图片上画图  
-        Canvas canvas = new Canvas(withReflectionBitmap);  
-        // 画原始图片  
-        canvas.drawBitmap(originalBitmap, 0, 0, null);  
+        Canvas canvas = new Canvas(withReflectionBitmap);
+        canvas.drawBitmap(originalBitmap, 0, 0, null);
   
-        // 画间隔矩形  
-        Paint defaultPaint = new Paint();  
+        Paint defaultPaint = new Paint();
         canvas.drawRect(0, height, width, height + reflectionGap, defaultPaint);  
   
-        // 画倒影图片  
-        canvas.drawBitmap(reflectionBitmap, 0, height + reflectionGap, null);  
+        canvas.drawBitmap(reflectionBitmap, 0, height + reflectionGap, null);
   
-        // 实现倒影效果  
-        Paint paint = new Paint();  
+        Paint paint = new Paint();
         LinearGradient shader = new LinearGradient(0, originalBitmap.getHeight(),   
                 0, withReflectionBitmap.getHeight(), 0x70ffffff, 0x00ffffff,  
                 TileMode.MIRROR);  
         paint.setShader(shader);  
         paint.setXfermode(new PorterDuffXfermode(Mode.DST_IN));  
   
-        // 覆盖效果  
-        canvas.drawRect(0, height, width, withReflectionBitmap.getHeight(), paint);  
+        canvas.drawRect(0, height, width, withReflectionBitmap.getHeight(), paint);
   
         return withReflectionBitmap;  
     }  

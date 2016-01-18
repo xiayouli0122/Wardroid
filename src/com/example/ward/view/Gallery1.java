@@ -38,18 +38,18 @@ public class Gallery1 extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//Ó°²Ø¶¥²¿³ÌĞòÃû³Æ Ğ´ÔÚsetContentView(R.layout.gallery_1);Ö®Ç°£¬²»È»±¨´í
-		requestWindowFeature(Window.FEATURE_NO_TITLE);  
+		//å½±è—é¡¶éƒ¨ç¨‹åºåç§° å†™åœ¨setContentView(R.layout.gallery_1);ä¹‹å‰ï¼Œä¸ç„¶æŠ¥é”™
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.gallery_1);
-		//Ó°²Ø¶¥²¿µçÁ¿µÈÍ¼±ê
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-				WindowManager.LayoutParams.FLAG_FULLSCREEN); 
+		//å½±è—é¡¶éƒ¨ç”µé‡ç­‰å›¾æ ‡
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		Gallery g = (Gallery) findViewById(R.id.gallery);
 		g.setAdapter(new ImageAdapter(this));
-		//ÉèÖÃÏÔÊ¾µÚ¼¸ÕÅÍ¼Æ¬ ²ÎÊıÊÇGetImagesFromSDCardÖĞµÄ¾²Ì¬±äÁ¿
+		//è®¾ç½®æ˜¾ç¤ºç¬¬å‡ å¼ å›¾ç‰‡ å‚æ•°æ˜¯GetImagesFromSDCardä¸­çš„é™æ€å˜é‡
 		g.setSelection(ImageBrowser.imagePosition);
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
@@ -58,28 +58,28 @@ public class Gallery1 extends Activity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
+
 	public class ImageAdapter extends BaseAdapter {
 		int mGalleryItemBackground;
 		public ImageAdapter(Context c) {
 			mContext = c;
 			/*
-			 * Ê¹ÓÃÔÚres/values/attrs.xmlÖĞµÄ<declare-styleable>¶¨Òå µÄGalleryÊôĞÔ.
+			 * ä½¿ç”¨åœ¨res/values/attrs.xmlä¸­çš„<declare-styleable>å®šä¹‰ çš„Galleryå±æ€§.
 			 */
 			TypedArray a = obtainStyledAttributes(R.styleable.Gallery1);
-			/* È¡µÃGalleryÊôĞÔµÄIndex id */
+			/* å–å¾—Galleryå±æ€§çš„Index id */
 			mGalleryItemBackground = a.getResourceId(
 					R.styleable.Gallery1_android_galleryItemBackground, 0);
-			/* ÈÃ¶ÔÏóµÄstyleableÊôĞÔÄÜ¹»·´¸´Ê¹ÓÃ */
+			/* è®©å¯¹è±¡çš„styleableå±æ€§èƒ½å¤Ÿåå¤ä½¿ç”¨ */
 			a.recycle();
 		}
 
-		/* ÖØĞ´µÄ·½·¨getCount,·µ»ØÍ¼Æ¬ÊıÄ¿ */
+		/* é‡å†™çš„æ–¹æ³•getCount,è¿”å›å›¾ç‰‡æ•°ç›® */
 		public int getCount() {
 			return uri.length;
 		}
 
-		/* ÖØĞ´µÄ·½·¨getItemId,·µ»ØÍ¼ÏñµÄÊı×éid */
+		/* é‡å†™çš„æ–¹æ³•getItemId,è¿”å›å›¾åƒçš„æ•°ç»„id */
 
 		public Object getItem(int position) {
 			return position;
@@ -89,17 +89,17 @@ public class Gallery1 extends Activity {
 			return position;
 		}
 
-		/* ÖØĞ´µÄ·½·¨getView,·µ»ØÒ»View¶ÔÏó */
+		/* é‡å†™çš„æ–¹æ³•getView,è¿”å›ä¸€Viewå¯¹è±¡ */
 		public View getView(int position, View convertView, ViewGroup parent){
 			ImageView view = new ImageView(Gallery1.this);
-			//ÉèÖÃËùÓĞÍ¼Æ¬µÄ×ÊÔ´µØÖ·
+			//è®¾ç½®æ‰€æœ‰å›¾ç‰‡çš„èµ„æºåœ°å€
 			view.setImageURI(uri[position]);
 			view.setScaleType(ImageView.ScaleType.FIT_XY);
 			view.setLayoutParams(new Gallery.LayoutParams(240, 320));
-			/* ÉèÖÃGallery±³¾°Í¼ */
+			/* è®¾ç½®GalleryèƒŒæ™¯å›¾ */
 			view.setBackgroundResource(mGalleryItemBackground);
 			return view;
 		}
-		
+
 	}
 }

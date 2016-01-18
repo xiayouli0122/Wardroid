@@ -60,7 +60,6 @@ public class RingtonesDemo extends Activity {
 	}
 	
 	/**
-	 * 使用AsyncTask时，需要传入三个泛型
 	 * */
 //	class AsyncTaskTest extends AsyncTask<Params, Progress, Result>
 	

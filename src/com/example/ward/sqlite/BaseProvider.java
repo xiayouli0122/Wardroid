@@ -23,21 +23,21 @@ public class BaseProvider extends ContentProvider {
 
 	private static final String TAG = "BaseProvider";
 
-	//  ˝æ›ø‚√˚≥∆
+	// Êï∞ÊçÆÂ∫ìÂêçÁß∞
 	private static final String DATABASE_NAME = "base_grid.db";
 
-	//  ˝æ›ø‚∞Ê±æ
+	// Êï∞ÊçÆÂ∫ìÁâàÊú¨
 	private static final int DATABASE_VERSION = 2;
 
-	public static final String KEY_ID = "_id"; // ±Ì Ù–‘ID
-	public static final String KEY_IMG_ID = "img_id"; // ±Ì Ù–‘Õº∆¨ID
-	public static final String KEY_NAME = "name"; // ±Ì Ù–‘
+	public static final String KEY_ID = "_id"; // Ë°®Â±ûÊÄßID
+	public static final String KEY_IMG_ID = "img_id"; // Ë°®Â±ûÊÄßÂõæÁâáID
+	public static final String KEY_NAME = "name"; // Ë°®Â±ûÊÄß
 
-	private SQLiteDatabase db; // …˘√˜“ª∏ˆSQLiteDatanbase∂‘œÛ
-	private Context mContext; // …˘√˜“ª∏ˆContext∂‘œÛ
+	private SQLiteDatabase db; // Â£∞Êòé‰∏Ä‰∏™SQLiteDatanbaseÂØπË±°
+	private Context mContext; // Â£∞Êòé‰∏Ä‰∏™ContextÂØπË±°
 	private static DatabaseHelper mDatabaseHelper;
 
-	// »Áπ˚URI ∆•≈‰≥…π¶£¨‘Ú∑µªÿ∏√≥£¡ø
+	// Â¶ÇÊûúURI ÂåπÈÖçÊàêÂäüÔºåÂàôËøîÂõûËØ•Â∏∏Èáè
 	private static final int GRIDS = 1;
 
 	/**
@@ -77,18 +77,18 @@ public class BaseProvider extends ContentProvider {
 	}
 
 	public BaseProvider(){}
-	
+
 	public BaseProvider(Context context) {
 		mContext = context;
 	}
 
 	/**
-	 * ø’º‰≤ªπª¥Ê¥¢µƒ ±∫Ú…ËŒ™÷ª∂¡
-	 * 
+	 * Á©∫Èó¥‰∏çÂ§üÂ≠òÂÇ®ÁöÑÊó∂ÂÄôËÆæ‰∏∫Âè™ËØª
+	 *
 	 * @throws SQLiteException
 	 */
 	public void open() throws SQLiteException {
-		// ¥¥Ω®£¨¥Úø™ ˝æ›ø‚grade.db
+		// ÂàõÂª∫ÔºåÊâìÂºÄÊï∞ÊçÆÂ∫ìgrade.db
 		mDatabaseHelper = new DatabaseHelper(mContext);
 		try {
 			db = mDatabaseHelper.getWritableDatabase();
@@ -98,7 +98,7 @@ public class BaseProvider extends ContentProvider {
 	}
 
 	/**
-	 * µ˜”√SQLiteDatabase∂‘œÛµƒclose()∑Ω∑®πÿ±’ ˝æ›ø‚
+	 * Ë∞ÉÁî®SQLiteDatabaseÂØπË±°ÁöÑclose()ÊñπÊ≥ïÂÖ≥Èó≠Êï∞ÊçÆÂ∫ì
 	 */
 	public void close() {
 		if (db != null) {
@@ -107,7 +107,7 @@ public class BaseProvider extends ContentProvider {
 		}
 	}
 
-	// Ñh≥˝≤Ÿ◊˜
+	// Âà™Èô§Êìç‰Ωú
 	@Override
 	public int delete(Uri uri, String where, String[] whereArgs) {
 		// TODO Auto-generated method stub
@@ -120,51 +120,51 @@ public class BaseProvider extends ContentProvider {
 		// Does the delete based on the incoming URI pattern.
 		switch (sUriMatcher.match(uri)) {
 
-		// If the incoming pattern matches the general pattern for notes, does a
-		// delete
-		// based on the incoming "where" columns and arguments.
-		case GRIDS:
-			count = db.delete(GridViews.GridInfos.TABLE_NAME, // The database
-																// table name
-					where, // The incoming where clause column names
-					whereArgs // The incoming where clause values
-					);
-			break;
+			// If the incoming pattern matches the general pattern for notes, does a
+			// delete
+			// based on the incoming "where" columns and arguments.
+			case GRIDS:
+				count = db.delete(GridViews.GridInfos.TABLE_NAME, // The database
+						// table name
+						where, // The incoming where clause column names
+						whereArgs // The incoming where clause values
+				);
+				break;
 
-		// If the incoming URI matches a single note ID, does the delete based
-		// on the
-		// incoming data, but modifies the where clause to restrict it to the
-		// particular note ID.
-		// case NOTE_ID:
-		// /*
-		// * Starts a final WHERE clause by restricting it to the
-		// * desired note ID.
-		// */
-		// finalWhere =
-		// NotePad.Notes._ID + // The ID column name
-		// " = " + // test for equality
-		// uri.getPathSegments(). // the incoming note ID
-		// get(NotePad.Notes.NOTE_ID_PATH_POSITION)
-		// ;
-		//
-		// // If there were additional selection criteria, append them to the
-		// final
-		// // WHERE clause
-		// if (where != null) {
-		// finalWhere = finalWhere + " AND " + where;
-		// }
-		//
-		// // Performs the delete.
-		// count = db.delete(
-		// NotePad.Notes.TABLE_NAME, // The database table name.
-		// finalWhere, // The final WHERE clause
-		// whereArgs // The incoming where clause values.
-		// );
-		// break;
+			// If the incoming URI matches a single note ID, does the delete based
+			// on the
+			// incoming data, but modifies the where clause to restrict it to the
+			// particular note ID.
+			// case NOTE_ID:
+			// /*
+			// * Starts a final WHERE clause by restricting it to the
+			// * desired note ID.
+			// */
+			// finalWhere =
+			// NotePad.Notes._ID + // The ID column name
+			// " = " + // test for equality
+			// uri.getPathSegments(). // the incoming note ID
+			// get(NotePad.Notes.NOTE_ID_PATH_POSITION)
+			// ;
+			//
+			// // If there were additional selection criteria, append them to the
+			// final
+			// // WHERE clause
+			// if (where != null) {
+			// finalWhere = finalWhere + " AND " + where;
+			// }
+			//
+			// // Performs the delete.
+			// count = db.delete(
+			// NotePad.Notes.TABLE_NAME, // The database table name.
+			// finalWhere, // The final WHERE clause
+			// whereArgs // The incoming where clause values.
+			// );
+			// break;
 
-		// If the incoming pattern is invalid, throws an exception.
-		default:
-			throw new IllegalArgumentException("Unknown URI " + uri);
+			// If the incoming pattern is invalid, throws an exception.
+			default:
+				throw new IllegalArgumentException("Unknown URI " + uri);
 		}
 
 		/*
@@ -179,7 +179,7 @@ public class BaseProvider extends ContentProvider {
 		return count;
 	}
 
-	// ªÒµ√ ˝æ›¿‡–Õ
+	// Ëé∑ÂæóÊï∞ÊçÆÁ±ªÂûã
 	@Override
 	public String getType(Uri uri) {
 		// TODO Auto-generated method stub
@@ -187,14 +187,14 @@ public class BaseProvider extends ContentProvider {
 	}
 
 	/**
-	 * ≤Â»Î≤Ÿ◊˜
+	 * ÊèíÂÖ•Êìç‰Ωú
 	 */
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
 
 		// Validates the incoming URI. Only the full provider URI is allowed for
 		// inserts.
-		// —È÷§≤Œ ˝URI£¨÷ª”–∑˚∫œµƒuri≤≈ƒ‹≤Â»Î
+		// È™åËØÅÂèÇÊï∞URIÔºåÂè™ÊúâÁ¨¶ÂêàÁöÑuriÊâçËÉΩÊèíÂÖ•
 		if (sUriMatcher.match(uri) != GRIDS) {
 			throw new IllegalArgumentException("Unknown URI " + uri);
 		}
@@ -217,14 +217,14 @@ public class BaseProvider extends ContentProvider {
 
 		// Performs the insert and returns the ID of the new note.
 		long rowId = db.insert(GridViews.GridInfos.TABLE_NAME, // The table to
-																// insert into.
+				// insert into.
 				null,
 				// NotePad.Notes.COLUMN_NAME_NOTE, // A hack, SQLite sets this
 				// column value to null
 				// // if values is empty.
 				contentValues // A map of column names, and the values to insert
-								// into the columns.
-				);
+				// into the columns.
+		);
 
 		// If the insert succeeded, the row ID exists.
 		if (rowId > 0) {
@@ -248,36 +248,36 @@ public class BaseProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {
-		
+
 		mDatabaseHelper = new DatabaseHelper(getContext());
 		return true;
 	}
 
-	// ≤È‘É≤Ÿ◊˜
+	// Êü•Ë©¢Êìç‰Ωú
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection,
-			String[] selectionArgs, String sortOrder) {
-	     SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
-	        int match = sUriMatcher.match(uri);
-	        if (match == GRIDS) {
-				return db.query(GridViews.GridInfos.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
-			}else {
-				System.out.println("match=" + match);
-				return null;
-			}
-}
-	
+						String[] selectionArgs, String sortOrder) {
+		SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
+		int match = sUriMatcher.match(uri);
+		if (match == GRIDS) {
+			return db.query(GridViews.GridInfos.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
+		}else {
+			System.out.println("match=" + match);
+			return null;
+		}
+	}
+
 	public GridInfos[] queryInfos(Uri uri,String[] projection){
 		Cursor cursor = query(uri, projection, null, null, null);
 		return ConvertToGridInfo(cursor);
 	}
 
 	/**
-	 * ∏¸–¬≤Ÿ◊˜
+	 * Êõ¥Êñ∞Êìç‰Ωú
 	 */
 	@Override
 	public int update(Uri uri, ContentValues values, String selection,
-			String[] selectionArgs) {
+					  String[] selectionArgs) {
 
 		// Opens the database object in "write" mode.
 		SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
@@ -287,63 +287,63 @@ public class BaseProvider extends ContentProvider {
 		// Does the update based on the incoming URI pattern
 		switch (sUriMatcher.match(uri)) {
 
-		// If the incoming URI matches the general notes pattern, does the
-		// update based on
-		// the incoming data.
-		case GRIDS:
+			// If the incoming URI matches the general notes pattern, does the
+			// update based on
+			// the incoming data.
+			case GRIDS:
 
-			// Does the update and returns the number of rows updated.
-			count = db.update(GridViews.GridInfos.TABLE_NAME, // The database
-																// table name.
-					values, // A map of column names and new values to use.
-					selection, // The where clause column names.
-					selectionArgs // The where clause column values to select
-									// on.
-					);
-			break;
+				// Does the update and returns the number of rows updated.
+				count = db.update(GridViews.GridInfos.TABLE_NAME, // The database
+						// table name.
+						values, // A map of column names and new values to use.
+						selection, // The where clause column names.
+						selectionArgs // The where clause column values to select
+						// on.
+				);
+				break;
 
-		// If the incoming URI matches a single note ID, does the update based
-		// on the incoming
-		// data, but modifies the where clause to restrict it to the particular
-		// note ID.
-		// case NOTE_ID:
-		// // From the incoming URI, get the note ID
-		// String noteId =
-		// uri.getPathSegments().get(NotePad.Notes.NOTE_ID_PATH_POSITION);
-		//
-		// /*
-		// * Starts creating the final WHERE clause by restricting it to the
-		// incoming
-		// * note ID.
-		// */
-		// finalWhere =
-		// NotePad.Notes._ID + // The ID column name
-		// " = " + // test for equality
-		// uri.getPathSegments(). // the incoming note ID
-		// get(NotePad.Notes.NOTE_ID_PATH_POSITION)
-		// ;
-		//
-		// // If there were additional selection criteria, append them to the
-		// final WHERE
-		// // clause
-		// if (where !=null) {
-		// finalWhere = finalWhere + " AND " + where;
-		// }
-		//
-		//
-		// // Does the update and returns the number of rows updated.
-		// count = db.update(
-		// NotePad.Notes.TABLE_NAME, // The database table name.
-		// values, // A map of column names and new values to use.
-		// finalWhere, // The final WHERE clause to use
-		// // placeholders for whereArgs
-		// whereArgs // The where clause column values to select on, or
-		// // null if the values are in the where argument.
-		// );
-		// break;
-		// If the incoming pattern is invalid, throws an exception.
-		default:
-			throw new IllegalArgumentException("Unknown URI " + uri);
+			// If the incoming URI matches a single note ID, does the update based
+			// on the incoming
+			// data, but modifies the where clause to restrict it to the particular
+			// note ID.
+			// case NOTE_ID:
+			// // From the incoming URI, get the note ID
+			// String noteId =
+			// uri.getPathSegments().get(NotePad.Notes.NOTE_ID_PATH_POSITION);
+			//
+			// /*
+			// * Starts creating the final WHERE clause by restricting it to the
+			// incoming
+			// * note ID.
+			// */
+			// finalWhere =
+			// NotePad.Notes._ID + // The ID column name
+			// " = " + // test for equality
+			// uri.getPathSegments(). // the incoming note ID
+			// get(NotePad.Notes.NOTE_ID_PATH_POSITION)
+			// ;
+			//
+			// // If there were additional selection criteria, append them to the
+			// final WHERE
+			// // clause
+			// if (where !=null) {
+			// finalWhere = finalWhere + " AND " + where;
+			// }
+			//
+			//
+			// // Does the update and returns the number of rows updated.
+			// count = db.update(
+			// NotePad.Notes.TABLE_NAME, // The database table name.
+			// values, // A map of column names and new values to use.
+			// finalWhere, // The final WHERE clause to use
+			// // placeholders for whereArgs
+			// whereArgs // The where clause column values to select on, or
+			// // null if the values are in the where argument.
+			// );
+			// break;
+			// If the incoming pattern is invalid, throws an exception.
+			default:
+				throw new IllegalArgumentException("Unknown URI " + uri);
 		}
 
 		/*
@@ -358,8 +358,8 @@ public class BaseProvider extends ContentProvider {
 		return count;
 
 	}
-	
-	//Ω´Cursor∂‘œÛ◊™ªØ≥…GridInfos∂‘œÛ
+
+	//Â∞ÜCursorÂØπË±°ËΩ¨ÂåñÊàêGridInfosÂØπË±°
 	private GridInfos[] ConvertToGridInfo(Cursor cursor) {
 		int resultCounts = cursor.getCount();
 		if (resultCounts == 0 || !cursor.moveToFirst()) {
@@ -368,30 +368,30 @@ public class BaseProvider extends ContentProvider {
 //		GridViews[] gridInfos = new GridViews[resultCounts];
 		GridInfos[] gridInfos = new GridViews.GridInfos[resultCounts];
 		Log.i(TAG, "grades len:" + gridInfos.length);
-		
+
 		for (int i = 0; i < resultCounts; i++) {
 			gridInfos[i]  = new GridViews.GridInfos();
 //			gridInfos[i]._ID = cursor.getString(0);
 			gridInfos[i].COLUMN_NAME_IMG_ID = cursor.getString(cursor.getColumnIndex("img_id"));
 			gridInfos[i].COLUMN_NAME_NAME = cursor.getString(cursor.getColumnIndex("name"));
-					
+
 			Log.i(TAG, "grade " + i + "info :" + gridInfos[i].toString());
 			cursor.moveToNext();
 		}
-		
+
 		db.close();
 		return gridInfos;
 	}
 
 	/**
-	 * 
+	 *
 	 * This class helps open, create, and upgrade the database file. Set to
 	 * package visibility for testing purposes.
 	 */
 	static class DatabaseHelper extends SQLiteOpenHelper {
 
 		/*
-		 *  π”√SQL √¸¡Ó¥¥Ω®±Ì
+		 * ‰ΩøÁî®SQL ÂëΩ‰ª§ÂàõÂª∫Ë°®
 		 */
 		private static final String DB_CREATE = "CREATE TABLE "
 				+ GridViews.GridInfos.TABLE_NAME + " ("
@@ -407,7 +407,7 @@ public class BaseProvider extends ContentProvider {
 		}
 
 		/**
-		 * 
+		 *
 		 * Creates the underlying database with table name and column names
 		 * taken from the NotePad class.
 		 */
@@ -417,7 +417,7 @@ public class BaseProvider extends ContentProvider {
 		}
 
 		/**
-		 * 
+		 *
 		 * Demonstrates that the provider must consider what happens when the
 		 * underlying datastore is changed. In this sample, the database is
 		 * upgraded the database by destroying the existing data. A real
@@ -425,12 +425,12 @@ public class BaseProvider extends ContentProvider {
 		 */
 
 		/*
-		 * SQL√¸¡Ó°£onUpgrade()∫Ø ˝‘⁄ ˝æ›ø‚–Ë“™…˝º∂ ±±ªµ˜”√£¨ Õ®π˝µ˜”√SQLiteDatabase∂‘œÛµƒexecSQL()∑Ω∑®£¨
-		 * ÷¥––¥¥Ω®±Ìµƒ“ª∞„”√¿¥…æ≥˝æ…µƒ ˝æ›ø‚±Ì£¨≤¢Ω´ ˝æ›◊™“∆µΩ–¬∞Ê±æµƒ ˝æ›ø‚±Ì÷–
+		 * SQLÂëΩ‰ª§„ÄÇonUpgrade()ÂáΩÊï∞Âú®Êï∞ÊçÆÂ∫ìÈúÄË¶ÅÂçáÁ∫ßÊó∂Ë¢´Ë∞ÉÁî®Ôºå ÈÄöËøáË∞ÉÁî®SQLiteDatabaseÂØπË±°ÁöÑexecSQL()ÊñπÊ≥ïÔºå
+		 * ÊâßË°åÂàõÂª∫Ë°®ÁöÑ‰∏ÄËà¨Áî®Êù•Âà†Èô§ÊóßÁöÑÊï∞ÊçÆÂ∫ìË°®ÔºåÂπ∂Â∞ÜÊï∞ÊçÆËΩ¨ÁßªÂà∞Êñ∞ÁâàÊú¨ÁöÑÊï∞ÊçÆÂ∫ìË°®‰∏≠
 		 */
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			// Œ™¡ÀºÚµ•∆º˚£¨≤¢√ª”–◊ˆ»Œ∫Œµƒµƒ ˝æ›◊™“∆£¨∂¯ΩˆΩˆ…æ≥˝‘≠”–µƒ±Ì∫ÛΩ®¡¢–¬µƒ ˝æ›ø‚±Ì
+			// ‰∏∫‰∫ÜÁÆÄÂçïËµ∑ËßÅÔºåÂπ∂Ê≤°ÊúâÂÅö‰ªª‰ΩïÁöÑÁöÑÊï∞ÊçÆËΩ¨ÁßªÔºåËÄå‰ªÖ‰ªÖÂà†Èô§ÂéüÊúâÁöÑË°®ÂêéÂª∫Á´ãÊñ∞ÁöÑÊï∞ÊçÆÂ∫ìË°®
 			Log.i(TAG, "oldVersion : " + oldVersion + "newVersion: "
 					+ newVersion);
 			db.execSQL("DROP TABLE IF EXISTS " + GridViews.GridInfos.TABLE_NAME);

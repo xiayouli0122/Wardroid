@@ -23,66 +23,66 @@ import com.example.ward.R;
 import com.example.ward.view.RefreshListView.OnRefreshListener;
 
 public class ListViewRefresh extends Activity {
-	
-	
+
+
 	RefreshListView listView;
 	View mFooter;
-	
+
 	List<Map<String,Object>> mList;
 	List<String> mDataList = new ArrayList<String>();
 	SimpleAdapter mAdapter;
 	MyAdapter myAdapter;
 	int count = 10;
-	
+
 	Handler mHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			myAdapter.notifyDataSetChanged();
 		};
 	};
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listview_refresh);
-		
+
 		listView = (RefreshListView) findViewById(R.id.refresh_lv);
 //        mFooter = getLayoutInflater().inflate(R.layout.refresh_lv_footer,null);
 //        mList = new ArrayList<Map<String,Object>>();
 //        mList.addAll(DataService.getData(0,20));
-        for(int i=0;i<count;i++) {
+		for(int i=0;i<count;i++) {
 //        	Map<String,Object> map = new HashMap<String, Object>();
 //            map = new HashMap<String, Object>();
 //            map.put("name","bin" + i);
 //            mList.add(map);
-        	String name = "test " + i;
-        	mDataList.add(name);
-        }
-        
+			String name = "test " + i;
+			mDataList.add(name);
+		}
+
 //        mAdapter = new SimpleAdapter(getApplicationContext(), mList,
 //        		R.layout.listview_refresh_item, new String[]{"name"},new int[]{R.id.text});
-        myAdapter = new MyAdapter();
-        listView.setAdapter(myAdapter);
-        
+		myAdapter = new MyAdapter();
+		listView.setAdapter(myAdapter);
+
 //        listView.addFooterView(mFooter);
 //        listView.setAdapter(mAdapter);
 //        listView.removeFooterView(mFooter);
-        
-        listView.setOnRefreshListener(new OnRefreshListener() {
+
+		listView.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
 				new TopAsyncTask().execute();
 			}
 		});
-        
+
 //        listView.setOnScrollListener(new MyScrollListener());
 	}
-	
-	private int mNumber = 20;//Ã¿´Î»ñÈ¡¶àÉÙÌõÊı¾İ
-    private int mMaxpage = 5;//×Ü¹²ÓĞ¶àÉÙÒ³
-    private int mTotalCount = 0;
-    private boolean mLoadfinish = true;
-    private final class MyScrollListener implements OnScrollListener {
+
+	private int mNumber = 20;//æ¯æ¬¡è·å–å¤šå°‘æ¡æ•°æ®
+	private int mMaxpage = 5;//æ€»å…±æœ‰å¤šå°‘é¡µ
+	private int mTotalCount = 0;
+	private boolean mLoadfinish = true;
+	private final class MyScrollListener implements OnScrollListener {
 
 		@Override
 		public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -92,13 +92,13 @@ public class ListViewRefresh extends Activity {
 		public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
 			mTotalCount = totalItemCount -1;
 			if(mTotalCount < mNumber) {
-				Toast.makeText(ListViewRefresh.this,"µ½µ×ÁË£¡£¡£¡", Toast.LENGTH_LONG).show();
-				return;  //Èç¹ûµÚÒ»´Î¼ÓÔØµÄÊı¾İÁ¿ Ğ¡ÓÚ mNumberÔò²»ÔÙ½øĞĞ¼ÓÔØ(-1 ´ú±í³ıÈ¥header)
+				Toast.makeText(ListViewRefresh.this,"åˆ°åº•äº†ï¼ï¼ï¼", Toast.LENGTH_LONG).show();
+				return;  //å¦‚æœç¬¬ä¸€æ¬¡åŠ è½½çš„æ•°æ®é‡ å°äº mNumberåˆ™ä¸å†è¿›è¡ŒåŠ è½½(-1 ä»£è¡¨é™¤å»header)
 			}
 			int lastItemid = listView.getLastVisiblePosition();
 			if(lastItemid+1 == mTotalCount) {
 				int currentpage = totalItemCount%mNumber == 0 ? totalItemCount/mNumber : totalItemCount/mNumber+1;
-				int nextpage = currentpage + 1;//ÏÂÒ»Ò³
+				int nextpage = currentpage + 1;//ä¸‹ä¸€é¡µ
 				if(nextpage <= mMaxpage && mLoadfinish) {
 					mLoadfinish = false;
 //					listView.addFooterView(mFooter);
@@ -106,10 +106,10 @@ public class ListViewRefresh extends Activity {
 				}
 			}
 		}
-    	
-    }
-    
-    private class ButtomAsyncTask extends AsyncTask<Object,Integer,List<Map<String,Object>>> {
+
+	}
+
+	private class ButtomAsyncTask extends AsyncTask<Object,Integer,List<Map<String,Object>>> {
 
 		@Override
 		protected void onPreExecute() {
@@ -120,7 +120,7 @@ public class ListViewRefresh extends Activity {
 		protected void onPostExecute(List<Map<String,Object>> result) {
 			super.onPostExecute(result);
 			mList.addAll(result);
-			mAdapter.notifyDataSetChanged();//¸æËßListViewÊı¾İÒÑ¾­·¢Éú¸Ä±ä£¬ÒªÇóListView¸üĞÂ½çÃæÏÔÊ¾
+			mAdapter.notifyDataSetChanged();//å‘Šè¯‰ListViewæ•°æ®å·²ç»å‘ç”Ÿæ”¹å˜ï¼Œè¦æ±‚ListViewæ›´æ–°ç•Œé¢æ˜¾ç¤º
 //			if(listView.getFooterViewsCount() > 0) listView.removeFooterView(mFooter);
 			mLoadfinish = true;
 		}
@@ -134,16 +134,16 @@ public class ListViewRefresh extends Activity {
 			}
 			return getData(mTotalCount, mNumber);
 		}
-    	
-    }
-    
-    private class TopAsyncTask extends AsyncTask<Object,Integer,Object> {
+
+	}
+
+	private class TopAsyncTask extends AsyncTask<Object,Integer,Object> {
 
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
 			System.out.println("onPreExecute");
-			listView.onPrepareRefresh();//ºÄÊ±²Ù×÷Ö®Ç°µ÷ÓÃ¸Ã·½·¨
+			listView.onPrepareRefresh();//è€—æ—¶æ“ä½œä¹‹å‰è°ƒç”¨è¯¥æ–¹æ³•
 		}
 
 		@Override
@@ -158,7 +158,7 @@ public class ListViewRefresh extends Activity {
 			mDataList = getData();
 			return null;
 		}
-		
+
 		@Override
 		protected void onPostExecute(Object result) {
 			super.onPostExecute(result);
@@ -166,20 +166,20 @@ public class ListViewRefresh extends Activity {
 //			mAdapter.notifyDataSetChanged();
 //			myAdapter.notifyDataSetChanged();
 			mHandler.sendMessage(mHandler.obtainMessage(0));
-			listView.onCompleteRefresh();//ºÄÊ±²Ù×÷Ö®ºóµ÷ÓÃ¸Ã·½·¨
+			listView.onCompleteRefresh();//è€—æ—¶æ“ä½œä¹‹åè°ƒç”¨è¯¥æ–¹æ³•
 		}
-		
+
 	}
-    
-    public List<String> getData(){
-    	List<String> data = new ArrayList<String>();
-    	for (int i = 0; i < count; i++) {
+
+	public List<String> getData(){
+		List<String> data = new ArrayList<String>();
+		for (int i = 0; i < count; i++) {
 			String name = "test " + i;
 			data.add(name);
 		}
-    	return data;
-    }
-    
+		return data;
+	}
+
 //    public List<Map<String, Object>> getData(){
 //    	System.out.println("count=" + count);
 //    	List<Map<String,Object>> data = new ArrayList<Map<String,Object>>();
@@ -191,12 +191,12 @@ public class ListViewRefresh extends Activity {
 //        }
 //    	return  data;
 //    }
-    
-    class MyAdapter extends BaseAdapter{
-    	LayoutInflater inflater = null;
-    	MyAdapter(){
-    		inflater = LayoutInflater.from(ListViewRefresh.this);
-    	}
+
+	class MyAdapter extends BaseAdapter{
+		LayoutInflater inflater = null;
+		MyAdapter(){
+			inflater = LayoutInflater.from(ListViewRefresh.this);
+		}
 
 		@Override
 		public int getCount() {
@@ -224,18 +224,18 @@ public class ListViewRefresh extends Activity {
 			textView.setText(mDataList.get(position));
 			return convertView;
 		}
-    	
-    }
-    
-    public static List<Map<String,Object>> getData(int offset, int maxResult){//·ÖÒ³ limit 0,20
+
+	}
+
+	public static List<Map<String,Object>> getData(int offset, int maxResult){//åˆ†é¡µ limit 0,20
 		List<Map<String,Object>> data = new ArrayList<Map<String,Object>>();
-		//ĞŞ¸ÄÕâÀïµÄÊıÖµ ÉèÖÃ Ò»Ò³ËùÏÔÊ¾µÄÊıÁ¿  
+		//ä¿®æ”¹è¿™é‡Œçš„æ•°å€¼ è®¾ç½® ä¸€é¡µæ‰€æ˜¾ç¤ºçš„æ•°é‡  
 		for(int i=0;i<4;i++) {
-        	Map<String,Object> map = new HashMap<String, Object>();
-            map = new HashMap<String, Object>();
-            map.put("name","bin" + i);
-            data.add(map);
-        }
+			Map<String,Object> map = new HashMap<String, Object>();
+			map = new HashMap<String, Object>();
+			map.put("name","bin" + i);
+			data.add(map);
+		}
 		return data;
 	}
 }

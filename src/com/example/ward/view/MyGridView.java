@@ -3,8 +3,6 @@ package com.example.ward.view;
 import android.widget.GridView;
 
 /**
- * Ë½Äî
- * 
  * @author Administrator
  * 
  */
@@ -16,9 +14,6 @@ public class MyGridView extends GridView
 		super(context, attrs);
 	}
 
-	/**
-	 * ÉèÖÃ²»¹ö¶¯
-	 */
 	public void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
 	{
 		int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,

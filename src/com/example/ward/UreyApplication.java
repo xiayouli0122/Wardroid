@@ -61,7 +61,10 @@ resDialogOkToast = R.string.crash_dialog_ok_toast // optional. displays a Toast 
 public class UreyApplication extends Application {
 	@Override
 	public void onCreate() {
-		ACRA.init(this);
+	    boolean debug = true;
+	    if (!debug) {
+	        ACRA.init(this);
+        }
 		
 		super.onCreate();
 		

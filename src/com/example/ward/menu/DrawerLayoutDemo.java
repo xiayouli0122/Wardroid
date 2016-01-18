@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-/**²à»¬²Ëµ¥*/
 public class DrawerLayoutDemo extends Activity implements OnItemClickListener{
 	
 	private String[] mPlanetTitles = {"AAA", "BBB", "CCC", "DDD"};
@@ -37,7 +36,7 @@ public class DrawerLayoutDemo extends Activity implements OnItemClickListener{
 		
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		
-		//²à»¬²Ëµ¥Ö÷Òª²¼¾Ö
+		//ï¿½à»¬ï¿½Ëµï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		mDrawerList.setAdapter(new ArrayAdapter<String>(getApplicationContext(), 
 				R.layout.menu_drawer_left_item, mPlanetTitles));

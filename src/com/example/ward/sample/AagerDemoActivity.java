@@ -22,22 +22,22 @@ import com.example.ward.R;
 import com.example.ward.view.MyViewPagerAdapter;
 
 /**
- * TabÒ³ÃæÊÖÊÆ»¬¶¯ÇĞ»»ÒÔ¼°¶¯»­Ğ§¹û
- * 
+ * Tabé¡µé¢æ‰‹åŠ¿æ»‘åŠ¨åˆ‡æ¢ä»¥åŠåŠ¨ç”»æ•ˆæœ
+ *
  * @author yuri
  */
 public class AagerDemoActivity extends Activity implements OnClickListener, OnPageChangeListener {
-	// ViewPagerÊÇgoogle SDkÖĞ×Ô´øµÄÒ»¸ö¸½¼Ó°üµÄÒ»¸öÀà£¬¿ÉÒÔÓÃÀ´ÊµÏÖÆÁÄ»¼äµÄÇĞ»»¡£
+	// ViewPageræ˜¯google SDkä¸­è‡ªå¸¦çš„ä¸€ä¸ªé™„åŠ åŒ…çš„ä¸€ä¸ªç±»ï¼Œå¯ä»¥ç”¨æ¥å®ç°å±å¹•é—´çš„åˆ‡æ¢ã€‚
 	// android-support-v4.jar
 	private ViewPager viewPager;
-	private List<View> listViews;// TabÒ³ÃæÁĞ±í
-	private ImageView cursor;// ¶¯»­Í¼Æ¬
+	private List<View> listViews;// Tabé¡µé¢åˆ—è¡¨
+	private ImageView cursor;// åŠ¨ç”»å›¾ç‰‡
 
-	private TextView tap1, tap2, tap3;// Ò³¿¨ÄÚÈİ
+	private TextView tap1, tap2, tap3;// é¡µå¡å†…å®¹
 
-	private int offset = 0;// ¶¯»­Í¼Æ¬Æ«ÒÆÁ¿
-	private int currIndex = 0;// µ±Ç°Ò³¿¨±àºÅ
-	private int bmpW; // ¶¯»­Í¼Æ¬¿í¶È
+	private int offset = 0;// åŠ¨ç”»å›¾ç‰‡åç§»é‡
+	private int currIndex = 0;// å½“å‰é¡µå¡ç¼–å·
+	private int bmpW; // åŠ¨ç”»å›¾ç‰‡å®½åº¦
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -75,22 +75,22 @@ public class AagerDemoActivity extends Activity implements OnClickListener, OnPa
 		viewPager.setOnPageChangeListener(this);
 	}
 
-	// ³õÊ¼»¯¶¯»­
+	// åˆå§‹åŒ–åŠ¨ç”»
 	public void initImageView() {
 		cursor = (ImageView) findViewById(R.id.cursor1);
-		// »ñÈ¡Í¼Æ¬¿í¶È
+		// è·å–å›¾ç‰‡å®½åº¦
 		bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.viewpager).getWidth();
-		// »ñÈ¡ÆÁÄ»·Ö±æÂÊ
+		// è·å–å±å¹•åˆ†è¾¨ç‡
 		DisplayMetrics dMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dMetrics);
-		// »ñÈ¡·Ö±æÂÊ¿í¶È
+		// è·å–åˆ†è¾¨ç‡å®½åº¦
 		int screenW = dMetrics.widthPixels;
-		// ¼ÆËãÆ«ÒÆÁ¿
+		// è®¡ç®—åç§»é‡
 		offset = (screenW / 3 - bmpW) / 2;
 
 		Matrix matrix = new Matrix();
 		matrix.postTranslate(offset, 0);
-		// ÉèÖÃ¶¯»­³õÊ¼Î»ÖÃ
+		// è®¾ç½®åŠ¨ç”»åˆå§‹ä½ç½®
 		cursor.setImageMatrix(matrix);
 
 	}
@@ -99,23 +99,23 @@ public class AagerDemoActivity extends Activity implements OnClickListener, OnPa
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.page01:
-			viewPager.setCurrentItem(0);
-			break;
-		case R.id.page02:
-			viewPager.setCurrentItem(1);
-			break;
-		case R.id.page03:
-			viewPager.setCurrentItem(2);
-			break;
-		default:
-			break;
+			case R.id.page01:
+				viewPager.setCurrentItem(0);
+				break;
+			case R.id.page02:
+				viewPager.setCurrentItem(1);
+				break;
+			case R.id.page03:
+				viewPager.setCurrentItem(2);
+				break;
+			default:
+				break;
 		}
 	}
 
-	// Ò³¿¨ÇĞ»»¼àÌı
-	int one = offset * 2 + bmpW;// Ò³¿¨1 -> Ò³¿¨2 Æ«ÒÆÁ¿
-	int two = one * 2;// Ò³¿¨1 -> Ò³¿¨3 Æ«ÒÆÁ¿
+	// é¡µå¡åˆ‡æ¢ç›‘å¬
+	int one = offset * 2 + bmpW;// é¡µå¡1 -> é¡µå¡2 åç§»é‡
+	int two = one * 2;// é¡µå¡1 -> é¡µå¡3 åç§»é‡
 
 	@Override
 	public void onPageScrollStateChanged(int arg0) {
@@ -134,31 +134,31 @@ public class AagerDemoActivity extends Activity implements OnClickListener, OnPa
 		// TODO Auto-generated method stub
 		Animation animation = null;
 		switch (arg0) {
-		case 0:
-			if (currIndex == 1) {
-				animation = new TranslateAnimation(one, 0, 0, 0);
-			} else if (currIndex == 2) {
-				animation = new TranslateAnimation(two, 0, 0, 0);
-			}
-			break;
-		case 1:
-			if (currIndex == 0) {
-				animation = new TranslateAnimation(offset, one, 0, 0);
-			} else if (currIndex == 2) {
-				animation = new TranslateAnimation(two, one, 0, 0);
-			}
-			break;
-		case 2:
-			if (currIndex == 0) {
-				animation = new TranslateAnimation(offset, two, 0, 0);
-			} else if (currIndex == 1) {
-				animation = new TranslateAnimation(one, two, 0, 0);
-			}
-		default:
-			break;
+			case 0:
+				if (currIndex == 1) {
+					animation = new TranslateAnimation(one, 0, 0, 0);
+				} else if (currIndex == 2) {
+					animation = new TranslateAnimation(two, 0, 0, 0);
+				}
+				break;
+			case 1:
+				if (currIndex == 0) {
+					animation = new TranslateAnimation(offset, one, 0, 0);
+				} else if (currIndex == 2) {
+					animation = new TranslateAnimation(two, one, 0, 0);
+				}
+				break;
+			case 2:
+				if (currIndex == 0) {
+					animation = new TranslateAnimation(offset, two, 0, 0);
+				} else if (currIndex == 1) {
+					animation = new TranslateAnimation(one, two, 0, 0);
+				}
+			default:
+				break;
 		}
 		currIndex = arg0;
-		animation.setFillAfter(true);// True:Í¼Æ¬Í£ÁôÔÚ¶¯»­½áÊøÎ»ÖÃ
+		animation.setFillAfter(true);// True:å›¾ç‰‡åœç•™åœ¨åŠ¨ç”»ç»“æŸä½ç½®
 		animation.setDuration(300);
 		cursor.startAnimation(animation);
 	}

@@ -92,6 +92,8 @@
     <string name="sample_bundle">Sample/Bundle</string>
     <string name="sample_notification">Sample/Notification</string>
     <string name="sample_system_default_icom">Sample/SystemDefaultIcon</string>
+    
+    <!-- View start -->
     <string name="view_viewpager">View/ViewPager</string>
     <string name="view_listview1">View/ListView/ListView_Grid</string>
     <string name="view_listview_refresh">View/ListView/ListView_Refresh</string>
@@ -104,8 +106,16 @@
      <string name="view_fragmentactivity">View/FragmentActivity</string>
      <string name="view_selection_mode_listview">View/Selection_Mode_Listview</string>
      <string name="view_progressbar1">View/ProgressBarWithText</string>
+     <string name="view_artise">View/绘画各种形状</string>
+     <!-- View end -->
+     <!-- Animation start -->
+    <string name="animation_demo">Animation/AnimationDemo</string>
     <string name="animation_activity">Animation/ActivityAnimation</string>
     <string name="animation_drawable">Animation/DrawableAnimation</string>
+    <string name="animation_bitmap">Animation/BitmapAnimation</string>
+    <string name="animation_viewflipper">Animation/ViewFlipperDemo</string>
+    <string name="animation_loadview">Animation/LoadView</string>
+    <!-- Animation end -->
     <string name="sectionindexer_demo">View/SectionIndexer</string>
     <string name="fullscreen_demo">View/FullScreen</string>
     <string name="view_swipe_refresh_layout">View/SwipeRefreshLayoutDemo</string>
@@ -122,6 +132,7 @@
     <string name="dialog_filebrowser">Dialog/FileBrowser</string>
     <string name="dialog_custom">Dialog/CustomDialog</string>
     
+    <!-- MeMedia start -->
     <string name="media_volume">Media/MediaVolume</string>
     <string name="ringtone_demo">Media/GetRingToneDemo</string>
     <string name="media_storage">Media/StorageDemo</string>
@@ -131,6 +142,9 @@
     <string name="imageloader_listview">Media/Image/ImageLoaderListView</string>
     <string name="roundbitmap">Media/Image/RoundBitmap</string>
     <string name="listview_scroll_style">View/ListView/ScrollStyle</string>
+    <string name="media_video_frame">Media/VideoFrame</string>
+    <string name="media_video_check">Media/VideoCheck</string>
+    <!-- MeMedia end -->
     
     <!-- contacts -->
     <string name="calls_log">Contacts/CallsLog</string>
@@ -150,6 +164,7 @@
     <string name="notification_demo">App/NotificationDemo</string>
     <string name="app_color_picker">App/ColorPicker</string>
     <string name="app_installed">App/批量静默安装</string>
+    <string name="app_screendispty">App/ScreenDisplay</string>
     <!-- app -->
 
     <!-- file -->
@@ -159,6 +174,14 @@
     <!-- bitmap -->
     <string name="bitmap_brd">Bitmap/BitmapRegionDecode</string>
     <!-- bitmap -->
+    
+    <!-- network start -->
+    <string name="network_info">Network/NetworkInfo</string>
+    <!-- network end -->
+    
+    <!-- pullview start -->
+    <string name="pullview_demo">PullView/PullViewDemo</string>
+    <!-- pullview end -->
     
     <string name="calls_log_year_sfd">"yyyy年M月d日 HH:mm"</string>
     <string name="calls_log_month_sfd">"M月d日 HH:mm"</string>

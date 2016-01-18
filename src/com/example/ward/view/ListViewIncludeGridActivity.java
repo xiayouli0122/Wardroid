@@ -13,7 +13,7 @@ public class ListViewIncludeGridActivity extends Activity {
 
 	ListViewAdapter treeViewAdapter;
 
-	public String[] groups = { "列表1", "列表2", "列表3" };
+	public String[] groups = { "item1", "item2", "item3" };
 
 	public String[][] child = { { "" }, { "" }, { "", "" } };
 
@@ -23,7 +23,7 @@ public class ListViewIncludeGridActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_grid_main);
 		
-		setTitle("ListView内嵌GridView");
+		setTitle("ListViewIncludeGridActivity");
 		
 		treeViewAdapter = new ListViewAdapter(this,
 				ListViewAdapter.PaddingLeft >> 1);

@@ -80,7 +80,7 @@ public class SmsBackupActivity extends Activity implements OnClickListener{
 			// TODO Auto-generated method stub
 			progressDialog = new ProgressDialog(SmsBackupActivity.this);
 			progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-			progressDialog.setMessage("±¸·İÖĞ...");
+			progressDialog.setMessage("å¤‡ä»½ä¸­...");
 			progressDialog.setIndeterminate(true);
 			progressDialog.setCancelable(false);
 			progressDialog.show();
@@ -112,14 +112,14 @@ public class SmsBackupActivity extends Activity implements OnClickListener{
 			smsItems = importSmsXml.getSmsItemsFromXml();
 			ContentResolver conResolver = getContentResolver();
 			for (SmsItem item : smsItems) {
-				// ÅĞ¶Ï¶ÌĞÅÊı¾İ¿âÖĞÊÇ·ñÒÑ°üº¬¸ÃÌõ¶ÌĞÅ£¬Èç¹ûÓĞ£¬Ôò²»ĞèÒª»Ö¸´ 
+				// åˆ¤æ–­çŸ­ä¿¡æ•°æ®åº“ä¸­æ˜¯å¦å·²åŒ…å«è¯¥æ¡çŸ­ä¿¡ï¼Œå¦‚æœæœ‰ï¼Œåˆ™ä¸éœ€è¦æ¢å¤ 
 				Cursor cursor = conResolver.query(Uri.parse("content://sms"), new String[] { SmsField.DATE }, SmsField.DATE + "=?",  
 	                    new String[] { item.getDate() }, null);
 				
 				if (!cursor.moveToFirst()) {//
 					ContentValues values = new ContentValues();  
 	                values.put(SmsField.ADDRESS, item.getAddress());  
-	                // Èç¹ûÊÇ¿Õ×Ö·û´®ËµÃ÷Ô­À´µÄÖµÊÇnull£¬ËùÒÔÕâÀï»¹Ô­Îªnull´æÈëÊı¾İ¿â  
+	                // å¦‚æœæ˜¯ç©ºå­—ç¬¦ä¸²è¯´æ˜åŸæ¥çš„å€¼æ˜¯nullï¼Œæ‰€ä»¥è¿™é‡Œè¿˜åŸä¸ºnullå­˜å…¥æ•°æ®åº“  
 	                values.put(SmsField.PERSON, item.getPerson().equals("") ? null : item.getPerson());  
 	                values.put(SmsField.DATE, item.getDate());  
 	                values.put(SmsField.PROTOCOL, item.getProtocol().equals("") ? null : item.getProtocol());  
@@ -145,7 +145,7 @@ public class SmsBackupActivity extends Activity implements OnClickListener{
 			// TODO Auto-generated method stub
 			progressDialog = new ProgressDialog(SmsBackupActivity.this);
 			progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-			progressDialog.setMessage("»Ö¸´ÖĞ...");
+			progressDialog.setMessage("æ¢å¤ä¸­...");
 			progressDialog.setIndeterminate(true);
 			progressDialog.setCancelable(false);
 			progressDialog.show();

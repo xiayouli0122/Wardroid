@@ -41,166 +41,166 @@ import com.example.ward.sample.GridViews.GridInfos;
 import com.example.ward.sqlite.BaseProvider;
 
 /**NOTE
- * 20120716 Ä¿Ç° Ìí¼Ó¹¦ÄÜÒÑ¾­ÊµÏÖ
- * ´ıÍê³ÉµÄÓĞ£ºÉ¾³ı Ö¸¶¨item£¬É¾³ıÈ«²¿
- * Ë¼¿¼£º
- * 1.É¾³ıÖ¸¶¨item£ºµÚÒ»£¬Ã÷ÏÔ²»ÄÜÍ¨¹ıID À´É¾³ı£¬ÒòÎªID²»ºÃÈ·¶¨
- * 	   ÄÇÃ´Í¨¹ıÎÄ×Ö£¬Í¼Æ¬£¿¶¼ÓĞ¿ÉÄÜÖØ¸´£¬Ä¿Ç°Êı¾İ¿âÖĞ Î¨Ò»µÄÒ²Ö»ÓĞID,
- *    ÔõÃ´°ìÄØ£¿
- * 2. É¾³ıÈ«²¿ÄÜÊµÏÖ£¬Ö»Òª°ÑÕû¸ö±íÉ¾³ı¼´¿É£¬µ«ÊÇ Ä¿Ç°ºÃÏñÉ¾³ıÍêÒÔºó£¬²»ÄÜ¼´Ê¹Ë¢ĞÂUI
- *       ÓĞ´ı¼ÌĞøÌ½¾¿
- *     ÏÂ°àÇ°£¬Í»È»¶ÙÎò£º
- *     È«²¿É¾³ı£¬Êı¾İ¿âÄÜË¢³ı£¬µ«ÊÇUIÃ»ÓĞ¸üĞÂ£¬ÊÇÒòÎªUIÓĞÁÙÊ±±£´æµÄÊı×é£¬ËùÒÔÒªÏëÊı¾İ¿âºÍUI ¶¼¿´µ½±»É¾³ıÁË
- *     ÔÚÉ¾³ıÊı¾İ¿âÇ°£¬ĞèÒª°Ñ±£´æĞÅÏ¢µÄÊı×éÇå¿Õ£¬itemList.clear()£¬µ«ÊÇ ÕâÑù×÷»á°ÑµÚÒ»¸öÒ²É¾³ıµã£¬¶øÎÒÃÇµÄ
- *     ×î³õÏë·¨ÊÇ²»ÔÊĞíÕâÑù×öµÄ£¬ÄÇÃ´ÎÒ¾ÍÏëµ½£¬ÔÚÇå¿ÕÖ®ºó£¬ÔÙ°ÑµÚÒ»¸ö¸øÌí¼ÓÉÏÈ¥£¬¾ÍÊµÏÖÁËÈ«²¿É¾³ıµÄ¹¦ÄÜ£¬Oh yeah£¬¿ÉÒÔ°²ĞÄÏÂ°àÁË
- *Ã÷Ìì¼ÌĞøË¼¿¼ÔõÑùÉ¾³ıµ¥¸ö?
+ * 20120716 ç›®å‰ æ·»åŠ åŠŸèƒ½å·²ç»å®ç°
+ * å¾…å®Œæˆçš„æœ‰ï¼šåˆ é™¤ æŒ‡å®šitemï¼Œåˆ é™¤å…¨éƒ¨
+ * æ€è€ƒï¼š
+ * 1.åˆ é™¤æŒ‡å®šitemï¼šç¬¬ä¸€ï¼Œæ˜æ˜¾ä¸èƒ½é€šè¿‡ID æ¥åˆ é™¤ï¼Œå› ä¸ºIDä¸å¥½ç¡®å®š
+ * 	   é‚£ä¹ˆé€šè¿‡æ–‡å­—ï¼Œå›¾ç‰‡ï¼Ÿéƒ½æœ‰å¯èƒ½é‡å¤ï¼Œç›®å‰æ•°æ®åº“ä¸­ å”¯ä¸€çš„ä¹Ÿåªæœ‰ID,
+ *    æ€ä¹ˆåŠå‘¢ï¼Ÿ
+ * 2. åˆ é™¤å…¨éƒ¨èƒ½å®ç°ï¼Œåªè¦æŠŠæ•´ä¸ªè¡¨åˆ é™¤å³å¯ï¼Œä½†æ˜¯ ç›®å‰å¥½åƒåˆ é™¤å®Œä»¥åï¼Œä¸èƒ½å³ä½¿åˆ·æ–°UI
+ *       æœ‰å¾…ç»§ç»­æ¢ç©¶
+ *     ä¸‹ç­å‰ï¼Œçªç„¶é¡¿æ‚Ÿï¼š
+ *     å…¨éƒ¨åˆ é™¤ï¼Œæ•°æ®åº“èƒ½åˆ·é™¤ï¼Œä½†æ˜¯UIæ²¡æœ‰æ›´æ–°ï¼Œæ˜¯å› ä¸ºUIæœ‰ä¸´æ—¶ä¿å­˜çš„æ•°ç»„ï¼Œæ‰€ä»¥è¦æƒ³æ•°æ®åº“å’ŒUI éƒ½çœ‹åˆ°è¢«åˆ é™¤äº†
+ *     åœ¨åˆ é™¤æ•°æ®åº“å‰ï¼Œéœ€è¦æŠŠä¿å­˜ä¿¡æ¯çš„æ•°ç»„æ¸…ç©ºï¼ŒitemList.clear()ï¼Œä½†æ˜¯ è¿™æ ·ä½œä¼šæŠŠç¬¬ä¸€ä¸ªä¹Ÿåˆ é™¤ç‚¹ï¼Œè€Œæˆ‘ä»¬çš„
+ *     æœ€åˆæƒ³æ³•æ˜¯ä¸å…è®¸è¿™æ ·åšçš„ï¼Œé‚£ä¹ˆæˆ‘å°±æƒ³åˆ°ï¼Œåœ¨æ¸…ç©ºä¹‹åï¼Œå†æŠŠç¬¬ä¸€ä¸ªç»™æ·»åŠ ä¸Šå»ï¼Œå°±å®ç°äº†å…¨éƒ¨åˆ é™¤çš„åŠŸèƒ½ï¼ŒOh yeahï¼Œå¯ä»¥å®‰å¿ƒä¸‹ç­äº†
+ *æ˜å¤©ç»§ç»­æ€è€ƒæ€æ ·åˆ é™¤å•ä¸ª?
  *20120717
- *É¾³ıÖ¸¶¨Item£¬»¹ÊÇÃ»ÓĞÍ·Ğ÷¡£¡£¡£09Ê±23·Ö10Ãë
- *ÏÖÔÚÈ±ÉÙµÄÊÇÒ»¸ö¿ÉÎ¨Ò»±êÊ¶Ã¿¸öitemĞÅÏ¢ÄÚÈİµÄ   09Ê±24·Ö23Ãë
- *Ä¿Ç°Ã¿¸öitemµÄĞÅÏ¢ÓĞÁ½¸ö£º1£©Í¼Æ¬ID£¬´ú±íÁË¸ÃitemÏÔÊ¾µÄÍ¼Æ¬ 2£©ÏÔÊ¾µÄÎÄ×Ö£¬´ú±íÁË¸ÃitemÏÂ·½ÏÔÊ¾µÄÎÄ×Ö
- *ÏÖÔÚ¿Ï¶¨ĞèÒªÒ»¸öÊôĞÔÀ´Î¨Ò»´ú±íÃ¿¸öitem£¬µ«ÊÇ ÓÖÊÇÊ²Ã´ÄØ£¿¼ÌĞøË¼¿¼°É 10Ê±24·Ö54Ãë
+ *åˆ é™¤æŒ‡å®šItemï¼Œè¿˜æ˜¯æ²¡æœ‰å¤´ç»ªã€‚ã€‚ã€‚09æ—¶23åˆ†10ç§’
+ *ç°åœ¨ç¼ºå°‘çš„æ˜¯ä¸€ä¸ªå¯å”¯ä¸€æ ‡è¯†æ¯ä¸ªitemä¿¡æ¯å†…å®¹çš„   09æ—¶24åˆ†23ç§’
+ *ç›®å‰æ¯ä¸ªitemçš„ä¿¡æ¯æœ‰ä¸¤ä¸ªï¼š1ï¼‰å›¾ç‰‡IDï¼Œä»£è¡¨äº†è¯¥itemæ˜¾ç¤ºçš„å›¾ç‰‡ 2ï¼‰æ˜¾ç¤ºçš„æ–‡å­—ï¼Œä»£è¡¨äº†è¯¥itemä¸‹æ–¹æ˜¾ç¤ºçš„æ–‡å­—
+ *ç°åœ¨è‚¯å®šéœ€è¦ä¸€ä¸ªå±æ€§æ¥å”¯ä¸€ä»£è¡¨æ¯ä¸ªitemï¼Œä½†æ˜¯ åˆæ˜¯ä»€ä¹ˆå‘¢ï¼Ÿç»§ç»­æ€è€ƒå§ 10æ—¶24åˆ†54ç§’
  *
  *20120725
- *ÔÚlistview »òÕß gridviewµÄonItemClickListenºÍonItemLongClickListµÄ·½·¨ÖĞ¶¼ÓĞÒ»¸ö²ÎÊı
+ *åœ¨listview æˆ–è€… gridviewçš„onItemClickListenå’ŒonItemLongClickListçš„æ–¹æ³•ä¸­éƒ½æœ‰ä¸€ä¸ªå‚æ•°
  *long arg3//the row id of the item that clicked
- *Õâ¸ö²ÎÊı£¬¾ÍÊÇ±íÊ¾¸ÃÔªÊıÔÚÊı¾İ¿âÖĞÁĞµÄID
- *Õâ¸öidÊÇÎ¨Ò»µÄ
- *ËùÓĞ»ñµÃÁËËü¾Í¿ÉÒÔÉ¾³ıµ¥¸öÁË
+ *è¿™ä¸ªå‚æ•°ï¼Œå°±æ˜¯è¡¨ç¤ºè¯¥å…ƒæ•°åœ¨æ•°æ®åº“ä¸­åˆ—çš„ID
+ *è¿™ä¸ªidæ˜¯å”¯ä¸€çš„
+ *æ‰€æœ‰è·å¾—äº†å®ƒå°±å¯ä»¥åˆ é™¤å•ä¸ªäº†
  */
-//gridview Íø¸ñÊÓÍ¼
+//gridview ç½‘æ ¼è§†å›¾
 public class GridViewActivity extends Activity{
 	GridView gridView;
 	ArrayList<HashMap<String, Object>> itemList ;
-	
+
 	//listview ==>
 	ListView listView;
 	ArrayList<HashMap<String, Object>> listItem;
 	SimpleAdapter listItemAdapter;
 	//<==
-	
+
 	SimpleAdapter simpleAdapter;
-	
+
 //	DBAdapter dbAdapter;
-	
+
 	BaseProvider baseProvider;
-	
+
 	private Uri mUri ;
-    /**
-     * The columns needed by the cursor adapter
-     */
-    private static final String[] PROJECTION = new String[] {
-            GridViews.GridInfos._ID, // 0
-            GridViews.GridInfos.COLUMN_NAME_IMG_ID, // 1
-            GridViews.GridInfos.COLUMN_NAME_NAME, //2
-    };
+	/**
+	 * The columns needed by the cursor adapter
+	 */
+	private static final String[] PROJECTION = new String[] {
+			GridViews.GridInfos._ID, // 0
+			GridViews.GridInfos.COLUMN_NAME_IMG_ID, // 1
+			GridViews.GridInfos.COLUMN_NAME_NAME, //2
+	};
 	private static final String TAG = "GridView";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.grid_view);
-		setTitle("GridView Íø¸ñÊÓÍ¼ ");
-		
+		setTitle("GridView ç½‘æ ¼è§†å›¾ ");
+
 //		changeToListView();
 		gridView =(GridView)findViewById(R.id.grid_view);
-		
-		//Ê¹ÓÃSimpleAdapter
-		//Éú³É¶¯Ì¬Êı×é,ÒÔ±£´æÍ¼Æ¬ºÍÎÄ×ÖĞÅÏ¢
+
+		//ä½¿ç”¨SimpleAdapter
+		//ç”ŸæˆåŠ¨æ€æ•°ç»„,ä»¥ä¿å­˜å›¾ç‰‡å’Œæ–‡å­—ä¿¡æ¯
 		itemList = new ArrayList<HashMap<String, Object>>();
-		
-		//³õÊ¼»¯Êı¾İ
+
+		//åˆå§‹åŒ–æ•°æ®
 //		for (int i = 0; i < 10; i++) {
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("itemImg", R.drawable.th_add);
-			map.put("itemText", "´ò¿ªÊé¼®");
-			itemList.add(map);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("itemImg", R.drawable.th_add);
+		map.put("itemText", "æ‰“å¼€ä¹¦ç±");
+		itemList.add(map);
 //		}
-			
-		//Éú³ÉÊÊÅäÆ÷
-		simpleAdapter = new SimpleAdapter(this, itemList, R.layout.grid_list, 
+
+		//ç”Ÿæˆé€‚é…å™¨
+		simpleAdapter = new SimpleAdapter(this, itemList, R.layout.grid_list,
 				new String[]{"itemImg","itemText"}, new int[]{R.id.image,R.id.text});
 		gridView.setAdapter(simpleAdapter);
-			
-		//µ¥»÷ÊÂ¼ş¼àÌıÆ÷
+
+		//å•å‡»äº‹ä»¶ç›‘å¬å™¨
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, //the adapterView where the click happend
-					View arg1,//The View within the adapterView that clicked
-					int position, //the position of the view that int the adapter
-					long arg3//the row id of the item that clicked
-					) {
+									View arg1,//The View within the adapterView that clicked
+									int position, //the position of the view that int the adapter
+									long arg3//the row id of the item that clicked
+			) {
 //				HashMap<String, Object> item = (HashMap<String, Object>)arg0.getItemAtPosition(position);
 				String result = itemList.get(position).get("itemText") + "";
 //				String result = item.get("itemText")+ "";
-				if ("´ò¿ªÊé¼®".equals(result)) {
+				if ("æ‰“å¼€ä¹¦ç±".equals(result)) {
 //					addItem(R.drawable.nobody, "New Add");
-//					addItem(0x7f020009, "XXXX"); //ºÍÉÏÒ»ĞĞÊÇÒ»ÑùµÄ
+//					addItem(0x7f020009, "XXXX"); //å’Œä¸Šä¸€è¡Œæ˜¯ä¸€æ ·çš„
 				}
 			}
 		});
-		
-		//³¤°´ÊÂ¼ş¼àÌıÆ÷£¬µ¯³ö¶Ô»°¿ò
-		//ÓësetOnCreateContextMenuListener  ÖØ¸´ ¶şÑ¡Ò»¼´¿É
+
+		//é•¿æŒ‰äº‹ä»¶ç›‘å¬å™¨ï¼Œå¼¹å‡ºå¯¹è¯æ¡†
+		//ä¸setOnCreateContextMenuListener  é‡å¤ äºŒé€‰ä¸€å³å¯
 //		gridView.setOnItemLongClickListener(new OnItemLongClickListener() {
 //			@Override
 //			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 //					int position, long id) {
 //				System.out.println("position = " + position + "id = " + id);
-//				//²»¶Ô°¡£¬¸úÊı¾İ¿âµÄID ¶Ô²»ÉÏ°¡
+//				//ä¸å¯¹å•Šï¼Œè·Ÿæ•°æ®åº“çš„ID å¯¹ä¸ä¸Šå•Š
 //				showItemLongClickDialog(position,id);
 //				return false;
 //			}
 //		});
-		
-		//³¤°´gridview item µ¯³ö²Ëµ¥Ñ¡Ïî
+
+		//é•¿æŒ‰gridview item å¼¹å‡ºèœå•é€‰é¡¹
 		gridView.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v,
-					ContextMenuInfo menuInfo) {
-				System.out.println("³¤°´µ¯³öÎÒÀ´ÁË£¿");
-				menu.add(0, 0, 0, "Ìí¼Ó");
-                menu.add(0, 1, 0, "É¾³ı");
-                menu.add(0, 2, 0, "È«²¿É¾³ı");
+											ContextMenuInfo menuInfo) {
+				System.out.println("é•¿æŒ‰å¼¹å‡ºæˆ‘æ¥äº†ï¼Ÿ");
+				menu.add(0, 0, 0, "æ·»åŠ ");
+				menu.add(0, 1, 0, "åˆ é™¤");
+				menu.add(0, 2, 0, "å…¨éƒ¨åˆ é™¤");
 			}
 		});
-		
+
 		baseProvider = new BaseProvider(GridViewActivity.this);
 		baseProvider.open();
-		
+
 	}
-	
+
 	private void showItemLongClickDialog(final long position,final long id) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		final CharSequence[] items = { "Ìí¼Ó", "É¾³ı" , "È«²¿É¾³ı"};
+		final CharSequence[] items = { "æ·»åŠ ", "åˆ é™¤" , "å…¨éƒ¨åˆ é™¤"};
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				switch (which) {
-				case 0:
-					System.out.println("ADD");
-					break;
-				case 1:
-					System.out.println("Delete");
-					
-					System.out.println("before = " + itemList.size());
-					itemList.remove(position);
-					System.out.println("after = " + itemList.size());
-					
-					baseProvider.delete(GridViews.GridInfos.CONTENT_URI, "_ID = ?",  new String[] { String.valueOf(id) });
-					simpleAdapter.notifyDataSetChanged()	;
+					case 0:
+						System.out.println("ADD");
+						break;
+					case 1:
+						System.out.println("Delete");
+
+						System.out.println("before = " + itemList.size());
+						itemList.remove(position);
+						System.out.println("after = " + itemList.size());
+
+						baseProvider.delete(GridViews.GridInfos.CONTENT_URI, "_ID = ?",  new String[] { String.valueOf(id) });
+						simpleAdapter.notifyDataSetChanged()	;
 //					itemList.clear();
-//					//Õâ¸ö²»ÄÜÉ¾³ı£¬ËùÒÔÒªÖØĞÂÌí¼ÓÉÏÈ¥
+//					//è¿™ä¸ªä¸èƒ½åˆ é™¤ï¼Œæ‰€ä»¥è¦é‡æ–°æ·»åŠ ä¸Šå»
 //					HashMap<String, Object> map = new HashMap<String, Object>();
 //					map.put("itemImg", R.drawable.th_add);
-//					map.put("itemText", "´ò¿ªÊé¼®");
+//					map.put("itemText", "æ‰“å¼€ä¹¦ç±");
 //					itemList.add(map);
 //					queryData();
-					break;
-				case 2:
-					System.out.println("ALl Delete");
-					break;
-				default:
-					break;
+						break;
+					case 2:
+						System.out.println("ALl Delete");
+						break;
+					default:
+						break;
 				}
 
 			}
@@ -208,62 +208,62 @@ public class GridViewActivity extends Activity{
 		AlertDialog alert = builder.create();
 		alert.show();
 	}
-	
+
 	public void changeToListView(){
 //		gridView.setVisibility(View.GONE);
 		listView = (ListView)findViewById(R.id.listview);
-		//Ê¹ÓÃSimpleAdapter
-		//Éú³É¶¯Ì¬Êı×é,ÒÔ±£´æÍ¼Æ¬ºÍÎÄ×ÖĞÅÏ¢
+		//ä½¿ç”¨SimpleAdapter
+		//ç”ŸæˆåŠ¨æ€æ•°ç»„,ä»¥ä¿å­˜å›¾ç‰‡å’Œæ–‡å­—ä¿¡æ¯
 		listItem = new ArrayList<HashMap<String, Object>>();
-		
+
 		//init 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("itemImg", R.drawable.th_add);
-		map.put("itemText", "´ò¿ªÊé¼®");
+		map.put("itemText", "æ‰“å¼€ä¹¦ç±");
 		listItem.add(map);
-		
-		//Éú³ÉÊÊÅäÆ÷
-		listItemAdapter = new SimpleAdapter(this, listItem, R.layout.listview_list, 
+
+		//ç”Ÿæˆé€‚é…å™¨
+		listItemAdapter = new SimpleAdapter(this, listItem, R.layout.listview_list,
 				new String[]{"itemImg","itemText"}, new int[]{
 				R.id.image,R.id.text});
 		listView.setAdapter(listItemAdapter);
 	}
-	
-	//¸ø³¤°´µ¯³öµÄ²Ëµ¥Ìí¼Ó¼àÌıÆ÷
+
+	//ç»™é•¿æŒ‰å¼¹å‡ºçš„èœå•æ·»åŠ ç›‘å¬å™¨
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
-		
+
 		AdapterView.AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		System.out.println("" + info.id + "\n"
-				+ info.position + "\n"
-				);
+						+ info.position + "\n"
+		);
 
-		
+
 		switch (item.getItemId()) {
-		case 0:   //Ìí¼Ó
+			case 0:   //æ·»åŠ 
 //			addItem(R.drawable.alert_dialog_icon, "Long Add");
-			break;
-		case 1:  //É¾³ı
+				break;
+			case 1:  //åˆ é™¤
 //			itemList.get(index)
-			break;
-		case 2:  //È«²¿É¾³ı
-			deleteIAllItem();
-			break;
-		default:
-			break;
+				break;
+			case 2:  //å…¨éƒ¨åˆ é™¤
+				deleteIAllItem();
+				break;
+			default:
+				break;
 		}
 		return super.onContextItemSelected(item);
 	}
-	
-	
-	
+
+
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		queryData();
 	}
-	
+
 	public void queryData(){
 		GridInfos[] gridInfos = baseProvider.queryInfos(GridViews.GridInfos.CONTENT_URI, PROJECTION);
 //		
@@ -271,22 +271,22 @@ public class GridViewActivity extends Activity{
 			System.out.println("shen ma dou meiyou ");
 			return;
 		}
-		
+
 		System.out.println("length = " + gridInfos.length);
-//		HashMap<String, Object> map = new HashMap<String, Object>(); //²»ÄÜÔÚ´Ë´¦´´½¨¶ÔÏó
+//		HashMap<String, Object> map = new HashMap<String, Object>(); //ä¸èƒ½åœ¨æ­¤å¤„åˆ›å»ºå¯¹è±¡
 		HashMap<String, Object> map;
 		for (int i = 0; i < gridInfos.length; i++) {
-			map = new HashMap<String, Object>();//±ØĞëÔÚ´Ë´¦´´½¨¶ÔÏó£¬·ñÔòUI¸üĞÂ»á³ö´í
+			map = new HashMap<String, Object>();//å¿…é¡»åœ¨æ­¤å¤„åˆ›å»ºå¯¹è±¡ï¼Œå¦åˆ™UIæ›´æ–°ä¼šå‡ºé”™
 			map.put("itemImg", gridInfos[i].COLUMN_NAME_IMG_ID);
 			map.put("itemText", gridInfos[i].COLUMN_NAME_NAME);
 			System.out.println("IMG_ID=" + gridInfos[i].COLUMN_NAME_IMG_ID + "NAME=" + gridInfos[i].COLUMN_NAME_NAME);
 			itemList.add(map);
 		}
-		
+
 		System.out.println("itemList.szie= " + itemList.size());
 		simpleAdapter.notifyDataSetChanged();
 	}
-	
+
 	public void addItem(String resId,String title){
 		System.out.println("resid=" + resId);
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -297,18 +297,18 @@ public class GridViewActivity extends Activity{
 //		
 //		dbAdapter.insert(gridInfo);
 //		baseProvider.insert(GridViews.GridInfos.CONTENT_URI, values)
-		
+
 //		Intent intent = getIntent();
 //		
 //		mUri = getContentResolver().insert(intent.getData(), null);
-		
-		 // Sets up a map to contain values to be updated in the provider.
-        ContentValues values = new ContentValues();
-        
-        values.put("img_id", resId);
-        values.put("name", title);
-        
-        baseProvider.insert(GridViews.GridInfos.CONTENT_URI, values);
+
+		// Sets up a map to contain values to be updated in the provider.
+		ContentValues values = new ContentValues();
+
+		values.put("img_id", resId);
+		values.put("name", title);
+
+		baseProvider.insert(GridViews.GridInfos.CONTENT_URI, values);
 //        getContentResolver().insert(
 //                GridViews.GridInfos.CONTENT_URI,    // The URI for the record to update.
 //                values // The map of column names and new values to apply to them.
@@ -316,35 +316,35 @@ public class GridViewActivity extends Activity{
 ////                null     // No where columns are used, so no where arguments are necessary.
 //            );
 	}
-	
+
 	public void deleteItem(int id){
 //		dbAdapter.deleteOneData(id);
-		
+
 	}
-	
+
 	public void deleteIAllItem(){
-		itemList.clear();  //ÏÈÇå¿Õ
-		
-		//Õâ¸ö²»ÄÜÉ¾³ı£¬ËùÒÔÒªÖØĞÂÌí¼ÓÉÏÈ¥
+		itemList.clear();  //å…ˆæ¸…ç©º
+
+		//è¿™ä¸ªä¸èƒ½åˆ é™¤ï¼Œæ‰€ä»¥è¦é‡æ–°æ·»åŠ ä¸Šå»
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("itemImg", R.drawable.th_add);
-		map.put("itemText", "´ò¿ªÊé¼®");
+		map.put("itemText", "æ‰“å¼€ä¹¦ç±");
 		itemList.add(map);
-		
+
 		simpleAdapter.notifyDataSetChanged();
-		
+
 //		dbAdapter.deleteAllData();
 	}
 	/**
-	 * ´´½¨MENU
+	 * åˆ›å»ºMENU
 	 */
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, 1, 1, "Ìí¼Ó");
-        menu.add(0, 2, 2, "É¾³ı");
+		menu.add(0, 1, 1, "æ·»åŠ ");
+		menu.add(0, 2, 2, "åˆ é™¤");
 		return super.onCreateOptionsMenu(menu);
 	}
-	
-	//²Ëµ¥µã»÷ÊÂ¼ş¼àÌıÆ÷
+
+	//èœå•ç‚¹å‡»äº‹ä»¶ç›‘å¬å™¨
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == 1) {

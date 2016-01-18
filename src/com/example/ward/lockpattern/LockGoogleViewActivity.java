@@ -56,17 +56,17 @@ public class LockGoogleViewActivity extends Activity implements OnClickListener{
 					if (result != 1) {
 						if (result == 0) {
 							lockPatternView.setDisplayMode(DisplayMode.Wrong);
-							Toast.makeText(LockGoogleViewActivity.this, "ÃÜÂë´íÎó", Toast.LENGTH_LONG).show();
+//							Toast.makeText(LockGoogleViewActivity.this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Toast.LENGTH_LONG).show();
 						} else {
 							lockPatternView.clearPattern();
-							Toast.makeText(LockGoogleViewActivity.this, "ÇëÉèÖÃÃÜÂë", Toast.LENGTH_LONG).show();
+//							Toast.makeText(LockGoogleViewActivity.this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Toast.LENGTH_LONG).show();
 						}
 					} else {
-						Toast.makeText(LockGoogleViewActivity.this, "ÃÜÂëÕýÈ·", Toast.LENGTH_LONG).show();
+//						Toast.makeText(LockGoogleViewActivity.this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·", Toast.LENGTH_LONG).show();
 					}
 				} else {
 					lockPatternUtils.saveLockPattern(pattern);
-					Toast.makeText(LockGoogleViewActivity.this, "ÃÜÂëÒÑ¾­ÉèÖÃ", Toast.LENGTH_LONG).show();
+//					Toast.makeText(LockGoogleViewActivity.this, "ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½", Toast.LENGTH_LONG).show();
 					lockPatternView.clearPattern();
 				}
 			}

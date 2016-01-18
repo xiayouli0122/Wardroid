@@ -23,15 +23,15 @@ public class ActivityAnimationDemo  extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_animation_main);
-		
-		setTitle("Activity¶¯»­ÇĞ»»Ğ§¹û²âÊÔ");
-		
+
+		setTitle("ActivityåŠ¨ç”»åˆ‡æ¢æ•ˆæœæµ‹è¯•");
+
 		openButton = (Button)findViewById(R.id.openButton);
 		mSpinner = (Spinner)findViewById(R.id.animation_sp);
-		
+
 		Button button = (Button) findViewById(R.id.button);
 		button.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -39,85 +39,85 @@ public class ActivityAnimationDemo  extends Activity{
 				startActivity(intent);
 			}
 		});
-		
-		//Í¨¹ı×ÊÔ´ÎÄ¼ş»ñÈ¡Ìî³äÄÚÈİ
+
+		//é€šè¿‡èµ„æºæ–‡ä»¶è·å–å¡«å……å†…å®¹
 		String[] array = getResources().getStringArray(R.array.animation_type);
-		
+
 		List<String> list = new ArrayList<String>();
-		//°ÑÊı×éÄÚÈİÌî³äµ½¼¯ºÏÖĞ
+		//æŠŠæ•°ç»„å†…å®¹å¡«å……åˆ°é›†åˆä¸­
 		for (int i = 0; i < array.length; i++) {
 			list.add(array[i]);
 		}
-		
+
 		ArrayAdapter<String> animType = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,list);
 		animType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		mSpinner.setAdapter(animType);
 		mSpinner.setSelection(0);
-		
+
 		openButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
 				intent.setClass(ActivityAnimationDemo.this, ActivityAnimationOther.class);
 				startActivity(intent);
-				
+
 				switch (mSpinner.getSelectedItemPosition()) {
-				case 0:
-					overridePendingTransition(R.anim.fade, R.anim.hold);
-					break;
-				case 1:
-					overridePendingTransition(R.anim.my_scale_action,
-							R.anim.my_alpha_action);
-					break;
-				case 2:
-					overridePendingTransition(R.anim.scale_rotate,
-							R.anim.my_alpha_action);
-					break;
-				case 3:
-					overridePendingTransition(R.anim.scale_translate_rotate,
-							R.anim.my_alpha_action);
-					break;
-				case 4:
-					overridePendingTransition(R.anim.scale_translate,
-							R.anim.my_alpha_action);
-					break;
-				case 5:
-					overridePendingTransition(R.anim.hyperspace_in,
-							R.anim.hyperspace_out);
-					break;
-				case 6:
-					overridePendingTransition(R.anim.push_left_in,
-							R.anim.push_left_out);
-					break;
-				case 7:
-					overridePendingTransition(R.anim.push_up_in,
-							R.anim.push_up_out);
-					break;
-				case 8:
-					overridePendingTransition(R.anim.slide_left,
-							R.anim.slide_right);
-					break;
-				case 9:
-					overridePendingTransition(R.anim.wave_scale,
-							R.anim.my_alpha_action);
-					break;
-				case 10:
-					overridePendingTransition(R.anim.zoom_enter,
-							R.anim.zoom_exit);
-					break;
-				case 11:
-					overridePendingTransition(R.anim.slide_up_in,
-							R.anim.slide_down_out);
-					break;
-				case 12:
-					overridePendingTransition(R.anim.push_right_in,
-							R.anim.push_right_out);
-					break;
-				default:
-					break;
+					case 0:
+						overridePendingTransition(R.anim.fade, R.anim.hold);
+						break;
+					case 1:
+						overridePendingTransition(R.anim.my_scale_action,
+								R.anim.my_alpha_action);
+						break;
+					case 2:
+						overridePendingTransition(R.anim.scale_rotate,
+								R.anim.my_alpha_action);
+						break;
+					case 3:
+						overridePendingTransition(R.anim.scale_translate_rotate,
+								R.anim.my_alpha_action);
+						break;
+					case 4:
+						overridePendingTransition(R.anim.scale_translate,
+								R.anim.my_alpha_action);
+						break;
+					case 5:
+						overridePendingTransition(R.anim.hyperspace_in,
+								R.anim.hyperspace_out);
+						break;
+					case 6:
+						overridePendingTransition(R.anim.push_left_in,
+								R.anim.push_left_out);
+						break;
+					case 7:
+						overridePendingTransition(R.anim.push_up_in,
+								R.anim.push_up_out);
+						break;
+					case 8:
+						overridePendingTransition(R.anim.slide_left,
+								R.anim.slide_right);
+						break;
+					case 9:
+						overridePendingTransition(R.anim.wave_scale,
+								R.anim.my_alpha_action);
+						break;
+					case 10:
+						overridePendingTransition(R.anim.zoom_enter,
+								R.anim.zoom_exit);
+						break;
+					case 11:
+						overridePendingTransition(R.anim.slide_up_in,
+								R.anim.slide_down_out);
+						break;
+					case 12:
+						overridePendingTransition(R.anim.push_right_in,
+								R.anim.push_right_out);
+						break;
+					default:
+						break;
 				}
 			}
 		});
 	}
-	
+
 }

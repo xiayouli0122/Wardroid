@@ -21,53 +21,45 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
- * ÎÒµÄ²Ëµ¥
  * @author haozi
  *
  */
 public class MyMenu2 extends PopupWindow {
 
 	private Context context;
-	private GridView gvTitle;                 // ±êÌâ
-	private LinearLayout mLayout;             // PopupWindowµÄ²¼¾Ö
-	private MyMenuAdapter myMenuAdapter;      // ×Ô¶¨Òå²Ëµ¥µÄÊÊÅäÆ÷
+	private GridView gvTitle;
+	private LinearLayout mLayout;
+	private MyMenuAdapter myMenuAdapter;
 	
 	/**
-	 * MyMenuÊÊÅäÆ÷
-	 * @param context µ÷ÓÃ·½µÄÉÏÏÂÎÄ
-	 * @param titleClick ²Ëµ¥µã»÷ÊÂ¼ş
-	 * @param myMenuAdapter ²Ëµ¥ÊÊÅäÆ÷
-	 * @param myMenuBackgroundColor ²Ëµ¥±³¾°ÑÕÉ«
-	 * @param myMenuAnim ²Ëµ¥ĞèÒªµÄ¶¯»­Ğ§¹û
+	 * MyMenu
+	 * @param context
+	 * @param titleClick
+	 * @param myMenuAdapter
+	 * @param myMenuBackgroundColor
+	 * @param myMenuAnim
 	 */
 	public MyMenu2(Context context, OnItemClickListener titleClick, 
 			int myMenuBackgroundColor, int myMenuAnim){
 		super(context);
 		
 		this.context = context;
-		// ´´½¨ÊÊÅäÆ÷
 		myMenuAdapter = (MyMenuAdapter) createMenuAdapter();
 		
 		mLayout = new LinearLayout(context);
 		mLayout.setOrientation(LinearLayout.VERTICAL);
-		// ²Ëµ¥Ñ¡ÏîÀ¸
 		gvTitle = new GridView(context);
 		gvTitle.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 		
-		// ÉèÖÃÁĞÊı
 		gvTitle.setNumColumns(myMenuAdapter.getCount());
-		// ÉèÖÃ¿í¶È×ÔÊÊÓ¦
 		gvTitle.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
 		gvTitle.setVerticalSpacing(1);
 		gvTitle.setHorizontalSpacing(1);
 		gvTitle.setGravity(Gravity.CENTER);
 		gvTitle.setOnItemClickListener(titleClick);
-		// Ñ¡ÖĞµÄÊ±ºòÎªÍ¸Ã÷É«
 		gvTitle.setSelector(new ColorDrawable(Color.TRANSPARENT));
 		gvTitle.setAdapter(myMenuAdapter);
-		// °ÑgvTitle·ÅÔÚlayoutÉÏ
 		this.mLayout.addView(gvTitle);
-		// ÉèÖÃ²Ëµ¥µÄÌØÕ÷
 		setContentView(this.mLayout);
 		setWidth(LayoutParams.FILL_PARENT);
 		setHeight(LayoutParams.WRAP_CONTENT);
@@ -90,7 +82,7 @@ public class MyMenu2 extends PopupWindow {
 	}
 	
 	/**
-	 * ²Ëµ¥Ñ¡ÏîµÄ¼àÌı
+	 * ï¿½Ëµï¿½Ñ¡ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 	 *
 	 * @param index
 	 * 
@@ -104,22 +96,21 @@ public class MyMenu2 extends PopupWindow {
         this.myMenuAdapter.setFocus(index);  
         switch (index) {
 		case 0:
-			Toast.makeText(context, "Ä¿Â¼", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "111", Toast.LENGTH_SHORT).show();
 			break;
 		case 1:
-			Toast.makeText(context, "ÊéÇ©", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "222", Toast.LENGTH_SHORT).show();
 			break;
 		case 2:
-			Toast.makeText(context, "ÕªÒª", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "333", Toast.LENGTH_SHORT).show();
 			break;
 		case 3:
-			Toast.makeText(context, "ÉèÖÃ", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "444", Toast.LENGTH_SHORT).show();
 			break;
 		}
     }
     
     /**
-     * ´´½¨²Ëµ¥µÄAdapter
      *
      * @return
      * 
@@ -130,16 +121,15 @@ public class MyMenu2 extends PopupWindow {
     public BaseAdapter createMenuAdapter(){
     	
     	return new MyMenuAdapter(context, 
-				new String[]{"Ä¿Â¼", "ÊéÇ©", "ÕªÒª", "ÉèÖÃ"}, 
+				new String[]{"AAA", "BBB", "CCC", "DDD"},
 				16, 
-				Color.argb(255, 139, 106, 47),  // Î´Ñ¡ÖĞ×ÖÌåÑÕÉ«
-				Color.argb(255, 247, 246, 234), // Ñ¡ÖĞ×ÖÌåÑÕÉ«
-				Color.argb(255, 247, 246, 234), // Î´Ñ¡ÖĞ±³¾°ÑÕÉ«
-				Color.argb(255, 139, 106, 47)); // Ñ¡ÖĞ±³¾°ÑÕÉ«
+				Color.argb(255, 139, 106, 47),
+				Color.argb(255, 247, 246, 234),
+				Color.argb(255, 247, 246, 234),
+				Color.argb(255, 139, 106, 47));
     }
 	
 	/**
-	 * ÊÊÅäÆ÷
 	 * @author haozi
 	 *
 	 */
@@ -152,16 +142,6 @@ public class MyMenu2 extends PopupWindow {
 		private int bgUnSelColor;
 		private int bgSelColor;
 		
-		/**
-		 * ÉèÖÃ title
-		 * @param context µ÷ÓÃ·½µÄÉÏÏÂÎÄ
-		 * @param titles Êı¾İ
-		 * @param fontSize ×ÖÌå´óĞ¡
-		 * @param fontUnSelColor Î´Ñ¡ÖĞ×ÖÌåÑÕÉ«
-		 * @param fontSelColor Ñ¡ÖĞ×ÖÌåÑÕÉ«
-		 * @param bgUnSelColor Î´Ñ¡ÖĞ±³¾°ÑÕÉ«
-		 * @param bgSelColor Ñ¡ÖĞ±³¾°ÑÕÉ«
-		 */
 		public MyMenuAdapter(Context context, String[] titles,
 				int fontSize, int fontUnSelColor, int fontSelColor, int bgUnSelColor, int bgSelColor){
 			this.context = context;
@@ -169,7 +149,6 @@ public class MyMenu2 extends PopupWindow {
 			this.fontSelColor = fontSelColor;
 			this.bgUnSelColor = bgUnSelColor;
 			this.bgSelColor = bgSelColor;
-			// ¸ù¾İ´«µİ½øÀ´µÄtitles´´½¨menuÉÏµÄtextView¡£
 			tvTitles = new TextView[titles.length];
 			for(int i=0; i<titles.length; i++){
 				tvTitles[i] = new TextView(context);
@@ -200,7 +179,6 @@ public class MyMenu2 extends PopupWindow {
 		}
 		
 		/**
-		 * ÉèÖÃÑ¡ÖĞĞ§¹û
 		 *
 		 * @param index
 		 * 
@@ -212,10 +190,10 @@ public class MyMenu2 extends PopupWindow {
 			
 			for(int i=0; i<tvTitles.length; i++){
 				
-				if(i != index){// Èç¹ûÎ´Ñ¡ÖĞ
+				if(i != index){
 					this.tvTitles[i].setBackgroundColor(this.bgUnSelColor);
 					this.tvTitles[i].setTextColor(this.fontUnSelColor);
-				}else{// Èç¹ûÑ¡ÖĞ
+				}else{
 					this.tvTitles[i].setBackgroundColor(this.bgSelColor);
 					this.tvTitles[i].setTextColor(this.fontSelColor);					
 				}

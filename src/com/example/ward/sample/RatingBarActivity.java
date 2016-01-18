@@ -9,26 +9,26 @@ import android.widget.Toast;
 
 import com.example.ward.R;
 
-//ÆÀ·Ö×é¼şRatingBar¡¢ImageViewÍ¼Æ¬¡¢ ImageButtonÍ¼Æ¬°´Å¥
+//è¯„åˆ†ç»„ä»¶RatingBarã€ImageViewå›¾ç‰‡ã€ ImageButtonå›¾ç‰‡æŒ‰é’®
 public class RatingBarActivity extends Activity {
 
 	private RatingBar ratingBar;
 	private ImageButton imageButton;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rating_bar);
-		setTitle("ÆÀ·Ö×é¼şRatingBar¡¢ImageViewÍ¼Æ¬¡¢ ImageButtonÍ¼Æ¬°´Å¥");
+		setTitle("è¯„åˆ†ç»„ä»¶RatingBarã€ImageViewå›¾ç‰‡ã€ ImageButtonå›¾ç‰‡æŒ‰é’®");
 		ratingBar=(RatingBar)findViewById(R.id.rating_bar);
 		imageButton=(ImageButton)findViewById(R.id.imageButton);
-		
+
 		imageButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(RatingBarActivity.this, "µ¥»÷Í¼Æ¬°´Å¥!!", Toast.LENGTH_LONG).show();
+				Toast.makeText(RatingBarActivity.this, "å•å‡»å›¾ç‰‡æŒ‰é’®!!", Toast.LENGTH_LONG).show();
 			}
 		});
 	}

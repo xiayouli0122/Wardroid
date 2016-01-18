@@ -14,7 +14,7 @@ import android.widget.Spinner;
 
 import com.example.ward.R;
 
-//ÏÂÀ­¿ò
+//ä¸‹æ‹‰æ¡†
 public class SpinnerActivity extends Activity {
 
 	private Spinner spinner1;
@@ -27,37 +27,37 @@ public class SpinnerActivity extends Activity {
 			"@126.com","@163.com","@gmail.com","@139.com","@qq.com",
 			"@gmail.com","@sina.com","@phiee.com.cn","@hotmail.com"};
 	private List<String> allCounties=new ArrayList<String>();
-	private String result="ÄãÑ¡ÔñµÄÊÇ£º";
-	
-	
+	private String result="ä½ é€‰æ‹©çš„æ˜¯ï¼š";
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spinner);
-		
+
 		spinner1=(Spinner)findViewById(R.id.spinner1);
 		spinner2=(Spinner)findViewById(R.id.spinner2);
 		mEditText = (EditText)findViewById(R.id.edittext);
 		ok=(Button)findViewById(R.id.ok);
-		
+
 		for(int i=0;i<mCounties.length;i++){
 			allCounties.add(mCounties[i]);
 		}
-		
+
 		countiesAdapter=new ArrayAdapter<String>(SpinnerActivity.this,android.R.layout.simple_spinner_item,allCounties);
 		countiesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner1.setAdapter(countiesAdapter);
-		
+
 		ArrayAdapter adapter=ArrayAdapter.createFromResource(SpinnerActivity.this,R.array.counties,android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner2.setAdapter(adapter);
-		
-		//µ¥»÷µÚÒ»¸öÏÂÀ­°´Å¥Ê±£¬ÏÔÊ¾Ñ¡ÔñµÄÖµ¡£ 
+
+		//å•å‡»ç¬¬ä¸€ä¸ªä¸‹æ‹‰æŒ‰é’®æ—¶ï¼Œæ˜¾ç¤ºé€‰æ‹©çš„å€¼ã€‚ 
 		spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> adapter, View view,
-					int position, long id) {
+									   int position, long id) {
 				// TODO Auto-generated method stub
 //				String str=(String)spinner1.getAdapter().getItem((int)id);
 //				setTitle(result+str);
@@ -69,15 +69,15 @@ public class SpinnerActivity extends Activity {
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
-		//µ¥»÷µÚ¶ş¸öÏÂÀ­°´Å¥Ê±£¬ÏÔÊ¾Ñ¡ÔñµÄÖµ¡£ 
+
+		//å•å‡»ç¬¬äºŒä¸ªä¸‹æ‹‰æŒ‰é’®æ—¶ï¼Œæ˜¾ç¤ºé€‰æ‹©çš„å€¼ã€‚ 
 		spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> adapter, View view,
-					int position, long id) {
+									   int position, long id) {
 				String str=(String)spinner2.getAdapter().getItem(position);
 				setTitle(result+str);
 			}
@@ -86,10 +86,10 @@ public class SpinnerActivity extends Activity {
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		});
-		
-		
-		
-		//µ¥»÷È·¶¨°´Å¥£¬ÌáÈ¡Ñ¡ÔñµÄÖµ.
+
+
+
+		//å•å‡»ç¡®å®šæŒ‰é’®ï¼Œæå–é€‰æ‹©çš„å€¼.
 		ok.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -99,7 +99,7 @@ public class SpinnerActivity extends Activity {
 				setTitle(result);
 			}
 		});
-		
+
 	}
 
 }

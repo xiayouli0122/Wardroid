@@ -41,7 +41,6 @@ public class PreferenceDemo extends Activity{
 			
 //			 Bundle args = new Bundle();
 //             args.putParcelable("Profile", profile);
-             //使用自定义ChekBoxPreference
 			for (int i = 0; i < 5; i++) {
 				ProfilesPreference ppref = new ProfilesPreference(this, null);
 				ppref.setKey("11111111111");

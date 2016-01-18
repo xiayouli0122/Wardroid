@@ -21,22 +21,19 @@ import android.widget.TextView;
 import com.example.ward.R;
 
 /**
- * Tabҳ�����ƻ����л��Լ�����Ч��
- * 
+ *
  * @author yuri
  */
 public class TestViewPagerDemoActivity extends Activity implements OnClickListener {
-	// ViewPager��google SDk���Դ��һ�����Ӱ��һ���࣬��������ʵ����Ļ����л���
-	// android-support-v4.jar
 	private ViewPager viewPager;
-	private List<View> listViews;// Tabҳ���б�
-	private ImageView cursor1,cursor2,cursor3;// ����ͼƬ
+	private List<View> listViews;//
+	private ImageView cursor1,cursor2,cursor3;
 
-	private TextView tap1, tap2, tap3,tap4,tap5;// ҳ������
+	private TextView tap1, tap2, tap3,tap4,tap5;
 
-	private int offset = 0;// ����ͼƬƫ����
-	private int currIndex = 0;// ��ǰҳ�����
-	private int bmpW; // ����ͼƬ���
+	private int offset = 0;
+	private int currIndex = 0;
+	private int bmpW;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +41,7 @@ public class TestViewPagerDemoActivity extends Activity implements OnClickListen
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.viewpager_layout);
 		
-		setTitle("ViewPager����");
+		setTitle("TestViewPagerDemoActivity");
 
 		initImageView();
 		initTextView();
@@ -77,29 +74,22 @@ public class TestViewPagerDemoActivity extends Activity implements OnClickListen
 //		listViews.add(mInflater.inflate(R.layout.viewpager_lay5, null));
 		
 		viewPager.setAdapter(new MyViewPagerAdapter(listViews));
-		//����Ĭ��ҳ��
 		viewPager.setCurrentItem(0);
 		viewPager.setOnPageChangeListener(new MyPageListen());
 	}
 
-	// ��ʼ������
 	public void initImageView() {
 		cursor1 = (ImageView) findViewById(R.id.cursor1);
 		cursor2 = (ImageView) findViewById(R.id.cursor2);
 		cursor3 = (ImageView) findViewById(R.id.cursor3);
-		// ��ȡͼƬ���
 		bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.viewpager).getWidth();
-		// ��ȡ��Ļ�ֱ���
 		DisplayMetrics dMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dMetrics);
-		// ��ȡ�ֱ��ʿ��
 		int screenW = dMetrics.widthPixels;
-		// ����ƫ����
 		offset = (screenW / 3 - bmpW) / 2;
 
 		Matrix matrix = new Matrix();
 		matrix.postTranslate(offset, 0);
-		// ���ö�����ʼλ��
 //		cursor.setImageMatrix(matrix);
 		cursor1.setVisibility(View.VISIBLE);
 		cursor2.setVisibility(View.GONE);
@@ -127,9 +117,8 @@ public class TestViewPagerDemoActivity extends Activity implements OnClickListen
 
 	class MyPageListen implements OnPageChangeListener{
 
-		// ҳ���л�����
-		int one = offset * 2 + bmpW;// ҳ��1 -> ҳ��2 ƫ����
-		int two = one * 2;// ҳ��1 -> ҳ��3 ƫ����
+		int one = offset * 2 + bmpW;
+		int two = one * 2;
 		
 		@Override
 		public void onPageScrollStateChanged(int arg0) {
@@ -176,7 +165,7 @@ public class TestViewPagerDemoActivity extends Activity implements OnClickListen
 				break;
 			}
 			currIndex = arg0;
-			animation.setFillAfter(true);// True:ͼƬͣ���ڶ�������λ��
+			animation.setFillAfter(true);
 			animation.setDuration(300);
 //			cursor.startAnimation(animation);
 		}

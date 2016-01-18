@@ -26,54 +26,54 @@ import android.widget.ImageView;
 import com.example.ward.R;
 
 public class ImageBrowser extends Activity implements OnItemClickListener{
-	
+
 	private GridView sdcardImages;
 	private ImageAdapter imageAdapter;
-//	private Display display;
+	//	private Display display;
 	public static int imagePosition;
 	public static Uri[] uriArray;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		//Ó°²Ø¶¥²¿³ÌĞòÃû³Æ Ğ´ÔÚsetContentView(R.layout.gallery_1);Ö®Ç°£¬²»È»±¨´í
-		requestWindowFeature(Window.FEATURE_NO_TITLE);  
+		//å½±è—é¡¶éƒ¨ç¨‹åºåç§° å†™åœ¨setContentView(R.layout.gallery_1);ä¹‹å‰ï¼Œä¸ç„¶æŠ¥é”™
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.gallery_1);
-		//Ó°²Ø¶¥²¿µçÁ¿µÈÍ¼±ê
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-				WindowManager.LayoutParams.FLAG_FULLSCREEN); 
+		//å½±è—é¡¶éƒ¨ç”µé‡ç­‰å›¾æ ‡
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.imagebrowser_sdcard);
 //		display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		initView();
-		//ÏÔÊ¾±êÌâÀ¸µÄ½ø¶ÈÈ¦
+		//æ˜¾ç¤ºæ ‡é¢˜æ çš„è¿›åº¦åœˆ
 		setProgressBarIndeterminateVisibility(true);
 		loadImages();
 	}
-	
+
 	private void initView() {
 		sdcardImages = (GridView) findViewById(R.id.sdcard);
-		//ÉèÖÃÍ¼Æ¬ÏÔÊ¾µÄÁĞÊı
+		//è®¾ç½®å›¾ç‰‡æ˜¾ç¤ºçš„åˆ—æ•°
 //		sdcardImages.setNumColumns(display.getWidth() / 95);
 //		//By default, children are clipped to the padding of the ViewGroup
 //		sdcardImages.setClipToPadding(false);
-		
+
 		sdcardImages.setNumColumns(3);
 		sdcardImages.setClipToPadding(true);
-		//ÉèÖÃ¼àÌı
+		//è®¾ç½®ç›‘å¬
 		sdcardImages.setOnItemClickListener(ImageBrowser.this);
-		//¹¹Ôìº¯Êı  ²ÎÊıÏàµ±ÓÚ£¨this£©
+		//æ„é€ å‡½æ•°  å‚æ•°ç›¸å½“äºï¼ˆthisï¼‰
 		imageAdapter = new ImageAdapter(getApplicationContext());
-		//ÎªÍ¼Æ¬Ìí¼ÓÊÊÅäÆ÷
+		//ä¸ºå›¾ç‰‡æ·»åŠ é€‚é…å™¨
 		sdcardImages.setAdapter(imageAdapter);
 	}
 
 	private void loadImages() {
-		//µÃµ½ºáÆÁÊ±ÁÙÊ±´æ´¢µÄÊı¾İ
+		//å¾—åˆ°æ¨ªå±æ—¶ä¸´æ—¶å­˜å‚¨çš„æ•°æ®
 		final Object data = getLastNonConfigurationInstance();
-		if (data == null) {//Èç¹ûÃ»ÓĞÊı¾İÔò´ÓĞÂ¼ÓÔØ
+		if (data == null) {//å¦‚æœæ²¡æœ‰æ•°æ®åˆ™ä»æ–°åŠ è½½
 			new LoadImagesFromSDCard().execute();
 		}else {
 			final LoadedImage[] photos = (LoadedImage[]) data;
@@ -88,59 +88,59 @@ public class ImageBrowser extends Activity implements OnItemClickListener{
 
 	private void addImage(LoadedImage... value) {
 		for (LoadedImage image : value) {
-			//°ÑÍ¼Æ¬Ìí¼Óµ½ÊÊÅäÆ÷ÀïÃæ£¬ÒÔ±ãµ÷ÕûÍ¼Æ¬µÄÊôĞÔ
+			//æŠŠå›¾ç‰‡æ·»åŠ åˆ°é€‚é…å™¨é‡Œé¢ï¼Œä»¥ä¾¿è°ƒæ•´å›¾ç‰‡çš„å±æ€§
 			imageAdapter.addPhoto(image);
 			imageAdapter.notifyDataSetChanged();
 		}
 	}
-////µ±ºáÆÁÊ±£ºµÃµ½ÊúÆÁÊ±ÁÙÊ±´æ´¢µÄÊı¾İ
+////å½“æ¨ªå±æ—¶ï¼šå¾—åˆ°ç«–å±æ—¶ä¸´æ—¶å­˜å‚¨çš„æ•°æ®
 //	@Override
 //	public Object onRetainNonConfigurationInstance() {
 //		final GridView grid = sdcardImages;
-//		final int count = grid.getChildCount();//ÕâÀïÊÇÊúÆÁÊ±ÒÑ¾­¼ÓÔØµÄÍ¼Æ¬ÊıÁ¿
+//		final int count = grid.getChildCount();//è¿™é‡Œæ˜¯ç«–å±æ—¶å·²ç»åŠ è½½çš„å›¾ç‰‡æ•°é‡
 //		final LoadedImage[] list = new LoadedImage[count];
 //
 //		for (int i = 0; i < count; i++) {
 //			final ImageView v = (ImageView) grid.getChildAt(i);
-//			//µÃµ½ÏÈÇ°µÄÎ»Í¼
+//			//å¾—åˆ°å…ˆå‰çš„ä½å›¾
 //			list[i] = new LoadedImage(
 //					((BitmapDrawable) v.getDrawable()).getBitmap());
 //		}
 //		return list;
 //	}
-	/*¶ÁÈ¡sdcardÉÏµÄÍ¼Æ¬*/
-	
+	/*è¯»å–sdcardä¸Šçš„å›¾ç‰‡*/
+
 	class LoadImagesFromSDCard extends AsyncTask<Object, LoadedImage, Object> {
 
 		@Override
 		protected Object doInBackground(Object... params) {
-			Bitmap bitmap = null;//old Bitmap (Î»Í¼)
+			Bitmap bitmap = null;//old Bitmap (ä½å›¾)
 			Bitmap newBitmap = null;//new Bitmap
 			Uri uri = null;
-			//ÏëÒªµÄ·µ»ØÖµËùÔÚµÄÁĞ
+			//æƒ³è¦çš„è¿”å›å€¼æ‰€åœ¨çš„åˆ—
 			String[] projection = { MediaStore.Images.Thumbnails._ID};
-			//Í¼Æ¬ĞÅÏ¢´æ´¢ÔÚ android.provider.MediaStore.Images.ThumbnailsÊı¾İ¿â 
-			//¿ìËÙ²éÑ¯Êı¾İ¿âÖĞµÄÍ¼Æ¬¶ÔÓ¦´æ·ÅÂ·¾¢         
+			//å›¾ç‰‡ä¿¡æ¯å­˜å‚¨åœ¨ android.provider.MediaStore.Images.Thumbnailsæ•°æ®åº“ 
+			//å¿«é€ŸæŸ¥è¯¢æ•°æ®åº“ä¸­çš„å›¾ç‰‡å¯¹åº”å­˜æ”¾è·¯åŠ²         
 			Cursor cursor = managedQuery(
 					MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI,
-					projection, //List of columns to return £ºÏëÒªËû·µ»ØµÄÁĞ
+					projection, //List of columns to return ï¼šæƒ³è¦ä»–è¿”å›çš„åˆ—
 					null, // Return all rows
 					null,
 					null);
 			int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Thumbnails._ID);
-			uriArray = new Uri[cursor.getCount()];//°ÑÍ¼Æ¬Â·¾¶·ÅÔÚÊı×éÖĞ
+			uriArray = new Uri[cursor.getCount()];//æŠŠå›¾ç‰‡è·¯å¾„æ”¾åœ¨æ•°ç»„ä¸­
 			int i=0;
 			while(cursor.moveToNext()&&i<cursor.getCount())
-			{   //ÒÆµ½Ö¸¶¨µÄÎ»ÖÃ£¬±éÀúÊı¾İ¿â
+			{   //ç§»åˆ°æŒ‡å®šçš„ä½ç½®ï¼Œéå†æ•°æ®åº“
 				cursor.moveToPosition(i);
 				uri = Uri.withAppendedPath(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI,cursor.getInt(columnIndex)+"");
 				uriArray[i]=uri;
 				try {
 					bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
 					if (bitmap != null) {
-						//½«Ô­À´µÄÎ»Í¼×ª»»³ÉĞÂµÄÎ»Í¼
+						//å°†åŸæ¥çš„ä½å›¾è½¬æ¢æˆæ–°çš„ä½å›¾
 						newBitmap = Bitmap.createScaledBitmap(bitmap,80, 80,true);
-						bitmap.recycle();//ÊÍ·ÅÄÚ´æ
+						bitmap.recycle();//é‡Šæ”¾å†…å­˜
 						if (newBitmap != null) {
 							publishProgress(new LoadedImage(newBitmap));
 						}
@@ -148,14 +148,14 @@ public class ImageBrowser extends Activity implements OnItemClickListener{
 				} catch (IOException e) {}
 				i++;
 			}
-			cursor.close();//¹Ø±ÕÊı¾İ¿â
+			cursor.close();//å…³é—­æ•°æ®åº“
 			return null;
 		}
 		@Override
 		public void onProgressUpdate(LoadedImage... value) {
 			addImage(value);
 		}
-		//µ±¼ÓÔØÍêÊ±Í£Ö¹±êÌâÀ¸µÄ½ø¶ÈÈ¦
+		//å½“åŠ è½½å®Œæ—¶åœæ­¢æ ‡é¢˜æ çš„è¿›åº¦åœˆ
 		@Override
 		protected void onPostExecute(Object result) {
 			setProgressBarIndeterminateVisibility(false);
@@ -170,11 +170,11 @@ public class ImageBrowser extends Activity implements OnItemClickListener{
 		public ImageAdapter(Context context) {
 			mContext = context;
 		}
-		//°ÑÍ¼Æ¬Ìí¼Óµ½Êı×é
+		//æŠŠå›¾ç‰‡æ·»åŠ åˆ°æ•°ç»„
 		public void addPhoto(LoadedImage photo) {
 			photos.add(photo);
 		}
-		//µÃµ½Í¼Æ¬ÊıÁ¿
+		//å¾—åˆ°å›¾ç‰‡æ•°é‡
 		public int getCount() {
 			return photos.size();
 		}
@@ -195,7 +195,7 @@ public class ImageBrowser extends Activity implements OnItemClickListener{
 				imageView = (ImageView) convertView;
 			}
 			imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-			imageView.setPadding(1, 1, 1, 1);//¿ØÖÆÍ¼Æ¬¾àÀë´°¿ÚµÄÎ»ÖÃ
+			imageView.setPadding(1, 1, 1, 1);//æ§åˆ¶å›¾ç‰‡è·ç¦»çª—å£çš„ä½ç½®
 			imageView.setImageBitmap(photos.get(position).getBitmap());
 			return imageView;
 		}
@@ -212,15 +212,15 @@ public class ImageBrowser extends Activity implements OnItemClickListener{
 			return mBitmap;
 		}
 	}
-	//Í¼Æ¬µã»÷¼àÌı
+	//å›¾ç‰‡ç‚¹å‡»ç›‘å¬
 	@Override
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//		//°ÑÍ¼Æ¬Î»ÖÃ¸³¸ø¾²Ì¬±äÁ¿imagePosition£¬·½±ãºóÃæµ÷ÓÃ
+//		//æŠŠå›¾ç‰‡ä½ç½®èµ‹ç»™é™æ€å˜é‡imagePositionï¼Œæ–¹ä¾¿åé¢è°ƒç”¨
 //		imagePosition=position;
-//		//Ìø×ªµ½´óÍ¼ä¯ÀÀ
+//		//è·³è½¬åˆ°å¤§å›¾æµè§ˆ
 //		Intent intent = new Intent();
 //		intent.setClass(ImageBrowser.this, Gallery1.class);
 //		startActivity(intent);
 	}
-	
+
 }

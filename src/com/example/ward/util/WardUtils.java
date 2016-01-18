@@ -47,7 +47,7 @@ public class WardUtils {
 			return String.valueOf((int)size) + "B";
 		}
 	}
-	
+
 	public static String getFormatSize(double size){
 		if (size >= 1024 * 1024 * 1024){
 			Double dsize = size / (1024 * 1024 * 1024);
@@ -62,19 +62,19 @@ public class WardUtils {
 			return String.valueOf((int)size) + "B";
 		}
 	}
-	
+
 	/**get app install date*/
 	public static String getFormatDate(long date){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String dateString = format.format(new Date(date));
 		return dateString;
 	}
-	
-	/** 
-     * ¸ñÊ½»¯Ê±¼ä£¬½«ºÁÃë×ª»»Îª·Ö:Ãë¸ñÊ½ 
-     * @param time audio/video time like 12323312
-     * @return the format time string like 00:12:23
-     */  
+
+	/**
+	 * æ ¼å¼åŒ–æ—¶é—´ï¼Œå°†æ¯«ç§’è½¬æ¢ä¸ºåˆ†:ç§’æ ¼å¼
+	 * @param time audio/video time like 12323312
+	 * @return the format time string like 00:12:23
+	 */
 	public static String mediaTimeFormat(long duration) {
 		long hour = duration / (60 * 60 * 1000);
 		String min = duration % (60 * 60 * 1000) / (60 * 1000) + "";
@@ -106,15 +106,15 @@ public class WardUtils {
 			return hours + ":" + min + ":" + sec.trim().substring(0, 2);
 		}
 	}
-	
+
 	public static void showInfoDialog(Context context, String title, String info){
 		new AlertDialog.Builder(context)
-		.setTitle(title)
-		.setMessage(info)
-		.setPositiveButton(android.R.string.ok, null)
-		.create().show();
+				.setTitle(title)
+				.setMessage(info)
+				.setPositiveButton(android.R.string.ok, null)
+				.create().show();
 	}
-	
+
 	/**set dialog dismiss or not*/
 	public static void setDialogDismiss(DialogInterface dialog, boolean dismiss){
 		try {
@@ -126,8 +126,8 @@ public class WardUtils {
 			e.printStackTrace();
 		}
 	}
-	
-	/**Drawable ×ª»»³É×Ö½Ú*/
+
+	/**Drawable è½¬æ¢æˆå­—èŠ‚*/
 	public static synchronized byte[] drawableToByte(Drawable drawable) {
 		if (drawable != null) {
 			Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(),
@@ -136,17 +136,17 @@ public class WardUtils {
 			drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
 			drawable.draw(canvas);
 			int size = bitmap.getWidth() * bitmap.getHeight() * 4;
-			// ´´½¨Ò»¸ö×Ö½ÚÊı×éÊä³öÁ÷,Á÷µÄ´óĞ¡Îªsize
+			// åˆ›å»ºä¸€ä¸ªå­—èŠ‚æ•°ç»„è¾“å‡ºæµ,æµçš„å¤§å°ä¸ºsize
 			ByteArrayOutputStream baos = new ByteArrayOutputStream(size);
-			// ÉèÖÃÎ»Í¼µÄÑ¹Ëõ¸ñÊ½£¬ÖÊÁ¿Îª100%£¬²¢·ÅÈë×Ö½ÚÊı×éÊä³öÁ÷ÖĞ
+			// è®¾ç½®ä½å›¾çš„å‹ç¼©æ ¼å¼ï¼Œè´¨é‡ä¸º100%ï¼Œå¹¶æ”¾å…¥å­—èŠ‚æ•°ç»„è¾“å‡ºæµä¸­
 			bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-			// ½«×Ö½ÚÊı×éÊä³öÁ÷×ª»¯Îª×Ö½ÚÊı×ébyte[]
+			// å°†å­—èŠ‚æ•°ç»„è¾“å‡ºæµè½¬åŒ–ä¸ºå­—èŠ‚æ•°ç»„byte[]
 			byte[] imagedata = baos.toByteArray();
 			return imagedata;
 		}
 		return null;
 	}
-	
+
 	/**
 	 * get parent path
 	 * @param path current file path
@@ -156,10 +156,10 @@ public class WardUtils {
 		File file = new File(path);
 		return file.getParent();
 	}
-	
+
 	/**
 	 * io copy
-	 * 
+	 *
 	 * @param srcPath
 	 *           src file path
 	 * @param desPath
@@ -168,7 +168,7 @@ public class WardUtils {
 	 * @throws Exception
 	 */
 	public static void fileStreamCopy(String srcPath, String desPath) throws IOException{
-		File files = new File(desPath);// ´´½¨ÎÄ¼ş
+		File files = new File(desPath);// åˆ›å»ºæ–‡ä»¶
 		FileOutputStream fos = new FileOutputStream(files);
 		byte buf[] = new byte[128];
 		InputStream fis = new BufferedInputStream(new FileInputStream(srcPath),
@@ -183,7 +183,7 @@ public class WardUtils {
 		fis.close();
 		fos.close();
 	}
-	
+
 	/**
 	 * force show virtual menu key </br>
 	 * must call after setContentView() 
@@ -203,7 +203,7 @@ public class WardUtils {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * show the input method mannual
 	 * @param v the view that need show input method,like edittext

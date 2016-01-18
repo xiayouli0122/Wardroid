@@ -65,7 +65,7 @@ public class NotificationDemo extends Activity implements OnClickListener {
 		
 		Button edButton = (Button) findViewById(R.id.edit_button);
 		edButton.setOnClickListener(this);
-		//µÃµ½NotificationManager
+		//å¾—åˆ°NotificationManager
 		mNotificationManager = (NotificationManager) getSystemService( Context.NOTIFICATION_SERVICE );
 		
 		ledOnMs = getResources().getInteger(R.integer.ledonms);
@@ -83,13 +83,13 @@ public class NotificationDemo extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.notification_demo:
-			//´´½¨Notification¶ÔÏó
+			//åˆ›å»ºNotificationå¯¹è±¡
 			Notification notification =  new Notification();
 			notification.icon = R.drawable.ic_launcher;
-			notification.tickerText = "ÕâÊÇÒ»¸ö¼òµ¥µÄNOtification";
+			notification.tickerText = "è¿™æ˜¯ä¸€ä¸ªç®€å•çš„NOtification";
 			notification.when = System.currentTimeMillis() + 100;
 			
-			//Ìî³äÊôĞÔ
+			//å¡«å……å±æ€§
 			Context context = getApplicationContext(); 
 			CharSequence contentTitle = "My notification"; 
 			CharSequence contentText = "Hello World!"; 
@@ -97,12 +97,12 @@ public class NotificationDemo extends Activity implements OnClickListener {
 			PendingIntent contentIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0); 
 			notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 			
-			//ÉèÖÃled
-			//Ê¹ÓÃÄ¬ÈÏµÄµÆ¹â
+			//è®¾ç½®led
+			//ä½¿ç”¨é»˜è®¤çš„ç¯å…‰
 //			notification.defaults |= Notification.DEFAULT_LIGHTS;
 			notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 			
-			//×Ô¶¨ÒåµÆ¹â
+			//è‡ªå®šä¹‰ç¯å…‰
 //			notification.ledARGB = currentColor;
 //			notification.ledOnMS = onMS;
 //			notification.ledOffMS = offMS;
@@ -173,15 +173,15 @@ public class NotificationDemo extends Activity implements OnClickListener {
 			.create().show();
 			break;
 		case R.id.download_button:
-			//´´½¨Notification¶ÔÏó
+			//åˆ›å»ºNotificationå¯¹è±¡
 			mNotification = new Notification();
 			mNotification.icon = R.drawable.ic_launcher;
-			mNotification.tickerText = "ÕâÊÇÒ»¸ö¼òµ¥µÄNOtification";
+			mNotification.tickerText = "è¿™æ˜¯ä¸€ä¸ªç®€å•çš„NOtification";
 			mNotification.when = System.currentTimeMillis() + 100;
-			//¼ÓÔØlayout
+			//åŠ è½½layout
 			mNotificationView = new RemoteViews(getPackageName(), R.layout.notification_download);
 
-			//newÒ»¸öÏß³ÌÓÃÓÚ·¢ËÍÏûÏ¢
+			//newä¸€ä¸ªçº¿ç¨‹ç”¨äºå‘é€æ¶ˆæ¯
 			new Thread(new Runnable() {
 				
 				@Override
@@ -222,7 +222,7 @@ public class NotificationDemo extends Activity implements OnClickListener {
 			switch (msg.what) {
 			case MSG_RUN:
 				mNotificationView.setProgressBar(R.id.bar_progress, 100, progressNumber, false);
-				mNotificationView.setTextViewText(R.id.tv_name, "µÚ" + progressNumber + "¸ö");
+				mNotificationView.setTextViewText(R.id.tv_name, "ç¬¬" + progressNumber + "ä¸ª");
 				mNotificationView.setTextViewText(R.id.tv_progress, "(" + progressNumber + "/" + "100)");
 				
 				mNotification.contentView = mNotificationView;
@@ -240,7 +240,7 @@ public class NotificationDemo extends Activity implements OnClickListener {
 		};
 	};
 	
-	/**½«±¸·İµÄÄÚÈİÏÈĞ´ÈëÎÄ¼ş*/
+	/**å°†å¤‡ä»½çš„å†…å®¹å…ˆå†™å…¥æ–‡ä»¶*/
 	public static void fileWriteDemo(String path, String content){
 		System.out.println("filewritedemo   " + content);
 		//default path

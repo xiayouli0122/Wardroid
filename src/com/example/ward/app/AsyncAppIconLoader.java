@@ -70,14 +70,14 @@ public class AsyncAppIconLoader {
 	}
 	
 	/**
-	 * 未安装的程序通过apk文件获取icon
+	 * 鏈畨瑁呯殑绋嬪簭閫氳繃apk鏂囦欢鑾峰彇icon
 	 * 
 	 * @param path
-	 *            apk文件路径
-	 * @return apk的icon
+	 *            apk鏂囦欢璺緞
+	 * @return apk鐨刬con
 	 */
 	public Drawable getApkIcon(String path) {
-		String apkPath = path; // apk 文件所在的路径
+		String apkPath = path; // apk 鏂囦欢鎵�鍦ㄧ殑璺緞
 		String PATH_PackageParser = "android.content.pm.PackageParser";
 		String PATH_AssetManager = "android.content.res.AssetManager";
 		try {

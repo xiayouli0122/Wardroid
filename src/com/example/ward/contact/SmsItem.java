@@ -1,18 +1,18 @@
 package com.example.ward.contact;
 
 public class SmsItem {
-	String address;  //ÊÕ¼şÈË
+	String address;  //æ”¶ä»¶äºº
     String person;  //
-    String date;  //ÊÕ·¢¼şÈÕÆÚ
+    String date;  //æ”¶å‘ä»¶æ—¥æœŸ
     String protocol;  
-    String read;  //1£ºÒÑ¶Á£¬0£ºÎ´¶Á
+    String read;  //1ï¼šå·²è¯»ï¼Œ0ï¼šæœªè¯»
     String status;  
-    String type;  //1£ºÊÕ¼şÏä 2£º·¢¼şÏä
+    String type;  //1ï¼šæ”¶ä»¶ç®± 2ï¼šå‘ä»¶ç®±
     String reply_path_present;  
-    String body;  //¶ÌĞÅÄÚÈİ
+    String body;  //çŸ­ä¿¡å†…å®¹
     String locked;  //
     String error_code;  
-    String seen;//ÒÑ¶Á£¬Î´¶Á
+    String seen;//å·²è¯»ï¼Œæœªè¯»
 	public String getAddress() {
 		return address;
 	}

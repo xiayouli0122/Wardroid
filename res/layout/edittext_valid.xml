@@ -11,16 +11,13 @@
         android:text="请输入正确的字符:"
         />
     
-   <com.andreabaccega.widget.FormEditText
+   <EditText
 	android:id="@+id/et"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:hint="请输入ward"
 	android:singleLine="true"
-	editTextFormExample:classType="com.example.ward.view.CustomValidator"
-	editTextFormExample:emptyAllowed="true"
-	editTextFormExample:testErrorString="输入字符有误，请重新输入"
-	editTextFormExample:testType="custom" />
+	/>
    
    <TextView 
        android:layout_width="match_parent"

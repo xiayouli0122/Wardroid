@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +19,6 @@ import android.widget.Toast;
 import com.example.ward.R;
 
 
-//对话框测试
 public class AlertDialogActivity extends Activity {
 
 	private Button button1;
@@ -36,7 +36,7 @@ public class AlertDialogActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alert_dialog);
-		setTitle("对话框Samples！");
+		setTitle("AlertDialogActivity");
 
 		button1 = (Button) findViewById(R.id.button1);
 		button1.setOnClickListener(new OnClickListener() {
@@ -84,38 +84,38 @@ public class AlertDialogActivity extends Activity {
 		case DIALOG_TWO_BUTTON:
 			Builder builder = new AlertDialog.Builder(AlertDialogActivity.this);
 			builder.setIcon(R.drawable.alert_dialog_icon);
-			builder.setTitle("哇哈哈！");
-			builder.setMessage("去不去？");
-			builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			builder.setTitle("DIALOG_TWO_BUTTON");
+			builder.setMessage("DIALOG_TWO_BUTTON");
+			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					Toast.makeText(AlertDialogActivity.this, "你选择了确定按钮！", Toast.LENGTH_SHORT).show();
+					Toast.makeText(AlertDialogActivity.this, "Click OK", Toast.LENGTH_SHORT).show();
 				}
 			});
-			builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					Toast.makeText(AlertDialogActivity.this, "你选择了取消按钮！", Toast.LENGTH_SHORT).show();
+					Toast.makeText(AlertDialogActivity.this, "Click Cancel", Toast.LENGTH_SHORT).show();
 				}
 			});
 			builder.show();
 			break;
 		case DIALOG_THREE_BUTTON:
-			new AlertDialog.Builder(AlertDialogActivity.this).setIcon(R.drawable.alert_dialog_icon).setTitle("温馨提示")
-					.setMessage("提示内容：三个按钮").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			new AlertDialog.Builder(AlertDialogActivity.this).setIcon(R.drawable.alert_dialog_icon).setTitle("DIALOG_THREE_BUTTON")
+					.setMessage("DIALOG_THREE_BUTTON").setPositiveButton("OK", new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							Toast.makeText(AlertDialogActivity.this, "你选择了确定按钮！", Toast.LENGTH_SHORT).show();
+							Toast.makeText(AlertDialogActivity.this, "ClickableSpan OK", Toast.LENGTH_SHORT).show();
 						}
-					}).setNeutralButton("详情", new DialogInterface.OnClickListener() {
+					}).setNeutralButton("Neutral", new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							Toast.makeText(AlertDialogActivity.this, "你选择了详情按钮！", Toast.LENGTH_SHORT).show();
+							Toast.makeText(AlertDialogActivity.this, "Click Neutral", Toast.LENGTH_SHORT).show();
 						}
-					}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+					}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							Toast.makeText(AlertDialogActivity.this, "你选择了取消按钮！", Toast.LENGTH_SHORT).show();
+							Toast.makeText(AlertDialogActivity.this, "Click Cancel", Toast.LENGTH_SHORT).show();
 						}
 					}).show();
 			break;
@@ -128,25 +128,25 @@ public class AlertDialogActivity extends Activity {
 			final EditText passwordET = (EditText) textEntryView.findViewById(R.id.password_value);
 			// final String username=usernameET.getText().toString();
 
-			new AlertDialog.Builder(AlertDialogActivity.this).setIcon(R.drawable.alert_dialog_icon).setTitle("温馨提醒").setView(textEntryView)
-					.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			new AlertDialog.Builder(AlertDialogActivity.this).setIcon(R.drawable.alert_dialog_icon).setTitle("DIALOG_EDIT_ENTRY").setView(textEntryView)
+					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							Toast.makeText(AlertDialogActivity.this,
-									"用户名=" + usernameET.getText().toString() + "\n密码=" + passwordET.getText().toString(), Toast.LENGTH_LONG)
-									.show();
+//							Toast.makeText(AlertDialogActivity.this,
+//									"锟矫伙拷锟斤拷=" + usernameET.getText().toString() + "\n锟斤拷锟斤拷=" + passwordET.getText().toString(), Toast.LENGTH_LONG)
+//									.show();
 						}
-					}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+					}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							Toast.makeText(AlertDialogActivity.this, "你选择了确定取消！", Toast.LENGTH_SHORT).show();
+//							Toast.makeText(AlertDialogActivity.this, "锟斤拷选锟斤拷锟斤拷确锟斤拷取锟斤拷", Toast.LENGTH_SHORT).show();
 						}
 					}).show();
 			break;
 		case DIALOG_PROGRESS:
 			ProgressDialog dialog = new ProgressDialog(AlertDialogActivity.this);
-			dialog.setTitle("处理中。。。");
-			dialog.setMessage("请稍后。。。");
+			dialog.setTitle("DIALOG_PROGRESS");
+			dialog.setMessage("DIALOG_PROGRESS");
 			dialog.show();
 			break;
 			

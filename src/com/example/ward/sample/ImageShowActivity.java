@@ -17,38 +17,38 @@ import android.widget.ViewSwitcher;
 import com.example.ward.R;
 
 
-//��ʾ����Ч��
+//ÏÔÊ¾»­ÏñÐ§¹û
 public class ImageShowActivity extends Activity implements ViewSwitcher.ViewFactory{
 
 	private ImageSwitcher mSwitcher;
 	private Gallery gallery;
 	private Context mContext;
 
-    private Integer[] mImageIds = {
-            R.drawable.sample_0, R.drawable.sample_1, R.drawable.sample_2,
-            R.drawable.sample_3, R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,R.drawable.sample_8,
-            R.drawable.sample_9,R.drawable.sample_10};
+	private Integer[] mImageIds = {
+			R.drawable.sample_0, R.drawable.sample_1, R.drawable.sample_2,
+			R.drawable.sample_3, R.drawable.sample_4, R.drawable.sample_5,
+			R.drawable.sample_6, R.drawable.sample_7,R.drawable.sample_8,
+			R.drawable.sample_9,R.drawable.sample_10};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.image_show);
-		setTitle("���ͼƬ");
+		setTitle("ä¯ÀÀÍ¼Æ¬");
 		mSwitcher=(ImageSwitcher)findViewById(R.id.switcher);
 		gallery=(Gallery)findViewById(R.id.gallery);
-		
+
 		mSwitcher.setFactory(this);
 		mSwitcher.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_in));
 		mSwitcher.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_out));
-		
+
 		gallery.setAdapter(new ImageAdapter(this));
 		gallery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
 			@Override
 			public void onItemSelected(AdapterView<?> adapter, View view,
-					int position, long id) {
+									   int position, long id) {
 				mSwitcher.setImageResource(mImageIds[position]);
 			}
 
@@ -56,16 +56,16 @@ public class ImageShowActivity extends Activity implements ViewSwitcher.ViewFact
 			public void onNothingSelected(AdapterView<?> arg0) {
 
 			}
-			
+
 		});
 	}
-	
+
 	public class ImageAdapter extends BaseAdapter{
 
 		public ImageAdapter(Context context){
 			mContext=context;
 		}
-		
+
 		@Override
 		public int getCount() {
 			return mImageIds.length;
@@ -73,13 +73,13 @@ public class ImageShowActivity extends Activity implements ViewSwitcher.ViewFact
 
 		@Override
 		public Object getItem(int position) {
-			
+
 			return position;
 		}
 
 		@Override
 		public long getItemId(int position) {
-			
+
 			return position;
 		}
 
@@ -92,7 +92,7 @@ public class ImageShowActivity extends Activity implements ViewSwitcher.ViewFact
 			i.setBackgroundResource(R.drawable.picture_frame);
 			return i;
 		}
-		
+
 	}
 
 	@Override
